@@ -15,12 +15,11 @@ namespace Entities.Concrete
         public DateTime? BirthDate { get; set; }
         public UserClaims UserClaim { get; set; }
         public DateTime? RegisterTime { get; set; }
-        public int MealDetailID { get; set; }
-        public virtual ICollection<MealDetail> MealDetail { get; set; }
+        public virtual ICollection<Meal> Meals { get; set; }
 
         public User()
         {
-            MealDetail = new HashSet<MealDetail>();
+            Meals = new HashSet<Meal>();
         }
     }
 

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Business.Exceptions
 {
-    public class UserAlreadyExistsException:Exception
+    public class AlreadyExistsException:Exception
     {
-        public UserAlreadyExistsException(string message):base(message)
+        public AlreadyExistsException(string message):base(message)
         {
 
         }

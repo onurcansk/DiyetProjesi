@@ -93,6 +93,21 @@ namespace Business.Concrete
             return ProductTypeVmList;
         }
 
+        public ProductTypeVm GetByName(string name)
+        {
+            ProductType productType = _productTypeDal.Get(p=>p.ProductTypeName==name);
+            if(productType == null)
+            {
+                throw new NotFoundException("Gönderilen isme ait ürün tipi bulunamadı.");
+            }
+            ProductTypeVm productTypeVm = new ProductTypeVm()
+            {
+                Id = productType.Id,
+                ProductTypeName = productType.ProductTypeName
+            };
+            return productTypeVm;
+        }
+
         [SecuredOperation(UserClaims.Admin)]
         [ValidationAspect(typeof(ProductTypeValidator))]
         public void Update(ProductTypeUpdateDto productType)

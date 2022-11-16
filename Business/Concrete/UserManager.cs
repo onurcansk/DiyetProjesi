@@ -33,7 +33,7 @@ namespace Business.Concrete
             {
                 UserName = user.UserName,
                 UserClaim = user.UserClaim,
-                RegisterDate = user.RegisterDate,
+                RegisterDate = user.RegisterTime,
                 BirthDate = user.BirthDate
             };
             return userVm;
@@ -49,7 +49,7 @@ namespace Business.Concrete
                 UserVm userVm = new UserVm()
                 {
                     BirthDate = item.BirthDate,
-                    RegisterDate = item.RegisterDate,
+                    RegisterDate = item.RegisterTime,
                     UserClaim = item.UserClaim,
                     UserName = item.UserName
                 };
@@ -80,7 +80,7 @@ namespace Business.Concrete
         {
             if (_userDal.Get(u => u.UserName == user.UserName) != null)
             {
-                throw new UserAlreadyExistsException("Bu kullanıcı adı daha önce alınmış");
+                throw new AlreadyExistsException("Bu kullanıcı adı daha önce alınmış");
             }
 
             byte[] password;
@@ -90,7 +90,7 @@ namespace Business.Concrete
                 BirthDate = user.BirthDate,
                 UserName = user.UserName,
                 PasswordHash = password,
-                RegisterDate = DateTime.Now,
+                RegisterTime = DateTime.Now,
                 UserClaim = UserClaims.User
             };
 

@@ -9,12 +9,8 @@ namespace Entities.Concrete
         public int MealID { get; set; }
         public virtual Meal Meal { get; set; }
         public int ProductId { get; set; }
-        public virtual Product Products { get; set; }
-        public string UserName { get; set; }
-        public virtual User User { get; set; }
-        public DateTime? MealDate { get; set; }
-
-       
+        public virtual Product Product { get; set; }
+      
     }
 
    

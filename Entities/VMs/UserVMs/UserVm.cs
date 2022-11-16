@@ -12,7 +12,7 @@ namespace Entities.VMs.UserVMs
     {
         public string UserName { get; set; }
         public UserClaims UserClaim { get; set; }
-        public DateTime BirthDate { get; set; }
-        public DateTime RegisterDate { get; set; }
+        public DateTime? BirthDate { get; set; }
+        public DateTime? RegisterDate { get; set; }
     }
 }

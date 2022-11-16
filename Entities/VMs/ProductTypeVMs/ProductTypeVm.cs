@@ -9,6 +9,7 @@ namespace Entities.VMs.ProductTypeVMs
 {
     public class ProductTypeVm:IViewModel
     {
+        public int Id { get; set; }
         public string ProductTypeName { get; set; }
     }
 }

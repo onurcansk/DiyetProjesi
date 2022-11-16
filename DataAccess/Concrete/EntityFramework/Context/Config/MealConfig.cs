@@ -21,8 +21,7 @@ namespace Entities.Config
             builder.Property(x => x.CreatedDate).HasConversion(typeof(DateTime)).IsRequired(false).HasDefaultValue(DateTime.Now);
             builder.Property(x => x.UpdatedDate).HasConversion(typeof(DateTime)).IsRequired(false).HasDefaultValue(DateTime.Now);
 
-           
-            
+                  
         }
     }
 
