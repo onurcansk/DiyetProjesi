@@ -5,13 +5,17 @@ namespace Entities.Concrete
     public class Meal : IEntity
     {
         public int Id { get; set; }
-        public MealType MealName { get; set; }
-        public ICollection<MealDetail> MealDetails { get; set; }
-
+        public int MealTypeID { get; set; }
+        public DateTime? CreatedDate { get; set; }
+        public DateTime? UpdatedDate { get; set; }
+        public virtual MealType MealType { get; set; }
+        public int MealDetailsID { get; set; }
+        public virtual ICollection<MealDetail> MealDetails { get; set; }
         public Meal()
         {
-            MealDetails = new List<MealDetail>();
+            MealDetails = new HashSet<MealDetail>();
         }
+
     }
 
    

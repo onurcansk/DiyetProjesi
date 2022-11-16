@@ -12,10 +12,17 @@ namespace Entities.Concrete
     {
         public string UserName { get; set; }
         public byte[] PasswordHash { get; set; }
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
         public UserClaims UserClaim { get; set; }
-        public DateTime RegisterDate { get; set; }
+        public DateTime? RegisterTime { get; set; }
+        public int MealDetailID { get; set; }
+        public virtual ICollection<MealDetail> MealDetail { get; set; }
+
+        public User()
+        {
+            MealDetail = new HashSet<MealDetail>();
+        }
     }
 
-
+   
 }

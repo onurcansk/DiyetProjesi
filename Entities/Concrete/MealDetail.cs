@@ -6,17 +6,13 @@ namespace Entities.Concrete
     {
         public int Id { get; set; }
         public double Gram { get; set; }
-
-        public int MealId { get; set; }
-        public Meal Meal { get; set; }
-       
+        public int MealID { get; set; }
+        public virtual Meal Meal { get; set; }
         public int ProductId { get; set; }
-        public Product Product { get; set; }
-       
-
-        public User User { get; set; }
+        public virtual Product Products { get; set; }
         public string UserName { get; set; }
-        public DateTime MealDate { get; set; }
+        public virtual User User { get; set; }
+        public DateTime? MealDate { get; set; }
 
        
     }

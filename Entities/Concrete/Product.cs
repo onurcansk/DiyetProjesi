@@ -7,10 +7,16 @@ namespace Entities.Concrete
         public int Id { get; set; }
         public string ProductName { get; set; }
         public double UnitCalorie { get; set; }
-        public int ProductTypeId { get; set; }
-        public ProductType ProductType { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime UpdatedDate { get; set; }
+        public int ProductTypeID { get; set; }
+        public virtual ProductType ProductType { get; set; }
+        public DateTime? CreatedDate { get; set; }
+        public DateTime? UpdatedDate { get; set; }
+        public virtual ICollection<MealDetail> MealDetails { get; set; }
+        public Product()
+        {
+            MealDetails = new HashSet<MealDetail>();
+        }
+
     }
 
    

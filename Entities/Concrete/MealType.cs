@@ -10,6 +10,11 @@ namespace Entities.Concrete
     public class MealType : IEntity
     {
         public int Id { get; set; }
-        public string MealTypeName { get; set; }
+        public string TypeName { get; set; }
+        public virtual ICollection<Meal> Meals { get; set; }
+        public MealType()
+        {
+            Meals = new HashSet<Meal>();
+        }
     }
 }
