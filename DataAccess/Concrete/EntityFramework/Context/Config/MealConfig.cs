@@ -17,11 +17,12 @@ namespace Entities.Config
         {
             builder.HasOne(x => x.MealType).WithMany(x => x.Meals).HasForeignKey(x=> x.MealTypeID).OnDelete(DeleteBehavior.Restrict);
             builder.HasKey(x => x.Id);
-            /*builder.HasMany(x => x.MealDetails).WithOne(x => x.Meal).HasForeignKey().OnDelete(DeleteBehavior.Restrict);*/
+            builder.HasMany(x => x.MealDetails).WithOne(x => x.Meal).HasForeignKey(x=>x.MealID).OnDelete(DeleteBehavior.Restrict);
             builder.Property(x => x.CreatedDate).HasConversion(typeof(DateTime)).IsRequired(false).HasDefaultValue(DateTime.Now);
             builder.Property(x => x.UpdatedDate).HasConversion(typeof(DateTime)).IsRequired(false).HasDefaultValue(DateTime.Now);
+            builder.HasOne(x => x.User).WithMany(x => x.Meals).HasForeignKey(x => x.UserName).OnDelete(DeleteBehavior.Restrict);
 
-                  
+
         }
     }
 

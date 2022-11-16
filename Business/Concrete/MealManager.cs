@@ -23,7 +23,7 @@ namespace Business.Concrete
         }
         public void Add(MealCreateDTO meal)
         {
-            Meal meal = _mealDal.Get(m=>m.Meal)
+            //Meal meal = _mealDal.Get(m => m.Meal);
         }
 
         public void Delete(int id)

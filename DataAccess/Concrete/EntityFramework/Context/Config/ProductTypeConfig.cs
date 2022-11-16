@@ -11,14 +11,12 @@ namespace Entities.Config
             builder.HasKey(x => x.Id);
             builder.Property(x => x.ProductTypeName).IsRequired(true).HasMaxLength(20);
             builder.HasData(
-               new ProductType{Id=1, ProductTypeName="Meat" },
-               new ProductType{Id=2, ProductTypeName="Fish" },
-               new ProductType{Id=3, ProductTypeName="Staple Food" },
-               new ProductType{Id=4, ProductTypeName="Vegetable" },
-               new ProductType{Id=5, ProductTypeName="Fruit" }
-                
-                
-                
+               new ProductType{Id=1, ProductTypeName="Et" },
+               new ProductType{Id=2, ProductTypeName="Balık" },
+               new ProductType{Id=3, ProductTypeName="Temel Gıda" },
+               new ProductType{Id=4, ProductTypeName="Sebze" },
+               new ProductType{Id=5, ProductTypeName="Meyve" },
+               new ProductType{Id=6, ProductTypeName="Lokanta Yemeği" }
                 );
 
         }
