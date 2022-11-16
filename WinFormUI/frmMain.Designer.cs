@@ -210,14 +210,14 @@
             this.pnlNavItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlNavItems.Location = new System.Drawing.Point(275, 0);
             this.pnlNavItems.Name = "pnlNavItems";
-            this.pnlNavItems.Size = new System.Drawing.Size(655, 450);
+            this.pnlNavItems.Size = new System.Drawing.Size(650, 450);
             this.pnlNavItems.TabIndex = 2;
             // 
             // frmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(930, 450);
+            this.ClientSize = new System.Drawing.Size(925, 450);
             this.ControlBox = false;
             this.Controls.Add(this.pnlNavItems);
             this.Controls.Add(this.pnlNavigation);
