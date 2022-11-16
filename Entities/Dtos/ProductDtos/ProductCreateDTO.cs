@@ -1,0 +1,11 @@
+﻿using Base.Entities;
+
+namespace Entities.Dtos.Product
+{
+    public class ProductCreateDTO : IDto
+    {
+        public string ProductName { get; set; }
+        public double UnitGram { get; set; }
+        public string ProductType { get; set; }
+    }
+}

@@ -1,0 +1,103 @@
+﻿using Base.Aspects.Autofac.Validation;
+using Base.Utilities.Encryption;
+using Business.Abstract;
+using Business.BusinessAspects.Autofac;
+using Business.Exceptions;
+using Business.ValidationRules.FluentValidation;
+using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
+using Entities.Concrete;
+using Entities.Dtos.Users;
+using Entities.Enums;
+using Entities.VMs.UserVMs;
+using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Text;
+
+namespace Business.Concrete
+{
+    public class UserManager : IUserService
+    {
+        IUserDal _userDal;
+
+        public UserManager(IUserDal userDal)
+        {
+            _userDal = userDal;
+        }
+
+        [SecuredOperation(UserClaims.Admin)]
+        public UserVm Get(string id)
+        {
+            User user = _userDal.Get(u => u.UserName == id);
+            UserVm userVm = new UserVm()
+            {
+                UserName = user.UserName,
+                UserClaim = user.UserClaim,
+                RegisterDate = user.RegisterDate,
+                BirthDate = user.BirthDate
+            };
+            return userVm;
+        }
+
+        [SecuredOperation(UserClaims.Admin)]
+        public List<UserVm> GetAll()
+        {
+            List<User> userList = _userDal.GetAll();
+            List<UserVm> userVmList = new List<UserVm>();
+            foreach (User item in userList)
+            {
+                UserVm userVm = new UserVm()
+                {
+                    BirthDate = item.BirthDate,
+                    RegisterDate = item.RegisterDate,
+                    UserClaim = item.UserClaim,
+                    UserName = item.UserName
+                };
+                userVmList.Add(userVm);
+            }
+
+            return userVmList;
+        }
+
+        public UserClaims Login(UserLoginDTO user)
+        {
+            User registeredUser = _userDal.Get(u => u.UserName == user.UserName);
+            if (registeredUser == null)
+            {
+                throw new LoginFailedException("Kullanıcı adı veya şifre hatalı.");
+            }
+
+            if (HashingHelper.VerifyPasswordHash(user.Password, registeredUser.PasswordHash))
+            {
+                throw new LoginFailedException("Kullanıcı adı veya şifre hatalı.");
+            }
+
+            return registeredUser.UserClaim;
+        }
+
+        [ValidationAspect(typeof(UserValidator))]
+        public void Register(UserCreateDTO user)
+        {
+            if (_userDal.Get(u => u.UserName == user.UserName) != null)
+            {
+                throw new UserAlreadyExistsException("Bu kullanıcı adı daha önce alınmış");
+            }
+
+            byte[] password;
+            HashingHelper.CreatePasswordHash(user.Password, out password);
+            User newUser = new User()
+            {
+                BirthDate = user.BirthDate,
+                UserName = user.UserName,
+                PasswordHash = password,
+                RegisterDate = DateTime.Now,
+                UserClaim = UserClaims.User
+            };
+
+            _userDal.Add(newUser);
+        }
+
+       
+    }
+
+}
