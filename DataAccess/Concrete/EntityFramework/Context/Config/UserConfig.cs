@@ -16,6 +16,8 @@ namespace Entities.Config
             builder.Property(x => x.BirthDate).HasConversion(typeof(DateTime)).IsRequired(false);
             builder.Property(x => x.UserClaim);
 
+            
+
         }
     }
 

@@ -11,10 +11,12 @@ namespace Entities.Concrete
     {
         public int Id { get; set; }
         public string TypeName { get; set; }
-        public virtual ICollection<Meal> Meals { get; set; }
+        public ICollection<Meal> Meals { get; set; }
+
         public MealType()
         {
             Meals = new HashSet<Meal>();
         }
+
     }
 }

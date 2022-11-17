@@ -13,7 +13,7 @@ namespace Base.DataAccess.EntityFramework
         where TEntity : class, IEntity, new()
         where TContext : DbContext, new()
     {
-        TContext context;
+        protected TContext context;
         public EfEntityRepositoryBase()
         {
             context = new();

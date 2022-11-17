@@ -1,8 +1,12 @@
 ﻿using Business.Abstract;
+
 using Business.DependencyResolver.Autofac;
 using Entities.Dtos.Users;
 using Entities.Enums;
 using Entities.VMs.UserVMs;
+
+using Business.Concrete;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -62,5 +66,7 @@ namespace WinFormUI
             _frm.ShowDialog();
             this.Show();
         }
+
+        
     }
 }

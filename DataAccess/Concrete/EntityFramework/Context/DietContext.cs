@@ -13,8 +13,7 @@ namespace DataAccess.Concrete.EntityFramework.Context
     {
             protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             {
-                optionsBuilder.UseSqlServer(@"Data Source=LAPTOP-72MJDUFP\AliEren;Initial Catalog=KaloriTakip;Integrated Security=True");
-
+                optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-BQ6EOLD\SQLSERVER2019;Initial Catalog=KaloriTakip;Integrated Security=True");
             }
             protected override void OnModelCreating(ModelBuilder modelBuilder)
             {

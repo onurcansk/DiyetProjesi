@@ -1,4 +1,5 @@
 ﻿using Base.Entities;
+using Entities.VMs.MealDetailVMs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,12 @@ namespace Entities.VMs.MealVMs
 {
     public class MealVm:IViewModel
     {
+        public List<MealDetailVm> MealDetailVm { get; set; }
+        public string MealType { get; set; }
+        public DateTime? Date { get; set; }
+        public MealVm()
+        {
+            MealDetailVm =new List<MealDetailVm>();
+        }
     }
 }

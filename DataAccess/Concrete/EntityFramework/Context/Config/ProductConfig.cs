@@ -117,7 +117,25 @@ namespace Entities.Config
                 new Product { Id=83, ProductTypeID=5, ProductName="Portakal", UnitCalorie= 0.47 },
                 new Product { Id=84, ProductTypeID=5, ProductName="Çilek", UnitCalorie=0.32 },
                 new Product { Id=85, ProductTypeID=5, ProductName="Üzüm", UnitCalorie=0.69 },
-                new Product { Id=86, ProductTypeID=5, ProductName="Şeftali", UnitCalorie=0.39 }
+                new Product { Id=86, ProductTypeID=5, ProductName="Şeftali", UnitCalorie=0.39 },
+
+
+
+
+                new Product { Id=87, ProductTypeID=6, ProductName="Bulgur Pilavı", UnitCalorie=2.15 },
+                new Product { Id=88, ProductTypeID=6, ProductName="Bezelye Çorbası", UnitCalorie=0.75 },
+                new Product { Id=89, ProductTypeID=6, ProductName="Karnıyarık", UnitCalorie=1.34 },
+                new Product { Id=90, ProductTypeID=6, ProductName="Kıymalı/Etli Pide", UnitCalorie=2.97 },
+                new Product { Id=91, ProductTypeID=6, ProductName="Patates Püresi", UnitCalorie=0.83 },
+                new Product { Id=92, ProductTypeID=6, ProductName="Pirinç Pilav", UnitCalorie=3.52 },
+                new Product { Id=93, ProductTypeID=6, ProductName="Pizza", UnitCalorie=2.67 },
+                new Product { Id=94, ProductTypeID=6, ProductName="Yaprak Sarması", UnitCalorie=1.41 },
+                new Product { Id=95, ProductTypeID=6, ProductName="Zeytinyağlı Dolma", UnitCalorie=1.73 },
+                new Product { Id=96, ProductTypeID=6, ProductName="Rulo Köfte", UnitCalorie=2.54 },
+                new Product { Id=97, ProductTypeID=6, ProductName="Peynirli Makarna", UnitCalorie=3.70 },
+                new Product { Id=98, ProductTypeID=6, ProductName="Kurufasulye", UnitCalorie=0.94 },
+                new Product { Id=99, ProductTypeID=6, ProductName="Hünkar Beğendi", UnitCalorie=1.74 },
+                new Product { Id=100, ProductTypeID=6, ProductName="Kebap", UnitCalorie=2.15 }
                 );
 
 

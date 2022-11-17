@@ -7,6 +7,7 @@ using Business.ValidationRules.FluentValidation;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Entities.Dtos;
 using Entities.Dtos.Users;
 using Entities.Enums;
 using Entities.VMs.UserVMs;
@@ -25,6 +26,25 @@ namespace Business.Concrete
             _userDal = userDal;
         }
 
+        
+        public void ChangePassword(UserChangePasswordDTO userChangePassword)
+        {
+            User registeredUser = _userDal.Get(u => u.UserName == userChangePassword.UserName);
+            if (registeredUser == null)
+            {
+                throw new LoginFailedException("Kullanıcı adı veya şifre hatalı.");
+            }
+
+            if (HashingHelper.VerifyPasswordHash(userChangePassword.OldPassword, registeredUser.PasswordHash))
+            {
+                throw new LoginFailedException("Kullanıcı adı veya şifre hatalı.");
+            }
+
+            byte[] newHashedPassword;
+            HashingHelper.CreatePasswordHash(userChangePassword.NewPassword, out newHashedPassword);
+
+        }
+
         [SecuredOperation(UserClaims.Admin)]
         public UserVm Get(string id)
         {
@@ -33,7 +53,7 @@ namespace Business.Concrete
             {
                 UserName = user.UserName,
                 UserClaim = user.UserClaim,
-                RegisterDate = user.RegisterDate,
+                RegisterDate = user.RegisterTime,
                 BirthDate = user.BirthDate
             };
             return userVm;
@@ -49,7 +69,7 @@ namespace Business.Concrete
                 UserVm userVm = new UserVm()
                 {
                     BirthDate = item.BirthDate,
-                    RegisterDate = item.RegisterDate,
+                    RegisterDate = item.RegisterTime,
                     UserClaim = item.UserClaim,
                     UserName = item.UserName
                 };
@@ -70,11 +90,13 @@ namespace Business.Concrete
             {
                 throw new LoginFailedException("Kullanıcı adı veya şifre hatalı.");
             }
+
             UserVm userVm = new UserVm()
             {
                 UserClaim = registeredUser.UserClaim,
                 UserName = registeredUser.UserName,
             };
+
             return userVm;
         }
 
@@ -83,7 +105,7 @@ namespace Business.Concrete
         {
             if (_userDal.Get(u => u.UserName == user.UserName) != null)
             {
-                throw new UserAlreadyExistsException("Bu kullanıcı adı daha önce alınmış");
+                throw new AlreadyExistsException("Bu kullanıcı adı daha önce alınmış");
             }
 
             byte[] password;
@@ -93,7 +115,7 @@ namespace Business.Concrete
                 BirthDate = user.BirthDate,
                 UserName = user.UserName,
                 PasswordHash = password,
-                RegisterDate = DateTime.Now,
+                RegisterTime = DateTime.Now,
                 UserClaim = UserClaims.User
             };
 

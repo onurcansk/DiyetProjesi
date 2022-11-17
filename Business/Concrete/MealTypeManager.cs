@@ -28,7 +28,7 @@ namespace Business.Concrete
         {
             MealType newMealType = new MealType()
             {
-                MealTypeName = mealType.MealTypeName
+                TypeName = mealType.MealTypeName
             };
 
             _mealTypeDal.Add(newMealType);
@@ -55,7 +55,7 @@ namespace Business.Concrete
             {
                 MealTypeVm productTypeVm = new MealTypeVm()
                 {
-                    MealTypeName = item.MealTypeName
+                    MealTypeName = item.TypeName
                 };
                 MealTypeVmList.Add(productTypeVm);
             }
@@ -72,7 +72,7 @@ namespace Business.Concrete
             {
                 MealTypeVm productTypeVm = new MealTypeVm()
                 {
-                    MealTypeName = item.MealTypeName
+                    MealTypeName = item.TypeName
                 };
                 MealTypeVmList.Add(productTypeVm);
             }
@@ -90,7 +90,24 @@ namespace Business.Concrete
 
             MealTypeVm mealTypeVm = new MealTypeVm()
             {
-                 MealTypeName= mealType.MealTypeName
+                 MealTypeName= mealType.TypeName
+            };
+
+            return mealTypeVm;
+        }
+
+        public MealTypeVm GetByName(string TypeName)
+        {
+            MealType mealType = _mealTypeDal.Get(pt => pt.TypeName == TypeName);
+            if (mealType == null)
+            {
+                throw new IdNotFoundException("Girilen Idye ait bir öğün tipi bulunamadı");
+            }
+
+            MealTypeVm mealTypeVm = new MealTypeVm()
+            {
+                Id = mealType.Id,
+                MealTypeName = mealType.TypeName
             };
 
             return mealTypeVm;
@@ -103,7 +120,7 @@ namespace Business.Concrete
             MealType mealTypeUpdated = new MealType()
             {
                 Id = mealType.Id,
-                MealTypeName = mealType.MealTypeName
+                TypeName = mealType.MealTypeName
             };
 
             _mealTypeDal.Update(mealTypeUpdated);
