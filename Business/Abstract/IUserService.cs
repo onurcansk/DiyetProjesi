@@ -12,7 +12,7 @@ namespace Business.Abstract
     public interface IUserService
     {
         void Register(UserCreateDTO user);
-        UserClaims Login(UserLoginDTO user);
+        UserVm Login(UserLoginDTO user);
         List<UserVm> GetAll();
         UserVm Get(string id);
 

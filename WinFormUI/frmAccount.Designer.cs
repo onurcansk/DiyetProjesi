@@ -80,6 +80,7 @@
             this.btnUpdate.TabIndex = 2;
             this.btnUpdate.Text = "Şifreyi Güncelle";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // lblPassword2
             // 

@@ -1,3 +1,5 @@
+using Entities.VMs.UserVMs;
+
 namespace WinFormUI
 {
     public partial class frmMain : Form
@@ -6,15 +8,18 @@ namespace WinFormUI
         frmAddMeal _frmAddMeal;
         frmReport _frmReport;
         frmAccount _frmAccount;
-        public frmMain()
+        UserVm _userVm;
+        public frmMain(UserVm userLogin)
         {
             InitializeComponent();
             tssCurrentDate.Text = DateTime.Now.ToString("dd MMMM yyyy");
+            tssActiveUser.Text = userLogin.UserName;
+            _userVm = userLogin;
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            _frmMainPage = new frmMainPage()
+            _frmMainPage = new frmMainPage(_userVm.UserName);
             {
                 MdiParent = this
             };

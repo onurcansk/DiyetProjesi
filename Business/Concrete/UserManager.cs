@@ -59,20 +59,23 @@ namespace Business.Concrete
             return userVmList;
         }
 
-        public UserClaims Login(UserLoginDTO user)
+        public UserVm Login(UserLoginDTO user)
         {
             User registeredUser = _userDal.Get(u => u.UserName == user.UserName);
             if (registeredUser == null)
             {
                 throw new LoginFailedException("Kullanıcı adı veya şifre hatalı.");
             }
-
             if (HashingHelper.VerifyPasswordHash(user.Password, registeredUser.PasswordHash))
             {
                 throw new LoginFailedException("Kullanıcı adı veya şifre hatalı.");
             }
-
-            return registeredUser.UserClaim;
+            UserVm userVm = new UserVm()
+            {
+                UserClaim = registeredUser.UserClaim,
+                UserName = registeredUser.UserName,
+            };
+            return userVm;
         }
 
         [ValidationAspect(typeof(UserValidator))]
@@ -97,7 +100,7 @@ namespace Business.Concrete
             _userDal.Add(newUser);
         }
 
-       
+
     }
 
 }

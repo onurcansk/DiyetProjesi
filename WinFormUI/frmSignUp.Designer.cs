@@ -36,10 +36,6 @@
             this.txtMail = new System.Windows.Forms.TextBox();
             this.txtPassword2 = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.txtLastName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.lblName = new System.Windows.Forms.Label();
             this.dtpBirthDate = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
@@ -53,19 +49,20 @@
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(110, 371);
+            this.btnUpdate.Location = new System.Drawing.Point(110, 268);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(184, 48);
             this.btnUpdate.TabIndex = 11;
             this.btnUpdate.Text = "Kayıt Ol";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // lblPassword2
             // 
             this.lblPassword2.AutoSize = true;
             this.lblPassword2.BackColor = System.Drawing.Color.Transparent;
-            this.lblPassword2.Location = new System.Drawing.Point(52, 294);
+            this.lblPassword2.Location = new System.Drawing.Point(52, 191);
             this.lblPassword2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblPassword2.Name = "lblPassword2";
             this.lblPassword2.Size = new System.Drawing.Size(87, 21);
@@ -76,7 +73,7 @@
             // 
             this.lblMail.AutoSize = true;
             this.lblMail.BackColor = System.Drawing.Color.Transparent;
-            this.lblMail.Location = new System.Drawing.Point(52, 132);
+            this.lblMail.Location = new System.Drawing.Point(52, 29);
             this.lblMail.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMail.Name = "lblMail";
             this.lblMail.Size = new System.Drawing.Size(92, 21);
@@ -87,7 +84,7 @@
             // 
             this.lblBirthDate.AutoSize = true;
             this.lblBirthDate.BackColor = System.Drawing.Color.Transparent;
-            this.lblBirthDate.Location = new System.Drawing.Point(52, 186);
+            this.lblBirthDate.Location = new System.Drawing.Point(52, 83);
             this.lblBirthDate.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblBirthDate.Name = "lblBirthDate";
             this.lblBirthDate.Size = new System.Drawing.Size(88, 21);
@@ -98,7 +95,7 @@
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.BackColor = System.Drawing.Color.Transparent;
-            this.lblPassword.Location = new System.Drawing.Point(52, 240);
+            this.lblPassword.Location = new System.Drawing.Point(52, 137);
             this.lblPassword.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(40, 21);
@@ -107,7 +104,7 @@
             // 
             // txtMail
             // 
-            this.txtMail.Location = new System.Drawing.Point(52, 156);
+            this.txtMail.Location = new System.Drawing.Point(52, 53);
             this.txtMail.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.txtMail.Name = "txtMail";
             this.txtMail.ReadOnly = true;
@@ -116,7 +113,7 @@
             // 
             // txtPassword2
             // 
-            this.txtPassword2.Location = new System.Drawing.Point(52, 318);
+            this.txtPassword2.Location = new System.Drawing.Point(52, 215);
             this.txtPassword2.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.txtPassword2.Name = "txtPassword2";
             this.txtPassword2.Size = new System.Drawing.Size(300, 27);
@@ -124,55 +121,15 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(52, 264);
+            this.txtPassword.Location = new System.Drawing.Point(52, 161);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(300, 27);
             this.txtPassword.TabIndex = 6;
             // 
-            // txtLastName
-            // 
-            this.txtLastName.Location = new System.Drawing.Point(52, 102);
-            this.txtLastName.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.txtLastName.Name = "txtLastName";
-            this.txtLastName.ReadOnly = true;
-            this.txtLastName.Size = new System.Drawing.Size(300, 27);
-            this.txtLastName.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(52, 78);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 21);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Soyad";
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(52, 48);
-            this.txtName.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.txtName.Name = "txtName";
-            this.txtName.ReadOnly = true;
-            this.txtName.Size = new System.Drawing.Size(300, 27);
-            this.txtName.TabIndex = 3;
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.BackColor = System.Drawing.Color.Transparent;
-            this.lblName.Location = new System.Drawing.Point(52, 24);
-            this.lblName.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(26, 21);
-            this.lblName.TabIndex = 8;
-            this.lblName.Text = "Ad";
-            // 
             // dtpBirthDate
             // 
-            this.dtpBirthDate.Location = new System.Drawing.Point(55, 210);
+            this.dtpBirthDate.Location = new System.Drawing.Point(55, 107);
             this.dtpBirthDate.Name = "dtpBirthDate";
             this.dtpBirthDate.Size = new System.Drawing.Size(297, 27);
             this.dtpBirthDate.TabIndex = 12;
@@ -183,17 +140,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::WinFormUI.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(410, 452);
+            this.ClientSize = new System.Drawing.Size(402, 350);
             this.Controls.Add(this.dtpBirthDate);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.lblPassword2);
-            this.Controls.Add(this.lblName);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblMail);
             this.Controls.Add(this.lblBirthDate);
             this.Controls.Add(this.lblPassword);
-            this.Controls.Add(this.txtName);
-            this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.txtMail);
             this.Controls.Add(this.txtPassword2);
             this.Controls.Add(this.txtPassword);
@@ -220,10 +173,6 @@
         private TextBox txtMail;
         private TextBox txtPassword2;
         private TextBox txtPassword;
-        private TextBox txtLastName;
-        private Label label1;
-        private TextBox txtName;
-        private Label lblName;
         private DateTimePicker dtpBirthDate;
     }
 }

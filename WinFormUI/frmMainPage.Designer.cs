@@ -38,14 +38,14 @@
             this.clmPortion = new System.Windows.Forms.ColumnHeader();
             this.clmCalorie = new System.Windows.Forms.ColumnHeader();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblLastMealDate = new System.Windows.Forms.Label();
+            this.lblLastMealName = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.lblDailyReportTotalCalorie = new System.Windows.Forms.Label();
+            this.lblDailyReportFoodCount = new System.Windows.Forms.Label();
+            this.lblDailyReportDay = new System.Windows.Forms.Label();
+            this.lblDailyReportMealCount = new System.Windows.Forms.Label();
             this.pnlMainPage.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -81,6 +81,7 @@
             this.llbWebPage.TabStop = true;
             this.llbWebPage.Text = "UYGULAMA HAKKINDA DETAYLI BİLGİ ALMAK İÇİN\r\nWEB SAYFAMIZI ZİYARET EDİNİZ";
             this.llbWebPage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.llbWebPage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbWebPage_LinkClicked);
             // 
             // lblHeader
             // 
@@ -98,8 +99,8 @@
             // 
             this.panel3.Controls.Add(this.lswLastFoods);
             this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.label5);
+            this.panel3.Controls.Add(this.lblLastMealDate);
+            this.panel3.Controls.Add(this.lblLastMealName);
             this.panel3.Location = new System.Drawing.Point(12, 136);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(327, 311);
@@ -155,35 +156,35 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "SON EKLENEN ÖĞÜN";
             // 
-            // label4
+            // lblLastMealDate
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(14, 77);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 21);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "TARİH :";
+            this.lblLastMealDate.AutoSize = true;
+            this.lblLastMealDate.BackColor = System.Drawing.Color.Transparent;
+            this.lblLastMealDate.ForeColor = System.Drawing.Color.Black;
+            this.lblLastMealDate.Location = new System.Drawing.Point(14, 77);
+            this.lblLastMealDate.Name = "lblLastMealDate";
+            this.lblLastMealDate.Size = new System.Drawing.Size(55, 21);
+            this.lblLastMealDate.TabIndex = 0;
+            this.lblLastMealDate.Text = "TARİH :";
             // 
-            // label5
+            // lblLastMealName
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(14, 111);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 21);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "ÖĞÜN :";
+            this.lblLastMealName.AutoSize = true;
+            this.lblLastMealName.BackColor = System.Drawing.Color.Transparent;
+            this.lblLastMealName.ForeColor = System.Drawing.Color.Black;
+            this.lblLastMealName.Location = new System.Drawing.Point(14, 111);
+            this.lblLastMealName.Name = "lblLastMealName";
+            this.lblLastMealName.Size = new System.Drawing.Size(51, 21);
+            this.lblLastMealName.TabIndex = 0;
+            this.lblLastMealName.Text = "ÖĞÜN :";
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.label12);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.label11);
+            this.panel2.Controls.Add(this.lblDailyReportTotalCalorie);
+            this.panel2.Controls.Add(this.lblDailyReportFoodCount);
+            this.panel2.Controls.Add(this.lblDailyReportDay);
+            this.panel2.Controls.Add(this.lblDailyReportMealCount);
             this.panel2.Location = new System.Drawing.Point(345, 136);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(327, 311);
@@ -201,49 +202,49 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "GÜNLÜK RAPOR";
             // 
-            // label1
+            // lblDailyReportTotalCalorie
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(12, 167);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 21);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "TOPLAM KALORİ :";
+            this.lblDailyReportTotalCalorie.AutoSize = true;
+            this.lblDailyReportTotalCalorie.BackColor = System.Drawing.Color.Transparent;
+            this.lblDailyReportTotalCalorie.ForeColor = System.Drawing.Color.Black;
+            this.lblDailyReportTotalCalorie.Location = new System.Drawing.Point(12, 167);
+            this.lblDailyReportTotalCalorie.Name = "lblDailyReportTotalCalorie";
+            this.lblDailyReportTotalCalorie.Size = new System.Drawing.Size(117, 21);
+            this.lblDailyReportTotalCalorie.TabIndex = 0;
+            this.lblDailyReportTotalCalorie.Text = "TOPLAM KALORİ :";
             // 
-            // label12
+            // lblDailyReportFoodCount
             // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(12, 137);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(105, 21);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "YEMEK SAYISI :";
+            this.lblDailyReportFoodCount.AutoSize = true;
+            this.lblDailyReportFoodCount.BackColor = System.Drawing.Color.Transparent;
+            this.lblDailyReportFoodCount.ForeColor = System.Drawing.Color.Black;
+            this.lblDailyReportFoodCount.Location = new System.Drawing.Point(12, 137);
+            this.lblDailyReportFoodCount.Name = "lblDailyReportFoodCount";
+            this.lblDailyReportFoodCount.Size = new System.Drawing.Size(105, 21);
+            this.lblDailyReportFoodCount.TabIndex = 0;
+            this.lblDailyReportFoodCount.Text = "YEMEK SAYISI :";
             // 
-            // label9
+            // lblDailyReportDay
             // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(12, 77);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(43, 21);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "GÜN :";
+            this.lblDailyReportDay.AutoSize = true;
+            this.lblDailyReportDay.BackColor = System.Drawing.Color.Transparent;
+            this.lblDailyReportDay.ForeColor = System.Drawing.Color.Black;
+            this.lblDailyReportDay.Location = new System.Drawing.Point(12, 77);
+            this.lblDailyReportDay.Name = "lblDailyReportDay";
+            this.lblDailyReportDay.Size = new System.Drawing.Size(43, 21);
+            this.lblDailyReportDay.TabIndex = 0;
+            this.lblDailyReportDay.Text = "GÜN :";
             // 
-            // label11
+            // lblDailyReportMealCount
             // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(12, 107);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(97, 21);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "ÖĞÜN SAYISI :";
+            this.lblDailyReportMealCount.AutoSize = true;
+            this.lblDailyReportMealCount.BackColor = System.Drawing.Color.Transparent;
+            this.lblDailyReportMealCount.ForeColor = System.Drawing.Color.Black;
+            this.lblDailyReportMealCount.Location = new System.Drawing.Point(12, 107);
+            this.lblDailyReportMealCount.Name = "lblDailyReportMealCount";
+            this.lblDailyReportMealCount.Size = new System.Drawing.Size(97, 21);
+            this.lblDailyReportMealCount.TabIndex = 0;
+            this.lblDailyReportMealCount.Text = "ÖĞÜN SAYISI :";
             // 
             // frmMainPage
             // 
@@ -273,13 +274,13 @@
         private Panel pnlMainPage;
         private Label lblHeader;
         private LinkLabel llbWebPage;
-        private Label label11;
-        private Label label5;
-        private Label label9;
-        private Label label4;
+        private Label lblDailyReportMealCount;
+        private Label lblLastMealName;
+        private Label lblDailyReportDay;
+        private Label lblLastMealDate;
         private Label label3;
         private Label label2;
-        private Label label1;
+        private Label lblDailyReportTotalCalorie;
         private Panel panel3;
         private Panel panel2;
         private ListView lswLastFoods;
@@ -287,6 +288,6 @@
         private ColumnHeader clmFoodName;
         private ColumnHeader clmPortion;
         private ColumnHeader clmCalorie;
-        private Label label12;
+        private Label lblDailyReportFoodCount;
     }
 }
