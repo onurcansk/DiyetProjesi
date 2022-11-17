@@ -9,6 +9,11 @@ namespace Entities.VMs.MealDetailVMs
 {
     public class MealDetailVm:IViewModel
     {
-
+        public int Id { get; set; }
+        public string MealType { get; set; }
+        public string Product { get; set; }
+        public string ProductType { get; set; }
+        public double? UnitCalorie { get; set; }
+        public double? Gram { get; set; }
     }
 }

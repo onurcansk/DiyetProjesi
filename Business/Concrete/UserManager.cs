@@ -7,6 +7,7 @@ using Business.ValidationRules.FluentValidation;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Entities.Dtos;
 using Entities.Dtos.Users;
 using Entities.Enums;
 using Entities.VMs.UserVMs;
@@ -23,6 +24,25 @@ namespace Business.Concrete
         public UserManager(IUserDal userDal)
         {
             _userDal = userDal;
+        }
+
+        
+        public void ChangePassword(UserChangePasswordDTO userChangePassword)
+        {
+            User registeredUser = _userDal.Get(u => u.UserName == userChangePassword.UserName);
+            if (registeredUser == null)
+            {
+                throw new LoginFailedException("Kullanıcı adı veya şifre hatalı.");
+            }
+
+            if (HashingHelper.VerifyPasswordHash(userChangePassword.OldPassword, registeredUser.PasswordHash))
+            {
+                throw new LoginFailedException("Kullanıcı adı veya şifre hatalı.");
+            }
+
+            byte[] newHashedPassword;
+            HashingHelper.CreatePasswordHash(userChangePassword.NewPassword, out newHashedPassword);
+
         }
 
         [SecuredOperation(UserClaims.Admin)]
@@ -59,7 +79,7 @@ namespace Business.Concrete
             return userVmList;
         }
 
-        public UserClaims Login(UserLoginDTO user)
+        public UserVm Login(UserLoginDTO user)
         {
             User registeredUser = _userDal.Get(u => u.UserName == user.UserName);
             if (registeredUser == null)
@@ -72,7 +92,13 @@ namespace Business.Concrete
                 throw new LoginFailedException("Kullanıcı adı veya şifre hatalı.");
             }
 
-            return registeredUser.UserClaim;
+            UserVm userVm = new UserVm()
+            {
+                UserClaim = registeredUser.UserClaim,
+                UserName = registeredUser.UserName,
+            };
+
+            return userVm;
         }
 
         [ValidationAspect(typeof(UserValidator))]

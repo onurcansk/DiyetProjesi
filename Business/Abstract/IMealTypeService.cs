@@ -13,6 +13,7 @@ namespace Business.Abstract
         List<MealTypeVm> GetAll();
         List<MealTypeVm> GetAllByExpression(Expression<Func<MealType, bool>> expression);
         MealTypeVm GetById(int id);
+        MealTypeVm GetByName(string TypeName);
     }
 
 }

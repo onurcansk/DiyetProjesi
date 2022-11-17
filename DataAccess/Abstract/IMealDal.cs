@@ -5,5 +5,6 @@ namespace DataAccess.Abstract
 {
     public interface IMealDal : IEntityRepository<Meal>
     {
+        Meal GetLastMealByUser(string userName);
     }
 }

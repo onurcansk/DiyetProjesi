@@ -60,6 +60,7 @@ namespace Business.Concrete
             {
                 ProductVm productVm = new ProductVm()
                 {
+                    Id = item.Id,
                     ProductName=item.ProductName,
                     ProductTypeName=item.ProductType.ProductTypeName,
                     UnitCalorie= item.UnitCalorie
@@ -77,6 +78,7 @@ namespace Business.Concrete
             {
                 ProductVm productVm = new ProductVm()
                 {
+                    Id=item.Id,
                     ProductName = item.ProductName,
                     ProductTypeName = item.ProductType.ProductTypeName,
                     UnitCalorie = item.UnitCalorie
@@ -96,6 +98,7 @@ namespace Business.Concrete
 
             ProductVm productVm = new ProductVm()
             {
+                Id=product.Id,
                 ProductName=product.ProductName,
                 ProductTypeName = product.ProductType.ProductTypeName,
                 UnitCalorie = product.UnitCalorie

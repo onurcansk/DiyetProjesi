@@ -96,6 +96,23 @@ namespace Business.Concrete
             return mealTypeVm;
         }
 
+        public MealTypeVm GetByName(string TypeName)
+        {
+            MealType mealType = _mealTypeDal.Get(pt => pt.TypeName == TypeName);
+            if (mealType == null)
+            {
+                throw new IdNotFoundException("Girilen Idye ait bir öğün tipi bulunamadı");
+            }
+
+            MealTypeVm mealTypeVm = new MealTypeVm()
+            {
+                Id = mealType.Id,
+                MealTypeName = mealType.TypeName
+            };
+
+            return mealTypeVm;
+        }
+
         [SecuredOperation(UserClaims.Admin)]
         [ValidationAspect(typeof(ProductTypeValidator))]
         public void Update(MealTypeUpdateDto mealType)

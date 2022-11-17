@@ -1,4 +1,5 @@
-﻿using Entities.Dtos.Users;
+﻿using Entities.Dtos;
+using Entities.Dtos.Users;
 using Entities.Enums;
 using Entities.VMs.UserVMs;
 using System;
@@ -12,7 +13,8 @@ namespace Business.Abstract
     public interface IUserService
     {
         void Register(UserCreateDTO user);
-        UserClaims Login(UserLoginDTO user);
+        UserVm Login(UserLoginDTO user);
+        void ChangePassword(UserChangePasswordDTO userChangePassword);
         List<UserVm> GetAll();
         UserVm Get(string id);
 

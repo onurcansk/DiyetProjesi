@@ -19,9 +19,7 @@ namespace Business.Abstract
         void DeleteRange(List<int> ids);
         List<MealDetailVm> GetAll();
         List<MealDetailVm> GetAllByExpression(Expression<Func<MealDetail,bool>> expression );
-        List<MealDetailVm> GetByUserName(string userName);
         List<MealDetailVm> GetByProductName(string productName);
-        List<MealDetailVm> GetOneMeal(int mealId, DateTime date);
         MealDetailVm GetById(int id);
 
 

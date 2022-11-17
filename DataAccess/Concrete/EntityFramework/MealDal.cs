@@ -12,6 +12,10 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class MealDal : EfEntityRepositoryBase<Meal, DietContext>, IMealDal
     {
-        
+        public Meal GetLastMealByUser(string userName)
+        {
+            Meal meal = context.Meal.Where(x => x.UserName == userName).OrderByDescending(x => x.CreatedDate).FirstOrDefault();
+            return meal;
+        }
     }
 }

@@ -9,11 +9,10 @@ namespace Business.Abstract
     {
         void Add(MealCreateDTO meal);
         void Delete(int id);
-        void Update(MealUpdateDTO meal);
         List<MealVm> GetAll();
         List<MealVm> GetAllByExpression(Expression<Func<Meal, bool>> expression);
         MealVm Get(int id);
-
+        MealVm GetLastMealByUserName(string userName);
     }
 
 }

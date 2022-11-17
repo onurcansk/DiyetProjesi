@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Business.Abstract;
+using Business.Concrete;
+using Business.DependencyResolver.Autofac;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,5 +36,7 @@ namespace WinFormUI
             _frm.ShowDialog();
             this.Show();
         }
+
+        
     }
 }
