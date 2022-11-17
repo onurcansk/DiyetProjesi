@@ -86,7 +86,6 @@ namespace Business.Concrete
             {
                 throw new LoginFailedException("Kullanıcı adı veya şifre hatalı.");
             }
-
             if (HashingHelper.VerifyPasswordHash(user.Password, registeredUser.PasswordHash))
             {
                 throw new LoginFailedException("Kullanıcı adı veya şifre hatalı.");
@@ -123,7 +122,7 @@ namespace Business.Concrete
             _userDal.Add(newUser);
         }
 
-       
+
     }
 
 }

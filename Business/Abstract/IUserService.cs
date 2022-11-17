@@ -14,7 +14,9 @@ namespace Business.Abstract
     {
         void Register(UserCreateDTO user);
         UserVm Login(UserLoginDTO user);
+
         void ChangePassword(UserChangePasswordDTO userChangePassword);
+
         List<UserVm> GetAll();
         UserVm Get(string id);
 

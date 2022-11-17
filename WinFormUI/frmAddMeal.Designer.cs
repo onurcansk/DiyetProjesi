@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblHeader = new System.Windows.Forms.Label();
             this.cmbMealType = new System.Windows.Forms.ComboBox();
             this.cmbMealCategory = new System.Windows.Forms.ComboBox();
@@ -41,7 +41,7 @@
             this.clmImg = new System.Windows.Forms.DataGridViewImageColumn();
             this.clmPiece = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmCalorie = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lstMeal = new System.Windows.Forms.ListBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnAddMealType = new System.Windows.Forms.Button();
@@ -113,9 +113,9 @@
             // dgvDailyReport
             // 
             this.dgvDailyReport.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Format = "N1";
-            dataGridViewCellStyle1.NullValue = "1";
-            this.dgvDailyReport.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Format = "N1";
+            dataGridViewCellStyle2.NullValue = "1";
+            this.dgvDailyReport.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDailyReport.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.dgvDailyReport.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvDailyReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -171,18 +171,18 @@
             this.clmCalorie.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.clmCalorie.Width = 65;
             // 
-            // listBox1
+            // lstMeal
             // 
-            this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBox1.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.listBox1.ForeColor = System.Drawing.Color.White;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 21;
-            this.listBox1.Location = new System.Drawing.Point(12, 203);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(142, 231);
-            this.listBox1.TabIndex = 4;
+            this.lstMeal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lstMeal.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lstMeal.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lstMeal.ForeColor = System.Drawing.Color.White;
+            this.lstMeal.FormattingEnabled = true;
+            this.lstMeal.ItemHeight = 21;
+            this.lstMeal.Location = new System.Drawing.Point(12, 203);
+            this.lstMeal.Name = "lstMeal";
+            this.lstMeal.Size = new System.Drawing.Size(142, 231);
+            this.lstMeal.TabIndex = 4;
             // 
             // btnAdd
             // 
@@ -254,7 +254,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(675, 450);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.lstMeal);
             this.Controls.Add(this.dgvDailyReport);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
@@ -291,7 +291,7 @@
         private DataGridViewImageColumn clmImg;
         private DataGridViewTextBoxColumn clmPiece;
         private DataGridViewTextBoxColumn clmCalorie;
-        private ListBox listBox1;
+        private ListBox lstMeal;
         private Button btnAdd;
         private PictureBox pictureBox1;
         private Button btnAddMealType;
