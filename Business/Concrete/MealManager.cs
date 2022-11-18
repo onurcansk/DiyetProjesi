@@ -131,7 +131,7 @@ namespace Business.Concrete
             return mealVms;
         }
 
-        public MealVm GetLastMealByUser(string userName)
+        public MealVm GetLastMealByUserName(string userName)
         {
            Meal meal = _mealDal.GetLastMealByUser(userName);
             if (meal == null) throw new Exception("Kullanıcının daha önce kayıtlı öğünü yok.");
