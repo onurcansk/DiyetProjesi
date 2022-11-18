@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Business.Abstract;
+using Business.DependencyResolver.Autofac;
+using Entities.Dtos.Product;
+using Entities.VMs.ProductVMs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +16,63 @@ namespace WinFormUI
 {
     public partial class frmAdminUpdateFood : Form
     {
-        public frmAdminUpdateFood()
+        IProductService _productService;
+        ProductVm _product;
+
+        public frmAdminUpdateFood(ProductVm product)
         {
             InitializeComponent();
+            _productService = InstanceFactory.GetInstance<IProductService>();
+            this._product = product;
+            InitializeProductData();
+        }
+
+        private void InitializeProductData()
+        {
+            txtCategory.Text = _product.ProductTypeName;
+            txtProductName.Text = _product.ProductName;
+            nmdUnitCalorie.Value = (decimal)_product.UnitCalorie;
+        }
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            ProductUpdateDTO productUpdateDTO = new()
+            {
+                Id = _product.Id,
+                UnitCalorie = (double)nmdUnitCalorie.Value,
+            };
+            _productService.Update(productUpdateDTO);
+            this.Close();
+        }
+
+        private void btnImg_Click(object sender, EventArgs e)
+        {
+            Image image;
+            OpenFileDialog openFileDialog = new()
+            {
+                InitialDirectory = "C://Destkop",
+                Filter = "Image files (*.jpg, *.png) | *.jpg; *.png",
+                Title = "Resim dosyası yükleyin"
+            };
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                image = Image.FromFile(openFileDialog.FileName);
+                pbProductImage.Image = image;
+                pbProductImage.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+        }
+
+        private byte[] ImageToByteArray(System.Drawing.Image imageIn)
+        {
+            if (imageIn != null)
+            {
+                using (var ms = new MemoryStream())
+                {
+                    imageIn.Save(ms, imageIn.RawFormat);
+                    return ms.ToArray();
+                }
+            }
+            return null;
         }
     }
 }

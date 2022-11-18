@@ -38,6 +38,7 @@
             this.clmFood = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmCalorie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmImg = new System.Windows.Forms.DataGridViewImageColumn();
+            this.clmId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnFilter = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -97,10 +98,12 @@
             this.clmCategory,
             this.clmFood,
             this.clmCalorie,
-            this.clmImg});
+            this.clmImg,
+            this.clmId});
             this.dgvMealView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvMealView.Location = new System.Drawing.Point(0, 64);
             this.dgvMealView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgvMealView.MultiSelect = false;
             this.dgvMealView.Name = "dgvMealView";
             this.dgvMealView.ReadOnly = true;
             this.dgvMealView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -120,6 +123,7 @@
             this.dgvMealView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMealView.Size = new System.Drawing.Size(813, 366);
             this.dgvMealView.TabIndex = 5;
+            this.dgvMealView.SelectionChanged += new System.EventHandler(this.dgvMealView_SelectionChanged);
             // 
             // clmCategory
             // 
@@ -150,6 +154,13 @@
             this.clmImg.ReadOnly = true;
             this.clmImg.Width = 200;
             // 
+            // clmId
+            // 
+            this.clmId.HeaderText = "ID";
+            this.clmId.Name = "clmId";
+            this.clmId.ReadOnly = true;
+            this.clmId.Visible = false;
+            // 
             // btnFilter
             // 
             this.btnFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
@@ -165,6 +176,7 @@
             this.btnFilter.TabIndex = 6;
             this.btnFilter.Text = "Filtrele";
             this.btnFilter.UseVisualStyleBackColor = false;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // btnClear
             // 
@@ -181,6 +193,7 @@
             this.btnClear.TabIndex = 6;
             this.btnClear.Text = "Temizle";
             this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnUpdate
             // 
@@ -267,14 +280,15 @@
         private ToolStripMenuItem tsmMealType;
         private DataGridView dgvMealView;
         private ToolStripMenuItem tsmCategory;
-        private DataGridViewTextBoxColumn clmCategory;
-        private DataGridViewTextBoxColumn clmFood;
-        private DataGridViewTextBoxColumn clmCalorie;
-        private DataGridViewImageColumn clmImg;
         private Button btnFilter;
         private Button btnClear;
         private Button btnUpdate;
         private Button btnAddNew;
         private Button btnDelete;
+        private DataGridViewTextBoxColumn clmCategory;
+        private DataGridViewTextBoxColumn clmFood;
+        private DataGridViewTextBoxColumn clmCalorie;
+        private DataGridViewImageColumn clmImg;
+        private DataGridViewTextBoxColumn clmId;
     }
 }
