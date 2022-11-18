@@ -96,7 +96,7 @@
             this.lblAppName.AutoSize = true;
             this.lblAppName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblAppName.ForeColor = System.Drawing.Color.Black;
-            this.lblAppName.Location = new System.Drawing.Point(78, 73);
+            this.lblAppName.Location = new System.Drawing.Point(60, 79);
             this.lblAppName.Name = "lblAppName";
             this.lblAppName.Size = new System.Drawing.Size(186, 29);
             this.lblAppName.TabIndex = 1;
@@ -107,7 +107,7 @@
             this.lblLogo.AutoSize = true;
             this.lblLogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblLogo.ForeColor = System.Drawing.Color.Black;
-            this.lblLogo.Location = new System.Drawing.Point(124, 24);
+            this.lblLogo.Location = new System.Drawing.Point(106, 30);
             this.lblLogo.Name = "lblLogo";
             this.lblLogo.Size = new System.Drawing.Size(86, 29);
             this.lblLogo.TabIndex = 1;

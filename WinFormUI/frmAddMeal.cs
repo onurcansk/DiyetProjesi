@@ -27,7 +27,7 @@ namespace WinFormUI
 
         private void FillListMeal()
         {
-            List<MealVm> meals = _mealService.GetAllByExpression(m => m.CreatedDate == DateTime.Now);
+            List<MealVm> meals = _mealService.GetAllByExpression(m => m.CreatedDate ==  DateTime.Now);
             lstMeal.DataSource = meals;
         }
     }

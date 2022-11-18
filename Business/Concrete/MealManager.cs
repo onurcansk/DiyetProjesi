@@ -62,6 +62,7 @@ namespace Business.Concrete
             {
                 MealDetailVm mealDetailVm = new MealDetailVm()
                 {
+                    Id = item.Id,
                     Gram = item.Gram,
                     UnitCalorie = item.Product.UnitCalorie,
                     ProductType = item.Product.ProductType.ProductTypeName,
@@ -88,6 +89,7 @@ namespace Business.Concrete
                 {
                     MealDetailVm mealDetailVm = new MealDetailVm()
                     {
+                        Id = item.Id,
                         Gram = item.Gram,
                         UnitCalorie = item.Product.UnitCalorie,
                         ProductType = item.Product.ProductType.ProductTypeName,
@@ -118,6 +120,7 @@ namespace Business.Concrete
                 {
                     MealDetailVm mealDetailVm = new MealDetailVm()
                     {
+                        Id = item.Id,
                         Gram = item.Gram,
                         UnitCalorie = item.Product.UnitCalorie,
                         ProductType = item.Product.ProductType.ProductTypeName,
@@ -131,7 +134,7 @@ namespace Business.Concrete
             return mealVms;
         }
 
-        public MealVm GetLastMealByUser(string userName)
+        public MealVm GetLastMealByUserName(string userName)
         {
            Meal meal = _mealDal.GetLastMealByUser(userName);
             if (meal == null) throw new Exception("Kullanıcının daha önce kayıtlı öğünü yok.");

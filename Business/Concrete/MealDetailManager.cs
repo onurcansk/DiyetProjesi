@@ -5,6 +5,7 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.Dtos.MealDetails;
 using Entities.VMs.MealDetailVMs;
+using Entities.VMs.ProductVMs;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using System;
 using System.Collections.Generic;
@@ -19,10 +20,12 @@ namespace Business.Concrete
     {
         IMealDetailDal _mealDetailDal;
         IMealTypeService _mealTypeService;
-        public MealDetailManager(IMealDetailDal mealDetailDal, IMealTypeService mealTypeService)
+        IProductService _productService;
+        public MealDetailManager(IMealDetailDal mealDetailDal, IMealTypeService mealTypeService, IProductService productService)
         {
             _mealDetailDal = mealDetailDal;
             _mealTypeService = mealTypeService;
+            _productService = productService;
         }
         public void Add(MealDetailCreateDto mealDetail)
         {
@@ -140,9 +143,15 @@ namespace Business.Concrete
         public void Update(MealDetailUpdateDto mealDetail)
         {
             MealDetail updatedMealDetail = _mealDetailDal.Get(md => md.Id == mealDetail.Id);
-            if (mealDetail.Gram != null) updatedMealDetail.Gram = mealDetail.Gram;
-            updatedMealDetail.MealID=mealDetail.MealId;
-            updatedMealDetail.ProductId = mealDetail.ProductId;           
+            if (mealDetail.Gram != null && mealDetail.Gram != updatedMealDetail.Gram) updatedMealDetail.Gram = mealDetail.Gram;           
+            if(updatedMealDetail.Product.ProductName==mealDetail.ProductName)
+            {
+                ProductVm product = _productService.GetByName(mealDetail.ProductName);
+                updatedMealDetail.ProductId = product.Id;
+            }
+
+            _productService.Update(updatedMealDetail);
+            
         }
     }
 }

@@ -21,7 +21,7 @@ namespace WinFormUI
         {
             _frmMainPage = new frmMainPage(_userVm.UserName);
             {
-                //MdiParent = this
+                MdiParent = this
             };
             _frmMainPage.Show();
             pnlNavItems.Controls.Add(_frmMainPage);
@@ -53,7 +53,7 @@ namespace WinFormUI
         {
             if (_frmReport == null)
             {
-                _frmReport = new()
+                _frmReport = new(_userVm.UserName)
                 {
                     MdiParent = this
                 };

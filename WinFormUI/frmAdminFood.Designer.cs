@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.mnsFood = new System.Windows.Forms.MenuStrip();
             this.tsmMealType = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,6 +38,7 @@
             this.clmFood = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmCalorie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmImg = new System.Windows.Forms.DataGridViewImageColumn();
+            this.clmId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnFilter = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -49,11 +50,11 @@
             // 
             // cmbCategory
             // 
-            this.cmbCategory.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cmbCategory.FormattingEnabled = true;
             this.cmbCategory.Location = new System.Drawing.Point(16, 28);
             this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(226, 29);
+            this.cmbCategory.Size = new System.Drawing.Size(226, 28);
             this.cmbCategory.TabIndex = 1;
             this.cmbCategory.Text = "Kategori";
             // 
@@ -61,28 +62,28 @@
             // 
             this.mnsFood.BackColor = System.Drawing.SystemColors.Window;
             this.mnsFood.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.mnsFood.Font = new System.Drawing.Font("ISOCPEUR", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.mnsFood.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.mnsFood.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
             this.mnsFood.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmMealType,
             this.tsmCategory});
             this.mnsFood.Location = new System.Drawing.Point(0, 0);
             this.mnsFood.Name = "mnsFood";
-            this.mnsFood.Size = new System.Drawing.Size(813, 25);
+            this.mnsFood.Size = new System.Drawing.Size(813, 24);
             this.mnsFood.TabIndex = 3;
             this.mnsFood.Text = "menuStrip1";
             // 
             // tsmMealType
             // 
             this.tsmMealType.Name = "tsmMealType";
-            this.tsmMealType.Size = new System.Drawing.Size(92, 21);
+            this.tsmMealType.Size = new System.Drawing.Size(103, 20);
             this.tsmMealType.Text = "Öğün Düzenle";
             this.tsmMealType.Click += new System.EventHandler(this.tsmMealType_Click);
             // 
             // tsmCategory
             // 
             this.tsmCategory.Name = "tsmCategory";
-            this.tsmCategory.Size = new System.Drawing.Size(110, 21);
+            this.tsmCategory.Size = new System.Drawing.Size(121, 20);
             this.tsmCategory.Text = "Kategori Düzenle";
             this.tsmCategory.Click += new System.EventHandler(this.tsmCategory_Click);
             // 
@@ -97,29 +98,32 @@
             this.clmCategory,
             this.clmFood,
             this.clmCalorie,
-            this.clmImg});
+            this.clmImg,
+            this.clmId});
             this.dgvMealView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvMealView.Location = new System.Drawing.Point(0, 64);
             this.dgvMealView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgvMealView.MultiSelect = false;
             this.dgvMealView.Name = "dgvMealView";
             this.dgvMealView.ReadOnly = true;
             this.dgvMealView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.Format = "N1";
-            dataGridViewCellStyle4.NullValue = "1";
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMealView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Format = "N1";
+            dataGridViewCellStyle1.NullValue = "1";
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMealView.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvMealView.RowHeadersWidth = 40;
             this.dgvMealView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvMealView.RowTemplate.Height = 25;
             this.dgvMealView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMealView.Size = new System.Drawing.Size(813, 366);
             this.dgvMealView.TabIndex = 5;
+            this.dgvMealView.SelectionChanged += new System.EventHandler(this.dgvMealView_SelectionChanged);
             // 
             // clmCategory
             // 
@@ -150,6 +154,13 @@
             this.clmImg.ReadOnly = true;
             this.clmImg.Width = 200;
             // 
+            // clmId
+            // 
+            this.clmId.HeaderText = "ID";
+            this.clmId.Name = "clmId";
+            this.clmId.ReadOnly = true;
+            this.clmId.Visible = false;
+            // 
             // btnFilter
             // 
             this.btnFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
@@ -157,7 +168,7 @@
             this.btnFilter.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnFilter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFilter.Font = new System.Drawing.Font("ISOCPEUR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnFilter.ForeColor = System.Drawing.Color.White;
             this.btnFilter.Location = new System.Drawing.Point(248, 28);
             this.btnFilter.Name = "btnFilter";
@@ -165,6 +176,7 @@
             this.btnFilter.TabIndex = 6;
             this.btnFilter.Text = "Filtrele";
             this.btnFilter.UseVisualStyleBackColor = false;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // btnClear
             // 
@@ -173,7 +185,7 @@
             this.btnClear.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Font = new System.Drawing.Font("ISOCPEUR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnClear.ForeColor = System.Drawing.Color.White;
             this.btnClear.Location = new System.Drawing.Point(339, 28);
             this.btnClear.Name = "btnClear";
@@ -181,6 +193,7 @@
             this.btnClear.TabIndex = 6;
             this.btnClear.Text = "Temizle";
             this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnUpdate
             // 
@@ -189,7 +202,7 @@
             this.btnUpdate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnUpdate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Font = new System.Drawing.Font("ISOCPEUR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
             this.btnUpdate.Location = new System.Drawing.Point(627, 28);
             this.btnUpdate.Name = "btnUpdate";
@@ -206,7 +219,7 @@
             this.btnAddNew.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnAddNew.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddNew.Font = new System.Drawing.Font("ISOCPEUR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAddNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAddNew.ForeColor = System.Drawing.Color.White;
             this.btnAddNew.Location = new System.Drawing.Point(514, 28);
             this.btnAddNew.Name = "btnAddNew";
@@ -223,7 +236,7 @@
             this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("ISOCPEUR", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnDelete.ForeColor = System.Drawing.Color.White;
             this.btnDelete.Location = new System.Drawing.Point(756, 28);
             this.btnDelete.Name = "btnDelete";
@@ -231,6 +244,7 @@
             this.btnDelete.TabIndex = 6;
             this.btnDelete.Text = "X";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // frmAdminFood
             // 
@@ -266,14 +280,15 @@
         private ToolStripMenuItem tsmMealType;
         private DataGridView dgvMealView;
         private ToolStripMenuItem tsmCategory;
-        private DataGridViewTextBoxColumn clmCategory;
-        private DataGridViewTextBoxColumn clmFood;
-        private DataGridViewTextBoxColumn clmCalorie;
-        private DataGridViewImageColumn clmImg;
         private Button btnFilter;
         private Button btnClear;
         private Button btnUpdate;
         private Button btnAddNew;
         private Button btnDelete;
+        private DataGridViewTextBoxColumn clmCategory;
+        private DataGridViewTextBoxColumn clmFood;
+        private DataGridViewTextBoxColumn clmCalorie;
+        private DataGridViewImageColumn clmImg;
+        private DataGridViewTextBoxColumn clmId;
     }
 }

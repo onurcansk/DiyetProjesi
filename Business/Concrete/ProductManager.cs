@@ -108,6 +108,25 @@ namespace Business.Concrete
 
         }
 
+        public ProductVm GetByName(string name)
+        {
+            Product product = _productDal.Get(p => p.ProductName == name);
+            if (product == null)
+            {
+                throw new IdNotFoundException("Girilen id ye ait ürün bulunamadı.");
+            }
+
+            ProductVm productVm = new ProductVm()
+            {
+                Id = product.Id,
+                ProductName = product.ProductName,
+                ProductTypeName = product.ProductType.ProductTypeName,
+                UnitCalorie = product.UnitCalorie
+            };
+
+            return productVm;
+        }
+
         public void Update(ProductUpdateDTO product)
         {
             Product updatedProduct = _productDal.Get(p=>p.Id==product.Id);

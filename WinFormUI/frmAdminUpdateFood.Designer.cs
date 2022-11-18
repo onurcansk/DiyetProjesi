@@ -29,9 +29,13 @@
         private void InitializeComponent()
         {
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.cmbCategory = new System.Windows.Forms.ComboBox();
-            this.txtUnitCalorie = new System.Windows.Forms.TextBox();
-            this.txtFoodName = new System.Windows.Forms.TextBox();
+            this.pbProductImage = new System.Windows.Forms.PictureBox();
+            this.btnImg = new System.Windows.Forms.Button();
+            this.nmdUnitCalorie = new System.Windows.Forms.NumericUpDown();
+            this.txtProductName = new System.Windows.Forms.TextBox();
+            this.txtCategory = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbProductImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmdUnitCalorie)).BeginInit();
             this.SuspendLayout();
             // 
             // btnUpdate
@@ -42,41 +46,65 @@
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(90, 175);
+            this.btnUpdate.Location = new System.Drawing.Point(93, 244);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(109, 40);
             this.btnUpdate.TabIndex = 6;
             this.btnUpdate.Text = "Güncelle";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // cmbCategory
+            // pbProductImage
             // 
-            this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Location = new System.Drawing.Point(28, 30);
-            this.cmbCategory.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(240, 29);
-            this.cmbCategory.TabIndex = 5;
-            this.cmbCategory.Text = "Kategori";
+            this.pbProductImage.BackColor = System.Drawing.Color.Transparent;
+            this.pbProductImage.Location = new System.Drawing.Point(28, 171);
+            this.pbProductImage.Name = "pbProductImage";
+            this.pbProductImage.Size = new System.Drawing.Size(60, 60);
+            this.pbProductImage.TabIndex = 8;
+            this.pbProductImage.TabStop = false;
             // 
-            // txtUnitCalorie
+            // btnImg
             // 
-            this.txtUnitCalorie.Location = new System.Drawing.Point(28, 126);
-            this.txtUnitCalorie.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtUnitCalorie.Name = "txtUnitCalorie";
-            this.txtUnitCalorie.PlaceholderText = "Birim Kalori";
-            this.txtUnitCalorie.Size = new System.Drawing.Size(240, 27);
-            this.txtUnitCalorie.TabIndex = 3;
+            this.btnImg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnImg.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnImg.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btnImg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImg.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnImg.ForeColor = System.Drawing.Color.White;
+            this.btnImg.Location = new System.Drawing.Point(136, 181);
+            this.btnImg.Name = "btnImg";
+            this.btnImg.Size = new System.Drawing.Size(132, 40);
+            this.btnImg.TabIndex = 7;
+            this.btnImg.Text = "Resmi Değiştir";
+            this.btnImg.UseVisualStyleBackColor = false;
+            this.btnImg.Click += new System.EventHandler(this.btnImg_Click);
             // 
-            // txtFoodName
+            // nmdUnitCalorie
             // 
-            this.txtFoodName.Location = new System.Drawing.Point(28, 79);
-            this.txtFoodName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtFoodName.Name = "txtFoodName";
-            this.txtFoodName.PlaceholderText = "Yemek Adı";
-            this.txtFoodName.Size = new System.Drawing.Size(240, 27);
-            this.txtFoodName.TabIndex = 4;
+            this.nmdUnitCalorie.DecimalPlaces = 2;
+            this.nmdUnitCalorie.Location = new System.Drawing.Point(28, 128);
+            this.nmdUnitCalorie.Name = "nmdUnitCalorie";
+            this.nmdUnitCalorie.Size = new System.Drawing.Size(240, 27);
+            this.nmdUnitCalorie.TabIndex = 9;
+            // 
+            // txtProductName
+            // 
+            this.txtProductName.Enabled = false;
+            this.txtProductName.Location = new System.Drawing.Point(28, 80);
+            this.txtProductName.Name = "txtProductName";
+            this.txtProductName.PlaceholderText = "Yemek";
+            this.txtProductName.Size = new System.Drawing.Size(240, 27);
+            this.txtProductName.TabIndex = 10;
+            // 
+            // txtCategory
+            // 
+            this.txtCategory.Enabled = false;
+            this.txtCategory.Location = new System.Drawing.Point(28, 33);
+            this.txtCategory.Name = "txtCategory";
+            this.txtCategory.PlaceholderText = "Kategori";
+            this.txtCategory.Size = new System.Drawing.Size(240, 27);
+            this.txtCategory.TabIndex = 10;
             // 
             // frmAdminUpdateFood
             // 
@@ -84,11 +112,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::WinFormUI.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(295, 233);
+            this.ClientSize = new System.Drawing.Size(293, 297);
+            this.Controls.Add(this.txtCategory);
+            this.Controls.Add(this.txtProductName);
+            this.Controls.Add(this.nmdUnitCalorie);
+            this.Controls.Add(this.pbProductImage);
+            this.Controls.Add(this.btnImg);
             this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.cmbCategory);
-            this.Controls.Add(this.txtUnitCalorie);
-            this.Controls.Add(this.txtFoodName);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -97,6 +127,8 @@
             this.Name = "frmAdminUpdateFood";
             this.ShowIcon = false;
             this.Text = "Yemek Düzenle";
+            ((System.ComponentModel.ISupportInitialize)(this.pbProductImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmdUnitCalorie)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -105,8 +137,10 @@
         #endregion
 
         private Button btnUpdate;
-        private ComboBox cmbCategory;
-        private TextBox txtUnitCalorie;
-        private TextBox txtFoodName;
+        private PictureBox pbProductImage;
+        private Button btnImg;
+        private NumericUpDown nmdUnitCalorie;
+        private TextBox txtProductName;
+        private TextBox txtCategory;
     }
 }

@@ -42,6 +42,8 @@ namespace Business.Concrete
 
             byte[] newHashedPassword;
             HashingHelper.CreatePasswordHash(userChangePassword.NewPassword, out newHashedPassword);
+            registeredUser.PasswordHash = newHashedPassword;
+            _userDal.Update(registeredUser);
 
         }
 

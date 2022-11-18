@@ -19,35 +19,60 @@ namespace WinFormUI
     public partial class frmMainPage : Form
     {
         IMealService _mealManager;
+
         public frmMainPage(string userName)
         {
             InitializeComponent();
             _mealManager = InstanceFactory.GetInstance<IMealService>();
             FillLastMeal(userName);
-            FillDailyReport();
+            FillDailyReport(userName);
         }
 
-        private void FillDailyReport()
+        private void FillDailyReport(string userName)
         {
             lblDailyReportDay.Text = DateTime.Now.ToString("dddd");
-            List<MealVm> dailyMeal = _mealManager.GetAllByExpression(x => x.CreatedDate == DateTime.Now);
-            lblDailyReportMealCount.Text = dailyMeal.Count.ToString();
-           
+            List<MealVm> dailyMeals = _mealManager.GetAllByExpression(x => x.CreatedDate == DateTime.Now && x.UserName == userName);
+            lblDailyReportMealCount.Text = dailyMeals.Count.ToString();
+            lblDailyReportFoodCount.Text = CountFoodFromMealList(dailyMeals).ToString();
+            lblDailyReportTotalCalorie.Text = CalculateTotalCalorieForMeals(dailyMeals).ToString();
+        }
+
+        private double CalculateTotalCalorieForMeals(List<MealVm> meals)
+        {
+            double? totalCal = 0;
+            foreach (var meal in meals)
+            {
+                foreach (var food in meal.MealDetailVm)
+                {
+                    totalCal += food.UnitCalorie * food.Gram;
+                }
+            }
+            return totalCal == null ? 0 : totalCal.Value;
+        }
+
+        private int CountFoodFromMealList(List<MealVm> dailyMeals)
+        {
+            int count = 0;
+            foreach (var meal in dailyMeals)
+            {
+                count += meal.MealDetailVm.Count;
+            }
+            return count;
         }
 
         private void FillLastMeal(string userName)
         {
-            MealVm lastMeal= _mealManager.GetLastMealByUser();
-            lblLastMealName = lastMeal.MealName;
-            lblLastMealDate = lastMeal.CreatedDate;
-            FillListView(lastMeal.MealDetails);
+            MealVm lastMeal = _mealManager.GetLastMealByUserName(userName);
+            lblLastMealName.Text = lastMeal.MealType;
+            lblLastMealDate.Text = lastMeal.Date.ToString();
+            FillListView(lastMeal.MealDetailVm);
         }
-        
+
         private void FillListView(List<MealDetailVm> mealDetails)
         {
             foreach (var food in mealDetails)
             {
-                string[] mealDetail = { food.Product.ProductType, food.Product.ProductName, food.Gram, food.Gram*food.Product.UnitCalorie };
+                string[] mealDetail = { food.ProductType, food.Product, food.Gram.ToString(), (food.Gram * food.UnitCalorie).ToString() };
                 var newRow = new ListViewItem(mealDetail);
                 lswLastFoods.Items.Add(newRow);
             }
@@ -66,7 +91,7 @@ namespace WinFormUI
         private void OpenWebPage()
         {
             llbWebPage.LinkVisited = true;
-            System.Diagnostics.Process.Start("http://www.google.com.tr");
+            System.Diagnostics.Process.Start("http://localhost:3000");
         }
     }
 }
