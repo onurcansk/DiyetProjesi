@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.DependencyResolver.Autofac;
+using Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,15 +24,29 @@ namespace WinFormUI
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    UserChangePasswordDto newUserData = new() { 
-            //}
-            //catch (Exception)
-            //{
+            if (txtPassword.Text != txtPassword2.Text)
+            {
+                MessageBox.Show("Girilen şifreler birbiriyle aynı değil.");
+                return;
+            }
+            try
+            {
+                UserChangePasswordDTO newUserData = new UserChangePasswordDTO()
+                {
+                    UserName = txtMail.Text,
+                    OldPassword = txtCurrentPassword.Text,
+                    NewPassword = txtPassword.Text,
 
-            //    throw;
-            //}
+                };
+
+                _userService.ChangePassword(newUserData);
+            }
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
