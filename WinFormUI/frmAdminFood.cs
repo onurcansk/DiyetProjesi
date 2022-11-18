@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Business.Abstract;
+using Business.DependencyResolver.Autofac;
+using Entities.VMs.ProductTypeVMs;
+using Entities.VMs.ProductVMs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +16,41 @@ namespace WinFormUI
 {
     public partial class frmAdminFood : Form
     {
+        IProductService _productService;
+        IProductTypeService _productTypeService;
+        List<ProductTypeVm> _categories;
+        List<ProductVm> _products;
+        ProductVm _activeProduct;
+
         public frmAdminFood()
         {
             InitializeComponent();
+            _productService = InstanceFactory.GetInstance<IProductService>();
+            _productTypeService = InstanceFactory.GetInstance<IProductTypeService>();
+            _categories = _productTypeService.GetAll();
+            FillCategoryList();
+            FillProducts();
+        }
+
+        private void FillProducts(ProductTypeVm category = null)
+        {
+            if (category == null)
+                _products = _productService.GetAll();
+            else
+                _products = _productService.GetAllByExpression(x => x.ProductType.ProductTypeName == category.ProductTypeName);
+
+            foreach (var product in _products)
+            {
+                dgvMealView.Rows.Add(product.ProductTypeName, product.ProductName, product.UnitCalorie, null, product.Id);
+            }
+        }
+
+        private void FillCategoryList()
+        {
+            foreach (var category in _categories)
+            {
+                cmbCategory.Items.Add(category);
+            }
         }
 
         private void btnAddNew_Click(object sender, EventArgs e)
@@ -23,14 +59,21 @@ namespace WinFormUI
             this.Hide();
             frm.ShowDialog();
             this.Show();
+            FillProducts();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            frmAdminUpdateFood frm = new();
+            if(_activeProduct == null)
+            {
+                MessageBox.Show("Ürün seçiniz");
+                return;
+            }
+            frmAdminUpdateFood frm = new(_activeProduct);
             this.Hide();
             frm.ShowDialog();
             this.Show();
+            FillProducts();
         }
 
         private void tsmMealType_Click(object sender, EventArgs e)
@@ -47,6 +90,27 @@ namespace WinFormUI
             this.Hide();
             frm.ShowDialog();
             this.Show();
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            ProductTypeVm category = _productTypeService.GetByName(cmbCategory.SelectedText);
+            FillProducts(category);
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            cmbCategory.SelectedValue = null;
+        }
+
+        private void dgvMealView_SelectionChanged(object sender, EventArgs e)
+        {
+           if(dgvMealView.SelectedRows == null)
+            {
+                return;
+            }
+            int index = Convert.ToInt32(dgvMealView.CurrentRow.Cells[4].Value);
+            _activeProduct = _productService.GetById(index);
         }
     }
 }
