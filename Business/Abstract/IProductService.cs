@@ -13,6 +13,7 @@ namespace Business.Abstract
         List<ProductVm> GetAll();
         List<ProductVm> GetAllByExpression(Expression<Func<Product, bool>> expression);
         ProductVm GetById(int id);
+        ProductVm GetByName(string name);
     }
 
 }

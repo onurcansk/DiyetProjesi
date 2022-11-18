@@ -11,7 +11,7 @@ namespace Entities.Dtos.MealDetails
     {
         public int Id { get; set; }
         public double? Gram { get; set; }
-        public int MealId { get; set; }
-        public int ProductId { get; set; }
+        public string MealType { get; set; }
+        public string ProductName { get; set; }
     }
 }

@@ -17,5 +17,10 @@ namespace Entities.VMs.MealVMs
         {
             MealDetailVm =new List<MealDetailVm>();
         }
+
+        public override string ToString()
+        {
+            return this.MealType;
+        }
     }
 }
