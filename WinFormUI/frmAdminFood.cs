@@ -112,5 +112,11 @@ namespace WinFormUI
             int index = Convert.ToInt32(dgvMealView.CurrentRow.Cells[4].Value);
             _activeProduct = _productService.GetById(index);
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            _productService.Delete(_activeProduct.Id);
+            FillProducts();
+        }
     }
 }
