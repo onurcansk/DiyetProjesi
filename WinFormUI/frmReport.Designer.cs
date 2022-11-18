@@ -43,8 +43,8 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.lstMealType = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblMealCalorie = new System.Windows.Forms.Label();
+            this.lblMealCalorieValue = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMealView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -161,9 +161,8 @@
             this.lblCalorieValue.Font = new System.Drawing.Font("ISOCPEUR", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblCalorieValue.Location = new System.Drawing.Point(222, 411);
             this.lblCalorieValue.Name = "lblCalorieValue";
-            this.lblCalorieValue.Size = new System.Drawing.Size(54, 24);
+            this.lblCalorieValue.Size = new System.Drawing.Size(0, 24);
             this.lblCalorieValue.TabIndex = 2;
-            this.lblCalorieValue.Text = "Değer";
             // 
             // btnGetReport
             // 
@@ -237,27 +236,26 @@
             this.lstMealType.TabIndex = 6;
             this.lstMealType.SelectedIndexChanged += new System.EventHandler(this.lstMealType_SelectedIndexChanged);
             // 
-            // label1
+            // lblMealCalorie
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("ISOCPEUR", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(35, 387);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(167, 24);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Öğün Toplam Kalori :";
+            this.lblMealCalorie.AutoSize = true;
+            this.lblMealCalorie.BackColor = System.Drawing.Color.Transparent;
+            this.lblMealCalorie.Font = new System.Drawing.Font("ISOCPEUR", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblMealCalorie.Location = new System.Drawing.Point(35, 387);
+            this.lblMealCalorie.Name = "lblMealCalorie";
+            this.lblMealCalorie.Size = new System.Drawing.Size(167, 24);
+            this.lblMealCalorie.TabIndex = 2;
+            this.lblMealCalorie.Text = "Öğün Toplam Kalori :";
             // 
-            // label2
+            // lblMealCalorieValue
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("ISOCPEUR", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(222, 387);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 24);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Değer";
+            this.lblMealCalorieValue.AutoSize = true;
+            this.lblMealCalorieValue.BackColor = System.Drawing.Color.Transparent;
+            this.lblMealCalorieValue.Font = new System.Drawing.Font("ISOCPEUR", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblMealCalorieValue.Location = new System.Drawing.Point(222, 387);
+            this.lblMealCalorieValue.Name = "lblMealCalorieValue";
+            this.lblMealCalorieValue.Size = new System.Drawing.Size(0, 24);
+            this.lblMealCalorieValue.TabIndex = 2;
             // 
             // frmReport
             // 
@@ -269,9 +267,9 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnGetReport);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblMealCalorieValue);
             this.Controls.Add(this.lblCalorieValue);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblMealCalorie);
             this.Controls.Add(this.lblDailyCalorie);
             this.Controls.Add(this.dgvMealView);
             this.Controls.Add(this.dtpDay);
@@ -297,8 +295,8 @@
         private Button btnUpdate;
         private Button btnDelete;
         private ListBox lstMealType;
-        private Label label1;
-        private Label label2;
+        private Label lblMealCalorie;
+        private Label lblMealCalorieValue;
         private DataGridViewTextBoxColumn clmCategory;
         private DataGridViewTextBoxColumn clmFood;
         private DataGridViewImageColumn clmImg;

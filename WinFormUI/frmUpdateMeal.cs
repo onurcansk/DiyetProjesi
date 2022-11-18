@@ -57,6 +57,15 @@ namespace WinFormUI
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            MealDetailUpdateDto updatedMealDetail = new()
+            {
+                Id = _mealDetail.Id,
+                MealType = cmbCategory.SelectedValue.ToString(),
+                ProductName = cmbProduct.SelectedValue.ToString(),
+                Gram = (double)nmdGram.Value
+
+            };
+            _mealDetailService.Update(updatedMealDetail);
             this.Close();
         }
 
