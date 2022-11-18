@@ -244,6 +244,7 @@
             this.btnDelete.TabIndex = 6;
             this.btnDelete.Text = "X";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // frmAdminFood
             // 
