@@ -156,7 +156,10 @@ namespace Business.Concrete
             return mealVm;
         }
 
-      
+        public MealVm GetLastMealByUserName(string userName)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

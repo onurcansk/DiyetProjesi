@@ -12,6 +12,7 @@ namespace Entities.Concrete
         public virtual ICollection<MealDetail> MealDetails { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
+        public byte[] Image { get; set; }
         
         public Product()
         {
