@@ -36,6 +36,7 @@
             this.clmImg = new System.Windows.Forms.DataGridViewImageColumn();
             this.clmPiece = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmCalorie = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblDailyCalorie = new System.Windows.Forms.Label();
             this.lblCalorieValue = new System.Windows.Forms.Label();
             this.btnGetReport = new System.Windows.Forms.Button();
@@ -74,9 +75,11 @@
             this.clmFood,
             this.clmImg,
             this.clmPiece,
-            this.clmCalorie});
+            this.clmCalorie,
+            this.clmID});
             this.dgvMealView.Location = new System.Drawing.Point(193, 80);
             this.dgvMealView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgvMealView.MultiSelect = false;
             this.dgvMealView.Name = "dgvMealView";
             this.dgvMealView.ReadOnly = true;
             this.dgvMealView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -133,6 +136,13 @@
             this.clmCalorie.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.clmCalorie.Width = 55;
             // 
+            // clmID
+            // 
+            this.clmID.HeaderText = "ID";
+            this.clmID.Name = "clmID";
+            this.clmID.ReadOnly = true;
+            this.clmID.Visible = false;
+            // 
             // lblDailyCalorie
             // 
             this.lblDailyCalorie.AutoSize = true;
@@ -173,6 +183,7 @@
             this.btnGetReport.TabIndex = 2;
             this.btnGetReport.Text = "Raporla";
             this.btnGetReport.UseVisualStyleBackColor = false;
+            this.btnGetReport.Click += new System.EventHandler(this.btnGetReport_Click);
             // 
             // btnUpdate
             // 
@@ -224,6 +235,7 @@
             this.lstMealType.Name = "lstMealType";
             this.lstMealType.Size = new System.Drawing.Size(139, 294);
             this.lstMealType.TabIndex = 6;
+            this.lstMealType.SelectedIndexChanged += new System.EventHandler(this.lstMealType_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -284,13 +296,14 @@
         private Button btnGetReport;
         private Button btnUpdate;
         private Button btnDelete;
+        private ListBox lstMealType;
+        private Label label1;
+        private Label label2;
         private DataGridViewTextBoxColumn clmCategory;
         private DataGridViewTextBoxColumn clmFood;
         private DataGridViewImageColumn clmImg;
         private DataGridViewTextBoxColumn clmPiece;
         private DataGridViewTextBoxColumn clmCalorie;
-        private ListBox lstMealType;
-        private Label label1;
-        private Label label2;
+        private DataGridViewTextBoxColumn clmID;
     }
 }
