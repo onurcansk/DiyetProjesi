@@ -35,6 +35,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,6 +105,13 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Sonuçlar";
             // 
+            // sqlCommand1
+            // 
+            this.sqlCommand1.CommandTimeout = 30;
+            this.sqlCommand1.Connection = null;
+            this.sqlCommand1.Notification = null;
+            this.sqlCommand1.Transaction = null;
+            // 
             // frmAdminReport
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -134,5 +142,6 @@
         private Panel panel1;
         private Panel panel2;
         private Label label2;
+        private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
     }
 }
