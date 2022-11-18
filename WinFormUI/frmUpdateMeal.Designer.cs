@@ -28,44 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.cmbCategory = new System.Windows.Forms.ComboBox();
+            this.cmbProduct = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnKaydet = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             this.lblMealName = new System.Windows.Forms.Label();
             this.lblMealDate = new System.Windows.Forms.Label();
+            this.nmdGram = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.nmdGram)).BeginInit();
             this.SuspendLayout();
             // 
-            // comboBox2
+            // cmbCategory
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(47, 103);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(163, 29);
-            this.comboBox2.TabIndex = 0;
-            this.comboBox2.Text = "KATEGORİ";
+            this.cmbCategory.FormattingEnabled = true;
+            this.cmbCategory.Location = new System.Drawing.Point(47, 103);
+            this.cmbCategory.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmbCategory.Name = "cmbCategory";
+            this.cmbCategory.Size = new System.Drawing.Size(163, 29);
+            this.cmbCategory.TabIndex = 0;
+            this.cmbCategory.Text = "KATEGORİ";
+            this.cmbCategory.SelectedValueChanged += new System.EventHandler(this.cmbCategory_SelectedValueChanged);
             // 
-            // comboBox3
+            // cmbProduct
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(47, 161);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(163, 29);
-            this.comboBox3.TabIndex = 0;
-            this.comboBox3.Text = "YEMEK";
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(47, 220);
-            this.comboBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(163, 29);
-            this.comboBox4.TabIndex = 0;
-            this.comboBox4.Text = "PORSİON";
+            this.cmbProduct.FormattingEnabled = true;
+            this.cmbProduct.Location = new System.Drawing.Point(47, 161);
+            this.cmbProduct.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmbProduct.Name = "cmbProduct";
+            this.cmbProduct.Size = new System.Drawing.Size(163, 29);
+            this.cmbProduct.TabIndex = 0;
+            this.cmbProduct.Text = "YEMEK";
             // 
             // btnSave
             // 
@@ -86,23 +78,24 @@
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // btnKaydet
+            // btnClear
             // 
-            this.btnKaydet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnKaydet.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnKaydet.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnKaydet.FlatAppearance.BorderSize = 0;
-            this.btnKaydet.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.btnKaydet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnKaydet.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnKaydet.ForeColor = System.Drawing.Color.White;
-            this.btnKaydet.Location = new System.Drawing.Point(251, 130);
-            this.btnKaydet.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnKaydet.Name = "btnKaydet";
-            this.btnKaydet.Size = new System.Drawing.Size(95, 29);
-            this.btnKaydet.TabIndex = 1;
-            this.btnKaydet.Text = "DÜZENLE";
-            this.btnKaydet.UseVisualStyleBackColor = false;
+            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnClear.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClear.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnClear.FlatAppearance.BorderSize = 0;
+            this.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClear.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnClear.ForeColor = System.Drawing.Color.White;
+            this.btnClear.Location = new System.Drawing.Point(251, 130);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(95, 29);
+            this.btnClear.TabIndex = 1;
+            this.btnClear.Text = "SIFIRLA";
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // lblMealName
             // 
@@ -126,19 +119,31 @@
             this.lblMealDate.TabIndex = 2;
             this.lblMealDate.Text = "TARİH";
             // 
+            // nmdGram
+            // 
+            this.nmdGram.Increment = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.nmdGram.Location = new System.Drawing.Point(47, 219);
+            this.nmdGram.Name = "nmdGram";
+            this.nmdGram.Size = new System.Drawing.Size(163, 27);
+            this.nmdGram.TabIndex = 3;
+            // 
             // frmUpdateMeal
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = global::WinFormUI.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(400, 304);
+            this.Controls.Add(this.nmdGram);
             this.Controls.Add(this.lblMealDate);
             this.Controls.Add(this.lblMealName);
-            this.Controls.Add(this.btnKaydet);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.comboBox4);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.cmbProduct);
+            this.Controls.Add(this.cmbCategory);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -147,18 +152,19 @@
             this.Name = "frmUpdateMeal";
             this.ShowIcon = false;
             this.Text = "Öğün Düzenle";
+            ((System.ComponentModel.ISupportInitialize)(this.nmdGram)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private ComboBox comboBox2;
-        private ComboBox comboBox3;
-        private ComboBox comboBox4;
+        private ComboBox cmbCategory;
+        private ComboBox cmbProduct;
         private Button btnSave;
-        private Button btnKaydet;
+        private Button btnClear;
         private Label lblMealName;
         private Label lblMealDate;
+        private NumericUpDown nmdGram;
     }
 }

@@ -53,7 +53,7 @@ namespace WinFormUI
         {
             if (_frmReport == null)
             {
-                _frmReport = new()
+                _frmReport = new(_userVm.UserName)
                 {
                     MdiParent = this
                 };
