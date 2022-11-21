@@ -16,10 +16,12 @@ namespace WinFormUI
     public partial class frmAccount : Form
     {
         IUserService _userService;
-        public frmAccount()
+        public frmAccount(string userName)
         {
             InitializeComponent();
             _userService = InstanceFactory.GetInstance<IUserService>();
+            lblMail.Text = userName;
+            lblMail.Enabled = false;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)

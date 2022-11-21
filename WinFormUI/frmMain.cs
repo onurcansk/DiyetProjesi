@@ -68,7 +68,7 @@ namespace WinFormUI
         {
             if (_frmAccount == null)
             {
-                _frmAccount = new()
+                _frmAccount = new(_userVm.UserName);
                 {
                     MdiParent = this
                 };
