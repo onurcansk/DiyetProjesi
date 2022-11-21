@@ -28,36 +28,76 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.clmMeal = new System.Windows.Forms.ColumnHeader();
-            this.clmFood = new System.Windows.Forms.ColumnHeader();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
+            this.lvTotal = new System.Windows.Forms.ListView();
+            this.clmProduct = new System.Windows.Forms.ColumnHeader();
+            this.clmPiece = new System.Windows.Forms.ColumnHeader();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbMealType = new System.Windows.Forms.ComboBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lvTotalByMeal = new System.Windows.Forms.ListView();
+            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // listView1
+            // panel1
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.clmMeal,
-            this.clmFood});
-            this.listView1.Location = new System.Drawing.Point(12, 39);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(377, 233);
-            this.listView1.TabIndex = 2;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.BackgroundImage = global::WinFormUI.Properties.Resources.background;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.lvTotal);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(408, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(405, 430);
+            this.panel1.TabIndex = 4;
             // 
-            // clmMeal
+            // label3
             // 
-            this.clmMeal.Text = "Öğün";
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("ISOCPEUR", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(65, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(283, 28);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Toplamda en çok hangi ürün";
             // 
-            // clmFood
+            // sqlCommand1
             // 
-            this.clmFood.Text = "Yemek";
+            this.sqlCommand1.CommandTimeout = 30;
+            this.sqlCommand1.Connection = null;
+            this.sqlCommand1.Notification = null;
+            this.sqlCommand1.Transaction = null;
+            // 
+            // lvTotal
+            // 
+            this.lvTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(126)))), ((int)(((byte)(255)))));
+            this.lvTotal.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clmProduct,
+            this.clmPiece});
+            this.lvTotal.ForeColor = System.Drawing.Color.White;
+            this.lvTotal.Location = new System.Drawing.Point(33, 67);
+            this.lvTotal.Name = "lvTotal";
+            this.lvTotal.Size = new System.Drawing.Size(340, 307);
+            this.lvTotal.TabIndex = 4;
+            this.lvTotal.UseCompatibleStateImageBehavior = false;
+            this.lvTotal.View = System.Windows.Forms.View.Details;
+            // 
+            // clmProduct
+            // 
+            this.clmProduct.Text = "Yemek";
+            this.clmProduct.Width = 200;
+            // 
+            // clmPiece
+            // 
+            this.clmPiece.Text = "Adet";
+            this.clmPiece.Width = 140;
             // 
             // label1
             // 
@@ -70,23 +110,22 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Öğün Bazlı Yemek Listesi";
             // 
-            // panel1
+            // cmbMealType
             // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.BackgroundImage = global::WinFormUI.Properties.Resources.background;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(408, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(405, 430);
-            this.panel1.TabIndex = 4;
+            this.cmbMealType.FormattingEnabled = true;
+            this.cmbMealType.Location = new System.Drawing.Point(65, 67);
+            this.cmbMealType.Name = "cmbMealType";
+            this.cmbMealType.Size = new System.Drawing.Size(257, 29);
+            this.cmbMealType.TabIndex = 4;
+            this.cmbMealType.Text = "Öğün";
+            this.cmbMealType.SelectedIndexChanged += new System.EventHandler(this.cmbMealType_SelectedIndexChanged);
             // 
             // panel2
             // 
             this.panel2.BackgroundImage = global::WinFormUI.Properties.Resources.background;
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Controls.Add(this.listView1);
-            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.lvTotalByMeal);
+            this.panel2.Controls.Add(this.cmbMealType);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -94,23 +133,29 @@
             this.panel2.Size = new System.Drawing.Size(405, 430);
             this.panel2.TabIndex = 5;
             // 
-            // label2
+            // lvTotalByMeal
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("ISOCPEUR", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(146, 275);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 28);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Sonuçlar";
+            this.lvTotalByMeal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(126)))), ((int)(((byte)(255)))));
+            this.lvTotalByMeal.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.lvTotalByMeal.ForeColor = System.Drawing.Color.White;
+            this.lvTotalByMeal.Location = new System.Drawing.Point(25, 148);
+            this.lvTotalByMeal.Name = "lvTotalByMeal";
+            this.lvTotalByMeal.Size = new System.Drawing.Size(344, 226);
+            this.lvTotalByMeal.TabIndex = 5;
+            this.lvTotalByMeal.UseCompatibleStateImageBehavior = false;
+            this.lvTotalByMeal.View = System.Windows.Forms.View.Details;
             // 
-            // sqlCommand1
+            // columnHeader1
             // 
-            this.sqlCommand1.CommandTimeout = 30;
-            this.sqlCommand1.Connection = null;
-            this.sqlCommand1.Notification = null;
-            this.sqlCommand1.Transaction = null;
+            this.columnHeader1.Text = "Yemek";
+            this.columnHeader1.Width = 200;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Adet";
+            this.columnHeader2.Width = 140;
             // 
             // frmAdminReport
             // 
@@ -127,6 +172,8 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmAdminReport";
             this.Text = "frmAdminReport";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -134,14 +181,17 @@
         }
 
         #endregion
-
-        private ListView listView1;
-        private ColumnHeader clmMeal;
-        private ColumnHeader clmFood;
-        private Label label1;
         private Panel panel1;
-        private Panel panel2;
-        private Label label2;
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
+        private Label label3;
+        private ListView lvTotal;
+        private ColumnHeader clmProduct;
+        private ColumnHeader clmPiece;
+        private Label label1;
+        private ComboBox cmbMealType;
+        private Panel panel2;
+        private ListView lvTotalByMeal;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
     }
 }

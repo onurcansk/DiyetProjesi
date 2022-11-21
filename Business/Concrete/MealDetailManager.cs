@@ -34,9 +34,9 @@ namespace Business.Concrete
             {
                 Gram = mealDetail.Gram,
                 MealID = mealDetail.MealID,
-                ProductId = mealDetail.ProductId,              
+                ProductId = mealDetail.ProductId,
             };
-            
+
             _mealDetailDal.Add(newMealDetail);
         }
 
@@ -44,7 +44,7 @@ namespace Business.Concrete
         {
             MealDetail deleteMealDetail = _mealDetailDal.Get(m => m.Id == id);
 
-            if(deleteMealDetail == null)
+            if (deleteMealDetail == null)
             {
                 throw new IdNotFoundException("Gönderilen id ye ait meal detail bulunamadı.");
             }
@@ -52,12 +52,12 @@ namespace Business.Concrete
         }
 
         public void DeleteRange(List<int> ids)
-        {        
+        {
             foreach (var item in ids)
             {
                 MealDetail deleteMealDetail = _mealDetailDal.Get(m => m.Id == item);
                 _mealDetailDal.Delete(deleteMealDetail);
-            }          
+            }
         }
 
         public List<MealDetailVm> GetAll()
@@ -105,7 +105,7 @@ namespace Business.Concrete
         public MealDetailVm GetById(int id)
         {
             MealDetail mealDetail = _mealDetailDal.Get(md => md.Id == id);
-            if(mealDetail == null)
+            if (mealDetail == null)
             {
                 throw new IdNotFoundException("Gönderilen idye ait öğün detayı bulunamadı.");
             }
@@ -125,7 +125,7 @@ namespace Business.Concrete
 
         public List<MealDetailVm> GetByProductName(string productName)
         {
-            List<MealDetail> mealDetails = _mealDetailDal.GetAll(md=>md.Product.ProductName == productName);
+            List<MealDetail> mealDetails = _mealDetailDal.GetAll(md => md.Product.ProductName == productName);
             List<MealDetailVm> mealDetailVms = new List<MealDetailVm>();
             foreach (var item in mealDetails)
             {
@@ -147,15 +147,26 @@ namespace Business.Concrete
         public void Update(MealDetailUpdateDto mealDetail)
         {
             MealDetail updatedMealDetail = _mealDetailDal.Get(md => md.Id == mealDetail.Id);
-            if (mealDetail.Gram != null && mealDetail.Gram != updatedMealDetail.Gram) updatedMealDetail.Gram = mealDetail.Gram;           
-            if(updatedMealDetail.Product.ProductName==mealDetail.ProductName)
+            if (mealDetail.Gram != null && mealDetail.Gram != updatedMealDetail.Gram) updatedMealDetail.Gram = mealDetail.Gram;
+            if (updatedMealDetail.Product.ProductName == mealDetail.ProductName)
             {
                 ProductVm product = _productService.GetByName(mealDetail.ProductName);
                 updatedMealDetail.ProductId = product.Id;
             }
 
             _mealDetailDal.Update(updatedMealDetail);
-            
         }
+
+        public List<ReportVm> GetTopTenProduct(Expression<Func<MealDetail, bool>> expression = null)
+        {
+            return (List<ReportVm>)_mealDetailDal.GetAll(expression).GroupBy(x => x.Product.ProductName).Select(md => new ReportVm { Key = md.Key, Toplam = md.Count() });
+
+        }
+    }
+
+    public class ReportVm
+    {
+        public string Key { get; set; }
+        public int Toplam { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
+﻿using Business.Concrete;
+using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
 using Entities.Concrete;
 using Entities.Dtos.MealDetails;
 using Entities.VMs.MealDetailVMs;
@@ -21,8 +22,7 @@ namespace Business.Abstract
         List<MealDetailVm> GetAllByExpression(Expression<Func<MealDetail,bool>> expression );
         List<MealDetailVm> GetByProductName(string productName);
         MealDetailVm GetById(int id);
-
-
+        List<ReportVm> GetTopTenProduct(Expression<Func<MealDetail, bool>> expression = null);
 
     }
 }
