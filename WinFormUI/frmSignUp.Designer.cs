@@ -107,7 +107,7 @@
             this.txtMail.Location = new System.Drawing.Point(52, 53);
             this.txtMail.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.txtMail.Name = "txtMail";
-            this.txtMail.Size = new System.Drawing.Size(300, 30);
+            this.txtMail.Size = new System.Drawing.Size(300, 27);
             this.txtMail.TabIndex = 3;
             // 
             // txtPassword2

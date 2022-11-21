@@ -24,7 +24,6 @@ namespace WinFormUI
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            
             if (txtPassword.Text != txtPassword2.Text)
             {
                 MessageBox.Show("Şifreler aynı değil");
@@ -39,6 +38,7 @@ namespace WinFormUI
                     BirthDate = dtpBirthDate.Value
                 };
                 _userService.Register(newUser);
+                this.Close();
             }
             catch (Exception ex)
             {
