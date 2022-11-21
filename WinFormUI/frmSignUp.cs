@@ -24,7 +24,7 @@ namespace WinFormUI
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (txtPassword != txtPassword2)
+            if (txtPassword.Text != txtPassword2.Text)
             {
                 MessageBox.Show("Şifreler aynı değil");
                 return;
