@@ -38,6 +38,7 @@ namespace WinFormUI
                     BirthDate = dtpBirthDate.Value
                 };
                 _userService.Register(newUser);
+                this.Close();
             }
             catch (Exception ex)
             {
