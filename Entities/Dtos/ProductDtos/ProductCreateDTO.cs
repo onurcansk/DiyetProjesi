@@ -7,5 +7,6 @@ namespace Entities.Dtos.Product
         public string ProductName { get; set; }
         public double UnitCalorie { get; set; }
         public string ProductType { get; set; }
+        public byte[] Image { get; set; }
     }
 }

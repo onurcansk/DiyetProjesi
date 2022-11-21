@@ -36,6 +36,7 @@ namespace Business.Concrete
                 CreatedDate = DateTime.Now,
                 UpdatedDate = null,
                 ProductTypeID = productType.Id,               
+                Image = product.Image,
             };
 
             _productDal.Add(newProduct);
@@ -63,7 +64,8 @@ namespace Business.Concrete
                     Id = item.Id,
                     ProductName=item.ProductName,
                     ProductTypeName=item.ProductType.ProductTypeName,
-                    UnitCalorie= item.UnitCalorie
+                    UnitCalorie= item.UnitCalorie,
+                    Image = item.Image,
                 };
             }
 
@@ -81,7 +83,8 @@ namespace Business.Concrete
                     Id=item.Id,
                     ProductName = item.ProductName,
                     ProductTypeName = item.ProductType.ProductTypeName,
-                    UnitCalorie = item.UnitCalorie
+                    UnitCalorie = item.UnitCalorie,
+                    Image = item.Image,
                 };
             }
 
@@ -101,7 +104,8 @@ namespace Business.Concrete
                 Id=product.Id,
                 ProductName=product.ProductName,
                 ProductTypeName = product.ProductType.ProductTypeName,
-                UnitCalorie = product.UnitCalorie
+                UnitCalorie = product.UnitCalorie,
+                Image = product.Image,
             };
 
             return productVm;
@@ -121,7 +125,8 @@ namespace Business.Concrete
                 Id = product.Id,
                 ProductName = product.ProductName,
                 ProductTypeName = product.ProductType.ProductTypeName,
-                UnitCalorie = product.UnitCalorie
+                UnitCalorie = product.UnitCalorie,
+                Image = product.Image
             };
 
             return productVm;

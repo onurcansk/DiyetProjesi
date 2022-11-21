@@ -15,5 +15,6 @@ namespace Entities.VMs.MealDetailVMs
         public string ProductType { get; set; }
         public double? UnitCalorie { get; set; }
         public double? Gram { get; set; }
+        public byte[] Image { get; set; }
     }
 }

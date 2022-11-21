@@ -13,13 +13,14 @@ namespace Business.ValidationRules.FluentValidation
     {
         public UserValidator()
         {
-            //RuleFor(u => u.BirthDate).Must(CheckAgeIfValid).WithMessage("Kullanıcı 18-25 arasında olmalıdır.");
-            
+            RuleFor(u => u.BirthDate).Must(CheckAgeIfValid).WithMessage("Kullanıcı 18-25 arasında olmalıdır.");
+            RuleFor(u => u.UserName).EmailAddress().WithMessage("Girilen kullanıcı adı mail değil.");
+            RuleFor(u=>)
         }
 
-        private bool CheckAgeIfValid(DateTime date)
+        private bool CheckAgeIfValid(DateTime? date)
         {
-            int age = DateTime.Now.Year - date.Year;
+            int age = DateTime.Now.Year - date.Value.Year;
             return age >= 18 && age <= 25;        
         }
     }

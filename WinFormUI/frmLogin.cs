@@ -16,6 +16,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Business.HelperClasses;
 
 namespace WinFormUI
 {
@@ -49,6 +50,8 @@ namespace WinFormUI
                 {
                     _frm = new frmAdmin();
                 }
+                CurrentUser.UserClaim = userLogin.UserClaim;
+                CurrentUser.UserName = userLogin.UserName;
                 this.Hide();
                 _frm.ShowDialog();
                 this.Show();
@@ -67,6 +70,6 @@ namespace WinFormUI
             this.Show();
         }
 
-        
+
     }
 }

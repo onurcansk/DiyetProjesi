@@ -10,6 +10,7 @@ namespace Entities.VMs.MealVMs
 {
     public class MealVm:IViewModel
     {
+        public int Id { get; set; }
         public List<MealDetailVm> MealDetailVm { get; set; }
         public string MealType { get; set; }
         public DateTime? Date { get; set; }

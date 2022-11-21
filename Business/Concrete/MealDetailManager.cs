@@ -72,7 +72,8 @@ namespace Business.Concrete
                     MealType = item.Meal.MealType.TypeName,
                     Id = item.Id,
                     Product = item.Product.ProductName,
-                    UnitCalorie = item.Product.UnitCalorie
+                    UnitCalorie = item.Product.UnitCalorie,
+                    Image = item.Product.Image
                 };
                 mealDetailVms.Add(mealDetailVm);
             }
@@ -92,7 +93,8 @@ namespace Business.Concrete
                     MealType = item.Meal.MealType.TypeName,
                     Id = item.Id,
                     Product = item.Product.ProductName,
-                    UnitCalorie = item.Product.UnitCalorie
+                    UnitCalorie = item.Product.UnitCalorie,
+                    Image = item.Product.Image
                 };
                 mealDetailVms.Add(mealDetailVm);
             }
@@ -114,7 +116,8 @@ namespace Business.Concrete
                 Gram = mealDetail.Gram,
                 MealType = mealDetail.Meal.MealType.TypeName,
                 Product = mealDetail.Product.ProductName,
-                UnitCalorie = mealDetail.Product.UnitCalorie
+                UnitCalorie = mealDetail.Product.UnitCalorie,
+                Image = mealDetail.Product.Image
             };
 
             return mealDetailVm;
@@ -132,7 +135,8 @@ namespace Business.Concrete
                     MealType = item.Meal.MealType.TypeName,
                     Id = item.Id,
                     Product = item.Product.ProductName,
-                    UnitCalorie = item.Product.UnitCalorie
+                    UnitCalorie = item.Product.UnitCalorie,
+                    Image = item.Product.Image
                 };
                 mealDetailVms.Add(mealDetailVm);
             }
@@ -150,7 +154,7 @@ namespace Business.Concrete
                 updatedMealDetail.ProductId = product.Id;
             }
 
-            _productService.Update(updatedMealDetail);
+            _mealDetailDal.Update(updatedMealDetail);
             
         }
     }

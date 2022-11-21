@@ -31,7 +31,6 @@ namespace Business.Concrete
                 UpdatedDate = DateTime.Now,
                 UserName = meal.UserName,
                 MealTypeID = _mealTypeService.GetByName(meal.MealTypeName).Id,
-
             };
 
             _mealDal.Add(newMeal);
@@ -53,6 +52,8 @@ namespace Business.Concrete
 
             MealVm mealVm = new MealVm()
             {
+
+                Id = id,
                 Date=meal.CreatedDate,
                 MealType= meal.MealType.TypeName,
                 
@@ -82,7 +83,7 @@ namespace Business.Concrete
                 {
                     Date = meal.CreatedDate,
                     MealType = meal.MealType.TypeName,
-
+                    Id = meal.Id,
                 };
 
                 foreach (var item in meal.MealDetails)
@@ -113,7 +114,7 @@ namespace Business.Concrete
                 {
                     Date = meal.CreatedDate,
                     MealType = meal.MealType.TypeName,
-
+                    Id=meal.Id,
                 };
 
                 foreach (var item in meal.MealDetails)
@@ -142,7 +143,8 @@ namespace Business.Concrete
             MealVm mealVm = new MealVm()
             {
                 MealType = meal.MealType.TypeName,
-                Date = meal.CreatedDate
+                Date = meal.CreatedDate,
+                Id=meal.Id
             };
 
             foreach (var item in meal.MealDetails)
@@ -159,10 +161,7 @@ namespace Business.Concrete
             return mealVm;
         }
 
-        public MealVm GetLastMealByUserName(string userName)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 
 }

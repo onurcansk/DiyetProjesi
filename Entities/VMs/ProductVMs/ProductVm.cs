@@ -13,5 +13,6 @@ namespace Entities.VMs.ProductVMs
         public string ProductName { get; set; }
         public double? UnitCalorie { get; set; }
         public string ProductTypeName { get; set; }
+        public byte[] Image { get; set; }
     }
 }
