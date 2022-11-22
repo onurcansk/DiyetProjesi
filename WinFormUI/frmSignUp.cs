@@ -38,6 +38,7 @@ namespace WinFormUI
                     BirthDate = dtpBirthDate.Value
                 };
                 _userService.Register(newUser);
+                MessageBox.Show($"{txtMail.Text} kaydı başarıyla tamamlandı.");
                 this.Close();
             }
             catch (Exception ex)

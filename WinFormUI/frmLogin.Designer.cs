@@ -55,18 +55,18 @@
             this.panel1.Controls.Add(this.txtMail);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(315, 371);
+            this.panel1.Size = new System.Drawing.Size(263, 378);
             this.panel1.TabIndex = 0;
             // 
             // llbSignUp
             // 
             this.llbSignUp.AutoSize = true;
-            this.llbSignUp.Location = new System.Drawing.Point(195, 255);
+            this.llbSignUp.Location = new System.Drawing.Point(162, 264);
             this.llbSignUp.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.llbSignUp.Name = "llbSignUp";
-            this.llbSignUp.Size = new System.Drawing.Size(62, 20);
+            this.llbSignUp.Size = new System.Drawing.Size(59, 21);
             this.llbSignUp.TabIndex = 2;
             this.llbSignUp.TabStop = true;
             this.llbSignUp.Text = "Kayıt Ol";
@@ -80,12 +80,12 @@
             this.btnLogin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.btnLogin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnLogin.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(106, 297);
+            this.btnLogin.Location = new System.Drawing.Point(92, 302);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(100, 45);
+            this.btnLogin.Size = new System.Drawing.Size(77, 37);
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Giriş Yap";
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -94,71 +94,77 @@
             // lblAppName
             // 
             this.lblAppName.AutoSize = true;
-            this.lblAppName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblAppName.Font = new System.Drawing.Font("ISOCPEUR", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblAppName.ForeColor = System.Drawing.Color.Black;
-            this.lblAppName.Location = new System.Drawing.Point(60, 79);
+            this.lblAppName.Location = new System.Drawing.Point(56, 72);
+            this.lblAppName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAppName.Name = "lblAppName";
-            this.lblAppName.Size = new System.Drawing.Size(186, 29);
+            this.lblAppName.Size = new System.Drawing.Size(144, 31);
             this.lblAppName.TabIndex = 1;
             this.lblAppName.Text = "KALORİ TAKİP";
             // 
             // lblLogo
             // 
             this.lblLogo.AutoSize = true;
-            this.lblLogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblLogo.Font = new System.Drawing.Font("ISOCPEUR", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblLogo.ForeColor = System.Drawing.Color.Black;
-            this.lblLogo.Location = new System.Drawing.Point(106, 30);
+            this.lblLogo.Location = new System.Drawing.Point(98, 20);
+            this.lblLogo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLogo.Name = "lblLogo";
-            this.lblLogo.Size = new System.Drawing.Size(86, 29);
+            this.lblLogo.Size = new System.Drawing.Size(61, 31);
             this.lblLogo.TabIndex = 1;
             this.lblLogo.Text = "LOGO";
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(59, 199);
+            this.lblPassword.Location = new System.Drawing.Point(40, 197);
+            this.lblPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(42, 20);
+            this.lblPassword.Size = new System.Drawing.Size(40, 21);
             this.lblPassword.TabIndex = 1;
             this.lblPassword.Text = "Şifre";
             // 
             // lblMain
             // 
             this.lblMain.AutoSize = true;
-            this.lblMain.Location = new System.Drawing.Point(59, 132);
+            this.lblMain.Location = new System.Drawing.Point(40, 127);
+            this.lblMain.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMain.Name = "lblMain";
-            this.lblMain.Size = new System.Drawing.Size(102, 20);
+            this.lblMain.Size = new System.Drawing.Size(92, 21);
             this.lblMain.TabIndex = 1;
             this.lblMain.Text = "E-mail Adresi";
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(59, 224);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtPassword.Location = new System.Drawing.Point(40, 223);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(195, 26);
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(181, 27);
             this.txtPassword.TabIndex = 1;
             // 
             // txtMail
             // 
-            this.txtMail.Location = new System.Drawing.Point(59, 157);
-            this.txtMail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtMail.Location = new System.Drawing.Point(40, 153);
+            this.txtMail.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.txtMail.Name = "txtMail";
-            this.txtMail.Size = new System.Drawing.Size(195, 26);
+            this.txtMail.Size = new System.Drawing.Size(181, 27);
             this.txtMail.TabIndex = 0;
             // 
             // frmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Orange;
-            this.ClientSize = new System.Drawing.Size(315, 371);
+            this.ClientSize = new System.Drawing.Size(263, 378);
             this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.Name = "frmLogin";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kalori Takip";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

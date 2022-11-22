@@ -26,8 +26,10 @@ namespace Entities.Config
             //In this case we want to read entire file. 
             //So supplying total number of bytes.
             data = br.ReadBytes((int)numBytes);
-
+            fStream.Close();
+            br.Close();
             return data;
+            
         }
        
 
@@ -40,9 +42,9 @@ namespace Entities.Config
             builder.Property(x => x.CreatedDate).HasConversion(typeof(DateTime)).IsRequired(false).HasDefaultValue(DateTime.Now);
             builder.Property(x => x.UpdatedDate).HasConversion(typeof(DateTime)).IsRequired(false).HasDefaultValue(DateTime.Now);
 
-            //builder.HasData(
-            //    new Product { Id=1, ProductTypeID=1, ProductName="Antrikot", UnitCalorie=1.21, Image=ReadFile("Resources/antrikot.png") },
-            //    new Product { Id=2, ProductTypeID=1, ProductName="Biftek", UnitCalorie=2.42, Image=ReadFile("Resources/biftek.png") },
+            builder.HasData(
+                new Product { Id = 1, ProductTypeID = 1, ProductName = "Antrikot", UnitCalorie = 1.21, Image = ReadFile("Resources/antrikot.png") },
+                new Product { Id = 2, ProductTypeID = 1, ProductName = "Biftek", UnitCalorie = 2.42, Image = ReadFile("Resources/biftek.png") },
             //    new Product { Id=3, ProductTypeID=1, ProductName="Bonfile", UnitCalorie=1.38, Image=ReadFile("Resources/bonfile.png") },
             //    new Product { Id=4, ProductTypeID=1, ProductName="Dana Kıyma", UnitCalorie=2.46, Image=ReadFile("Resources/dana kıyma.png") },
             //    new Product { Id=5, ProductTypeID=1, ProductName="Hindi Budu", UnitCalorie=2.08, Image=ReadFile("Resources/hindi budu.png") },
@@ -65,8 +67,8 @@ namespace Entities.Config
 
 
 
-            //    new Product { Id=21, ProductTypeID=2, ProductName="Alabalık", UnitCalorie=1.90, Image=ReadFile("Resources/alabalık.png") },
-            //    new Product { Id=22, ProductTypeID=2, ProductName="Havyar", UnitCalorie=2.64, Image=ReadFile("Resources/havyar.png") },
+                new Product { Id = 21, ProductTypeID = 2, ProductName = "Alabalık", UnitCalorie = 1.90, Image = ReadFile("Resources/alabalık.png") },
+                new Product { Id = 22, ProductTypeID = 2, ProductName = "Havyar", UnitCalorie = 2.64, Image = ReadFile("Resources/havyar.png") },
             //    new Product { Id=23, ProductTypeID=2, ProductName="Lüfer", UnitCalorie=1.59, Image=ReadFile("Resources/lüfer.png") },
             //    new Product { Id=24, ProductTypeID=2, ProductName="Mezgit", UnitCalorie=0.90, Image=ReadFile("Resources/mezgit.png") },
             //    new Product { Id=25, ProductTypeID=2, ProductName="Midye", UnitCalorie=1.72, Image=ReadFile("Resources/midye.png") },
@@ -79,8 +81,8 @@ namespace Entities.Config
 
 
 
-            //    new Product { Id=31, ProductTypeID=3, ProductName="Cheddar Peyniri ", UnitCalorie=4.03, Image=ReadFile("Resources/cheddar peyniri.png") },
-            //    new Product { Id=32, ProductTypeID=3, ProductName="Hellim", UnitCalorie=3.21, Image=ReadFile("Resources/hellim.png") },
+                new Product { Id = 31, ProductTypeID = 3, ProductName = "Cheddar Peyniri ", UnitCalorie = 4.03, Image = ReadFile("Resources/cheddar peyniri.png") },
+                new Product { Id = 32, ProductTypeID = 3, ProductName = "Hellim", UnitCalorie = 3.21, Image = ReadFile("Resources/hellim.png") },
             //    new Product { Id=33, ProductTypeID=3, ProductName="Kaşar Peyniri", UnitCalorie=3.37, Image=ReadFile("Resources/kaşar peynir.png") },
             //    new Product { Id=34, ProductTypeID=3, ProductName="Tulum Peyniri", UnitCalorie=3.63, Image=ReadFile("Resources/tulum peynir.png") },
             //    new Product { Id=35, ProductTypeID=3, ProductName="Yumuşak Peynir", UnitCalorie=2.68, Image=ReadFile("Resources/yumuşak peynir.png") },
@@ -103,32 +105,32 @@ namespace Entities.Config
 
 
 
-                //new Product { Id=51, ProductTypeID=4, ProductName="Bamya ", UnitCalorie=0.33, Image=ReadFile("Resources/bamya.png") },
-                //new Product { Id=52, ProductTypeID=4, ProductName="Bezelye", UnitCalorie=0.81, Image=ReadFile("Resources/bezelye.png") },
-                //new Product { Id=53, ProductTypeID=4, ProductName="Biber", UnitCalorie=0.27, Image=ReadFile("Resources/biber.png") },
-                //new Product { Id=54, ProductTypeID=4, ProductName="Domates", UnitCalorie=0.18, Image=ReadFile("Resources/domates.png") },
-                //new Product { Id=55, ProductTypeID=4, ProductName="Havuç", UnitCalorie=0.41, Image=ReadFile("Resources/havuç.png") },
-                //new Product { Id=56, ProductTypeID=4, ProductName="Kırmızı Biber", UnitCalorie=0.26, Image=ReadFile("Resources/kırmızı biber.png") },
-                //new Product { Id=57, ProductTypeID=4, ProductName="Kabak", UnitCalorie=0.26, Image=ReadFile("Resources/kabak.png") },
-                //new Product { Id=58, ProductTypeID=4, ProductName="Lahana", UnitCalorie=0.25, Image=ReadFile("Resources/lahana.png") },
-                //new Product { Id=59, ProductTypeID=4, ProductName="Mantar", UnitCalorie=0.22, Image=ReadFile("Resources/mantar.png") },
-                //new Product { Id=60, ProductTypeID=4, ProductName="Mısır", UnitCalorie=3.65, Image=ReadFile("Resources/mısır.png") },
-                //new Product { Id=61, ProductTypeID=4, ProductName="Patates", UnitCalorie=0.77, Image=ReadFile("Resources/patates.png") },
-                //new Product { Id=62, ProductTypeID=4, ProductName="Patlıcan", UnitCalorie=0.25, Image=ReadFile("Resources/patlıcan.png") },
-                //new Product { Id=63, ProductTypeID=4, ProductName="Pırasa", UnitCalorie= 0.61, Image=ReadFile("Resources/pırasa.png") },
-                //new Product { Id=64, ProductTypeID=4, ProductName="Salatalık", UnitCalorie=1.49, Image=ReadFile("Resources/salatalık.png") },
-                //new Product { Id = 65, ProductTypeID = 4, ProductName = "Soğan", UnitCalorie = 0.40, Image = ReadFile("Resources/soğan.png") },
-                //new Product { Id = 66, ProductTypeID = 4, ProductName = "Sarımsak", UnitCalorie = 1.49, Image = ReadFile("Resources/antrikot.png") },
-                //new Product { Id=67, ProductTypeID=4, ProductName="Turp", UnitCalorie=0.28, Image=ReadFile("Resources/turp.png") },
-                //new Product { Id=68, ProductTypeID=4, ProductName="Marul", UnitCalorie=0.22, Image=ReadFile("Resources/marul.png") },
-                //new Product { Id=69, ProductTypeID=4, ProductName="Roka", UnitCalorie=0.25, Image=ReadFile("Resources/roka.png") },
-                //new Product { Id=70, ProductTypeID=4, ProductName="Kara Lahana", UnitCalorie=0.32, Image=ReadFile("Resources/kara lahana.png") },
+            new Product { Id = 51, ProductTypeID = 4, ProductName = "Bamya ", UnitCalorie = 0.33, Image = ReadFile("Resources/bamya.png") },
+            new Product { Id = 52, ProductTypeID = 4, ProductName = "Bezelye", UnitCalorie = 0.81, Image = ReadFile("Resources/bezelye.png") },
+            //new Product { Id=53, ProductTypeID=4, ProductName="Biber", UnitCalorie=0.27, Image=ReadFile("Resources/biber.png") },
+            //new Product { Id=54, ProductTypeID=4, ProductName="Domates", UnitCalorie=0.18, Image=ReadFile("Resources/domates.png") },
+            //new Product { Id=55, ProductTypeID=4, ProductName="Havuç", UnitCalorie=0.41, Image=ReadFile("Resources/havuç.png") },
+            //new Product { Id=56, ProductTypeID=4, ProductName="Kırmızı Biber", UnitCalorie=0.26, Image=ReadFile("Resources/kırmızı biber.png") },
+            //new Product { Id=57, ProductTypeID=4, ProductName="Kabak", UnitCalorie=0.26, Image=ReadFile("Resources/kabak.png") },
+            //new Product { Id=58, ProductTypeID=4, ProductName="Lahana", UnitCalorie=0.25, Image=ReadFile("Resources/lahana.png") },
+            //new Product { Id=59, ProductTypeID=4, ProductName="Mantar", UnitCalorie=0.22, Image=ReadFile("Resources/mantar.png") },
+            //new Product { Id=60, ProductTypeID=4, ProductName="Mısır", UnitCalorie=3.65, Image=ReadFile("Resources/mısır.png") },
+            //new Product { Id=61, ProductTypeID=4, ProductName="Patates", UnitCalorie=0.77, Image=ReadFile("Resources/patates.png") },
+            //new Product { Id=62, ProductTypeID=4, ProductName="Patlıcan", UnitCalorie=0.25, Image=ReadFile("Resources/patlıcan.png") },
+            //new Product { Id=63, ProductTypeID=4, ProductName="Pırasa", UnitCalorie= 0.61, Image=ReadFile("Resources/pırasa.png") },
+            //new Product { Id=64, ProductTypeID=4, ProductName="Salatalık", UnitCalorie=1.49, Image=ReadFile("Resources/salatalık.png") },
+            //new Product { Id = 65, ProductTypeID = 4, ProductName = "Soğan", UnitCalorie = 0.40, Image = ReadFile("Resources/soğan.png") },
+            //new Product { Id = 66, ProductTypeID = 4, ProductName = "Sarımsak", UnitCalorie = 1.49, Image = ReadFile("Resources/antrikot.png") },
+            //new Product { Id=67, ProductTypeID=4, ProductName="Turp", UnitCalorie=0.28, Image=ReadFile("Resources/turp.png") },
+            //new Product { Id=68, ProductTypeID=4, ProductName="Marul", UnitCalorie=0.22, Image=ReadFile("Resources/marul.png") },
+            //new Product { Id=69, ProductTypeID=4, ProductName="Roka", UnitCalorie=0.25, Image=ReadFile("Resources/roka.png") },
+            //new Product { Id=70, ProductTypeID=4, ProductName="Kara Lahana", UnitCalorie=0.32, Image=ReadFile("Resources/kara lahana.png") },
 
 
 
 
-            //    new Product { Id=71, ProductTypeID=5, ProductName="Armut", UnitCalorie=0.57, Image=ReadFile("Resources/armut.png") },
-            //    new Product { Id=72, ProductTypeID=5, ProductName="Ayva", UnitCalorie=0.57, Image=ReadFile("Resources/ayva.png") },
+                new Product { Id = 71, ProductTypeID = 5, ProductName = "Armut", UnitCalorie = 0.57, Image = ReadFile("Resources/armut.png") },
+                new Product { Id = 72, ProductTypeID = 5, ProductName = "Ayva", UnitCalorie = 0.57, Image = ReadFile("Resources/ayva.png") },
             //    new Product { Id=73, ProductTypeID=5, ProductName="Elma", UnitCalorie=0.52, Image=ReadFile("Resources/elma.png") },
             //    new Product { Id=74, ProductTypeID=5, ProductName="Erik", UnitCalorie=0.46, Image=ReadFile("Resources/erik.png") },
             //    new Product { Id=75, ProductTypeID=5, ProductName="Hurma", UnitCalorie=2.82, Image=ReadFile("Resources/hurma.png") },
@@ -147,8 +149,8 @@ namespace Entities.Config
 
 
 
-            //    new Product { Id=87, ProductTypeID=6, ProductName="Bulgur Pilavı", UnitCalorie=2.15, Image=ReadFile("Resources/antrikot.png") },
-            //    new Product { Id=88, ProductTypeID=6, ProductName="Bezelye Çorbası", UnitCalorie=0.75, Image=ReadFile("Resources/antrikot.png") },
+                new Product { Id = 87, ProductTypeID = 6, ProductName = "Bulgur Pilavı", UnitCalorie = 2.15, Image = ReadFile("Resources/antrikot.png") },
+                new Product { Id = 88, ProductTypeID = 6, ProductName = "Bezelye Çorbası", UnitCalorie = 0.75, Image = ReadFile("Resources/antrikot.png") }
             //    new Product { Id=89, ProductTypeID=6, ProductName="Karnıyarık", UnitCalorie=1.34, Image=ReadFile("Resources/antrikot.png") },
             //    new Product { Id=90, ProductTypeID=6, ProductName="Kıymalı/Etli Pide", UnitCalorie=2.97, Image=ReadFile("Resources/antrikot.png") },
             //    new Product { Id=91, ProductTypeID=6, ProductName="Patates Püresi", UnitCalorie=0.83, Image=ReadFile("Resources/antrikot.png") },
@@ -161,7 +163,7 @@ namespace Entities.Config
             //    new Product { Id=98, ProductTypeID=6, ProductName="Kurufasulye", UnitCalorie=0.94, Image=ReadFile("Resources/antrikot.png") },
             //    new Product { Id=99, ProductTypeID=6, ProductName="Hünkar Beğendi", UnitCalorie=1.74, Image=ReadFile("Resources/antrikot.png") },
             //    new Product { Id=100, ProductTypeID=6, ProductName="Kebap", UnitCalorie=2.15, Image=ReadFile("Resources/antrikot.png") }
-               //);
+            );
 
 
 

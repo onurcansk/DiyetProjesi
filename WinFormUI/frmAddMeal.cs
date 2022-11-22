@@ -75,7 +75,7 @@ namespace WinFormUI
         {
             try
             {
-                List<MealVm> meals = _mealService.GetAllByExpression(m => m.CreatedDate == DateTime.Now && m.User.UserName == userName);
+                List<MealVm> meals = _mealService.GetAllByExpression(m => m.CreatedDate.Value.Day == DateTime.Now.Day && m.User.UserName == userName);
 
                 lstMeal.DataSource = meals;
             }
@@ -89,11 +89,13 @@ namespace WinFormUI
         {
             MealVm meal = (MealVm)lstMeal.SelectedItem;
             cmbMealType.SelectedValue = meal.MealType;
-            FillDataGridView(meal);
+            FillDataGridView(meal.Id);
         }
 
-        private void FillDataGridView(MealVm meal)
+        private void FillDataGridView(int mealId)
         {
+            _mealService = InstanceFactory.GetInstance<IMealService>();
+            MealVm meal = _mealService.Get(mealId);
             dgvDailyReport.Rows.Clear();
             foreach (var food in meal.MealDetailVm)
             {
@@ -134,7 +136,7 @@ namespace WinFormUI
 
             try
             {
-                ProductVm product = _productService.GetAllByExpression(x => x.ProductName == cmbFood.SelectedValue).First();
+                ProductVm product = _productService.GetAllByExpression(x => x.ProductName == cmbFood.SelectedItem.ToString()).First();
 
                 MealVm meal = (MealVm)lstMeal.SelectedItem;
 
@@ -145,8 +147,12 @@ namespace WinFormUI
                     Gram = (double)nmdPortion.Value
                 };
 
+
                 _mealDetailService.Add(newMealDetail);
-                FillDataGridView(meal);
+                meal = (MealVm)lstMeal.SelectedItem;
+
+
+                FillDataGridView(meal.Id);
             }
             catch (Exception ex)
             {
@@ -162,13 +168,18 @@ namespace WinFormUI
             }
             try
             {
-                _mealDetailService.Delete(Convert.ToInt32(dgvDailyReport.SelectedRows[0].Cells[5]));
-                FillDataGridView((MealVm)lstMeal.SelectedItem);
+                _mealDetailService.Delete(Convert.ToInt32(dgvDailyReport.SelectedRows[0].Cells[5].Value));
+                FillDataGridView(((MealVm)lstMeal.SelectedItem).Id);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void dgvDailyReport_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
         }
     }
 }
