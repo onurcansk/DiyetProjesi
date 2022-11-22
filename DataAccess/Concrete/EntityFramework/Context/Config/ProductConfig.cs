@@ -1,7 +1,7 @@
 ﻿using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
+using System.Drawing;
 namespace Entities.Config
 {
     public class ProductConfig : IEntityTypeConfiguration<Product>
@@ -29,6 +29,8 @@ namespace Entities.Config
 
             return data;
         }
+       
+
         public void Configure(EntityTypeBuilder<Product> builder)
         {
             builder.HasKey(x => x.Id);
@@ -115,8 +117,8 @@ namespace Entities.Config
                 new Product { Id=62, ProductTypeID=4, ProductName="Patlıcan", UnitCalorie=0.25, Image=ReadFile("Resources/patlıcan.png") },
                 new Product { Id=63, ProductTypeID=4, ProductName="Pırasa", UnitCalorie= 0.61, Image=ReadFile("Resources/pırasa.png") },
                 new Product { Id=64, ProductTypeID=4, ProductName="Salatalık", UnitCalorie=1.49, Image=ReadFile("Resources/salatalık.png") },
-                //new Product { Id=65, ProductTypeID=4, ProductName="Soğan", UnitCalorie=0.40, Image=ReadFile("Resources/soğan.png") },
-                //new Product { Id=66, ProductTypeID=4, ProductName="Sarımsak", UnitCalorie=1.49, Image=ReadFile("Resources/antrikot.png") },
+                new Product { Id = 65, ProductTypeID = 4, ProductName = "Soğan", UnitCalorie = 0.40, Image = ReadFile("Resources/soğan.png") },
+                new Product { Id = 66, ProductTypeID = 4, ProductName = "Sarımsak", UnitCalorie = 1.49, Image = ReadFile("Resources/antrikot.png") },
                 new Product { Id=67, ProductTypeID=4, ProductName="Turp", UnitCalorie=0.28, Image=ReadFile("Resources/turp.png") },
                 new Product { Id=68, ProductTypeID=4, ProductName="Marul", UnitCalorie=0.22, Image=ReadFile("Resources/marul.png") },
                 new Product { Id=69, ProductTypeID=4, ProductName="Roka", UnitCalorie=0.25, Image=ReadFile("Resources/roka.png") },

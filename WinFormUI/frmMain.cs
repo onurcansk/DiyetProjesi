@@ -70,7 +70,7 @@ namespace WinFormUI
             {
                 _frmAccount = new(_userVm.UserName);
                 {
-                    MdiParent = this
+                    MdiParent = this;
                 };
                 _frmAccount.Show();
             }
