@@ -57,16 +57,23 @@ namespace WinFormUI
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            MealDetailUpdateDto updatedMealDetail = new()
+            try
             {
-                Id = _mealDetail.Id,
-                MealType = cmbCategory.SelectedValue.ToString(),
-                ProductName = cmbProduct.SelectedValue.ToString(),
-                Gram = (double)nmdGram.Value
+                MealDetailUpdateDto updatedMealDetail = new()
+                {
+                    Id = _mealDetail.Id,
+                    MealType = cmbCategory.SelectedValue.ToString(),
+                    ProductName = cmbProduct.SelectedValue.ToString(),
+                    Gram = (double)nmdGram.Value
 
-            };
-            _mealDetailService.Update(updatedMealDetail);
-            this.Close();
+                };
+                _mealDetailService.Update(updatedMealDetail);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -76,8 +83,15 @@ namespace WinFormUI
 
         private void cmbCategory_SelectedValueChanged(object sender, EventArgs e)
         {
-            products = _productService.GetAllByExpression(x => x.ProductType.ProductTypeName == cmbCategory.SelectedText);
-            FillProducts(products);
+            try
+            {
+                products = _productService.GetAllByExpression(x => x.ProductType.ProductTypeName == cmbCategory.SelectedText);
+                FillProducts(products);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void FillProducts(List<ProductVm> products)

@@ -36,19 +36,33 @@ namespace WinFormUI
             {
                 return;
             }
-            int id = Convert.ToInt32(dgvMealView.SelectedRows[0].Cells[5].Value);
-            MealDetailVm mealDetail = _mealDetailService.GetById(id);
-            frmUpdateMeal _frm = new(mealDetail);
-            _frm.ShowDialog();
+            try
+            {
+                int id = Convert.ToInt32(dgvMealView.SelectedRows[0].Cells[5].Value);
+                MealDetailVm mealDetail = _mealDetailService.GetById(id);
+                frmUpdateMeal _frm = new(mealDetail);
+                _frm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnGetReport_Click(object sender, EventArgs e)
         {
-            DateTime reportTime = dtpDay.Value;
-            dailyMeals = _mealService.GetAllByExpression(x => x.CreatedDate == reportTime && x.UserName == _activeUser);
-            lstMealType.DataSource = dailyMeals;
-            lblCalorieValue.Text = CalculateTotalCalorieForMeals(dailyMeals).ToString();
-            
+            try
+            {
+                DateTime reportTime = dtpDay.Value;
+                dailyMeals = _mealService.GetAllByExpression(x => x.CreatedDate == reportTime && x.UserName == _activeUser);
+                lstMealType.DataSource = dailyMeals;
+                lblCalorieValue.Text = CalculateTotalCalorieForMeals(dailyMeals).ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void lstMealType_SelectedIndexChanged(object sender, EventArgs e)

@@ -19,9 +19,9 @@ namespace WinFormUI
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            _frmMainPage = new frmMainPage(_userVm.UserName);
+            _frmMainPage = new frmMainPage(_userVm.UserName)
             {
-                MdiParent = this;
+                MdiParent = this
             };
             _frmMainPage.Show();
             pnlNavItems.Controls.Add(_frmMainPage);

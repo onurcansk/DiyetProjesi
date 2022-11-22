@@ -55,7 +55,8 @@ namespace Business.Concrete
             {
                 MealTypeVm productTypeVm = new MealTypeVm()
                 {
-                    MealTypeName = item.TypeName
+                    MealTypeName = item.TypeName,
+                    Id= item.Id
                 };
                 MealTypeVmList.Add(productTypeVm);
             }
