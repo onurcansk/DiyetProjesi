@@ -1,7 +1,7 @@
 ﻿using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
+using System.Drawing;
 namespace Entities.Config
 {
     public class ProductConfig : IEntityTypeConfiguration<Product>
@@ -29,6 +29,8 @@ namespace Entities.Config
 
             return data;
         }
+       
+
         public void Configure(EntityTypeBuilder<Product> builder)
         {
             builder.HasKey(x => x.Id);
