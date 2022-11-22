@@ -53,8 +53,7 @@ namespace WinFormUI
         {
             try
             {
-                DateTime reportTime = dtpDay.Value;
-                dailyMeals = _mealService.GetAllByExpression(x => x.CreatedDate == reportTime && x.UserName == _activeUser);
+                dailyMeals = _mealService.GetAllByExpression(x => x.CreatedDate.Value.Day == dtpDay.Value.Day && x.UserName == _activeUser);
                 lstMealType.DataSource = dailyMeals;
                 lblCalorieValue.Text = CalculateTotalCalorieForMeals(dailyMeals).ToString();
             }

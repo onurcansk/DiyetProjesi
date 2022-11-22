@@ -109,6 +109,8 @@ namespace Business.Concrete
         {
             List<Meal> meals = _mealDal.GetAll(expression);
             List<MealVm> mealVms = new List<MealVm>();
+            if (meals == null) throw new Exception();
+
             foreach (var meal in meals)
             {
                 MealVm mealVm = new MealVm()
