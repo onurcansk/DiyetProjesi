@@ -56,7 +56,6 @@ namespace Business.Concrete
                 Id = id,
                 Date=meal.CreatedDate,
                 MealType= meal.MealType.TypeName,
-                
             };
 
             foreach (var item in meal.MealDetails)
@@ -67,6 +66,7 @@ namespace Business.Concrete
                     Gram = item.Gram,
                     UnitCalorie = item.Product.UnitCalorie,
                     ProductType = item.Product.ProductType.ProductTypeName,
+                    Product = item.Product.ProductName
                 };
                 mealVm.MealDetailVm.Add(mealDetailVm);
             }
@@ -94,6 +94,7 @@ namespace Business.Concrete
                         Gram = item.Gram,
                         UnitCalorie = item.Product.UnitCalorie,
                         ProductType = item.Product.ProductType.ProductTypeName,
+                        Product = item.Product.ProductName
                     };
                     mealVm.MealDetailVm.Add(mealDetailVm);
                 }
@@ -125,6 +126,7 @@ namespace Business.Concrete
                         Gram = item.Gram,
                         UnitCalorie = item.Product.UnitCalorie,
                         ProductType = item.Product.ProductType.ProductTypeName,
+                        Product = item.Product.ProductName
                     };
                     mealVm.MealDetailVm.Add(mealDetailVm);
                 }
@@ -154,6 +156,7 @@ namespace Business.Concrete
                     Gram = item.Gram,
                     UnitCalorie = item.Product.UnitCalorie,
                     ProductType = item.Product.ProductType.ProductTypeName,
+                    Product = item.Product.ProductName
                 };
                 mealVm.MealDetailVm.Add(mealDetailVm);
             }

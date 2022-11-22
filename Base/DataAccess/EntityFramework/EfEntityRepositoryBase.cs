@@ -38,16 +38,12 @@ namespace Base.DataAccess.EntityFramework
 
         public virtual TEntity Get(Expression<Func<TEntity, bool>> filter)
         {
-
             return context.Set<TEntity>().SingleOrDefault(filter);
-
         }
 
         public virtual List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
         {
-
             return filter == null ? context.Set<TEntity>().ToList() : context.Set<TEntity>().Where(filter).ToList();
-
         }
 
         public virtual void Update(TEntity entity)

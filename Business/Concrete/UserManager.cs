@@ -26,7 +26,7 @@ namespace Business.Concrete
             _userDal = userDal;
         }
 
-        
+
         public void ChangePassword(UserChangePasswordDTO userChangePassword)
         {
             User registeredUser = _userDal.Get(u => u.UserName == userChangePassword.UserName);
@@ -88,7 +88,7 @@ namespace Business.Concrete
             {
                 throw new LoginFailedException("Kullanıcı adı veya şifre hatalı.");
             }
-            if (HashingHelper.VerifyPasswordHash(user.Password, registeredUser.PasswordHash))
+            if (user.UserName != registeredUser.UserName || !(HashingHelper.VerifyPasswordHash(user.Password, registeredUser.PasswordHash)))
             {
                 throw new LoginFailedException("Kullanıcı adı veya şifre hatalı.");
             }

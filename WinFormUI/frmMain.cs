@@ -12,7 +12,7 @@ namespace WinFormUI
         public frmMain(UserVm userLogin)
         {
             InitializeComponent();
-            tssCurrentDate.Text = DateTime.Now.ToString("dd MMMM yyyy");
+            tssCurrentDate.Text = DateTime.Now.ToString("D");
             tssActiveUser.Text = userLogin.UserName;
             _userVm = userLogin;
         }
@@ -68,9 +68,9 @@ namespace WinFormUI
         {
             if (_frmAccount == null)
             {
-                _frmAccount = new(_userVm.UserName);
+                _frmAccount = new(_userVm.UserName)
                 {
-                    MdiParent = this;
+                    MdiParent = this
                 };
                 _frmAccount.Show();
             }

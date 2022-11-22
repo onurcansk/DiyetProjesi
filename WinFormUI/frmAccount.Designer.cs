@@ -136,6 +136,7 @@
             this.txtPassword2.Location = new System.Drawing.Point(172, 255);
             this.txtPassword2.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.txtPassword2.Name = "txtPassword2";
+            this.txtPassword2.PasswordChar = '*';
             this.txtPassword2.Size = new System.Drawing.Size(300, 27);
             this.txtPassword2.TabIndex = 0;
             // 
@@ -144,6 +145,7 @@
             this.txtCurrentPassword.Location = new System.Drawing.Point(172, 147);
             this.txtCurrentPassword.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.txtCurrentPassword.Name = "txtCurrentPassword";
+            this.txtCurrentPassword.PasswordChar = '*';
             this.txtCurrentPassword.Size = new System.Drawing.Size(300, 27);
             this.txtCurrentPassword.TabIndex = 0;
             // 
@@ -152,6 +154,7 @@
             this.txtPassword.Location = new System.Drawing.Point(172, 201);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(300, 27);
             this.txtPassword.TabIndex = 0;
             // 

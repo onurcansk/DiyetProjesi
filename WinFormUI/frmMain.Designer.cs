@@ -35,8 +35,8 @@
             this.btnAddMeal = new System.Windows.Forms.Button();
             this.btnMainPage = new System.Windows.Forms.Button();
             this.ssrMain = new System.Windows.Forms.StatusStrip();
-            this.tssActiveUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.tssCurrentDate = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssActiveUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblAppName = new System.Windows.Forms.Label();
             this.lblLogo = new System.Windows.Forms.Label();
             this.pnlNavItems = new System.Windows.Forms.Panel();
@@ -60,7 +60,7 @@
             this.pnlNavigation.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlNavigation.Location = new System.Drawing.Point(0, 0);
             this.pnlNavigation.Name = "pnlNavigation";
-            this.pnlNavigation.Size = new System.Drawing.Size(275, 450);
+            this.pnlNavigation.Size = new System.Drawing.Size(275, 438);
             this.pnlNavigation.TabIndex = 0;
             // 
             // btnClose
@@ -158,20 +158,13 @@
             this.ssrMain.BackColor = System.Drawing.Color.Transparent;
             this.ssrMain.Font = new System.Drawing.Font("ISOCPEUR", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ssrMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tssActiveUser,
-            this.tssCurrentDate});
-            this.ssrMain.Location = new System.Drawing.Point(0, 428);
+            this.tssCurrentDate,
+            this.tssActiveUser});
+            this.ssrMain.Location = new System.Drawing.Point(0, 416);
             this.ssrMain.Name = "ssrMain";
             this.ssrMain.Size = new System.Drawing.Size(275, 22);
             this.ssrMain.TabIndex = 1;
             this.ssrMain.Text = "statusStrip2";
-            // 
-            // tssActiveUser
-            // 
-            this.tssActiveUser.Name = "tssActiveUser";
-            this.tssActiveUser.Padding = new System.Windows.Forms.Padding(0, 0, 35, 0);
-            this.tssActiveUser.Size = new System.Drawing.Size(132, 17);
-            this.tssActiveUser.Text = "AKTİF KULLANICI";
             // 
             // tssCurrentDate
             // 
@@ -180,6 +173,13 @@
             this.tssCurrentDate.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
             this.tssCurrentDate.Size = new System.Drawing.Size(99, 17);
             this.tssCurrentDate.Text = "GÜNCEL TARİH";
+            // 
+            // tssActiveUser
+            // 
+            this.tssActiveUser.Name = "tssActiveUser";
+            this.tssActiveUser.Padding = new System.Windows.Forms.Padding(0, 0, 35, 0);
+            this.tssActiveUser.Size = new System.Drawing.Size(132, 17);
+            this.tssActiveUser.Text = "AKTİF KULLANICI";
             // 
             // lblAppName
             // 
@@ -210,14 +210,14 @@
             this.pnlNavItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlNavItems.Location = new System.Drawing.Point(275, 0);
             this.pnlNavItems.Name = "pnlNavItems";
-            this.pnlNavItems.Size = new System.Drawing.Size(650, 450);
+            this.pnlNavItems.Size = new System.Drawing.Size(638, 438);
             this.pnlNavItems.TabIndex = 2;
             // 
             // frmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(925, 450);
+            this.ClientSize = new System.Drawing.Size(913, 438);
             this.ControlBox = false;
             this.Controls.Add(this.pnlNavItems);
             this.Controls.Add(this.pnlNavigation);
@@ -225,8 +225,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.HelpButton = true;
             this.IsMdiContainer = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmMain";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kalori Takip Taslak";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.pnlNavigation.ResumeLayout(false);

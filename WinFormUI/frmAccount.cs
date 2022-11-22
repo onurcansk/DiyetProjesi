@@ -20,7 +20,7 @@ namespace WinFormUI
         {
             InitializeComponent();
             _userService = InstanceFactory.GetInstance<IUserService>();
-            lblMail.Text = userName;
+            txtMail.Text = userName;
             lblMail.Enabled = false;
         }
 
