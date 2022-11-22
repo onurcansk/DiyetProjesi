@@ -62,10 +62,17 @@ namespace WinFormUI
 
         private void FillLastMeal(string userName)
         {
-            MealVm lastMeal = _mealManager.GetLastMealByUserName(userName);
-            lblLastMealName.Text = lastMeal.MealType;
-            lblLastMealDate.Text = lastMeal.Date.ToString();
-            FillListView(lastMeal.MealDetailVm);
+            try
+            {
+                MealVm lastMeal = _mealManager.GetLastMealByUserName(userName);
+                lblLastMealName.Text = lastMeal.MealType;
+                lblLastMealDate.Text = lastMeal.Date.ToString();
+                FillListView(lastMeal.MealDetailVm);
+            }
+            catch (Exception ex)
+            {
+                
+            }
         }
 
         private void FillListView(List<MealDetailVm> mealDetails)

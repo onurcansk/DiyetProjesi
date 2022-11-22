@@ -13,7 +13,8 @@ namespace DataAccess.Concrete.EntityFramework.Context
     {
             protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             {
-                optionsBuilder.UseSqlServer(@"Data Source=.;Initial Catalog=KaloriTakip;Integrated Security=True");
+                optionsBuilder.UseLazyLoadingProxies().UseSqlServer(@"Data Source=.;Initial Catalog=KaloriTakip;Integrated Security=True"); 
+                
             }
             protected override void OnModelCreating(ModelBuilder modelBuilder)
             {

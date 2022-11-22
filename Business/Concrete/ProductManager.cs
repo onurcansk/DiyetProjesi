@@ -67,6 +67,7 @@ namespace Business.Concrete
                     UnitCalorie= item.UnitCalorie,
                     Image = item.Image,
                 };
+                productVmList.Add(productVm);
             }
 
             return productVmList;
