@@ -1,5 +1,6 @@
 ﻿using Business.Exceptions;
 using Entities.Concrete;
+using Entities.Dtos.Users;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Business.ValidationRules.FluentValidation
 {
-    public class UserValidator:AbstractValidator<User>
+    public class UserValidator:AbstractValidator<UserCreateDTO>
     {
         public UserValidator()
         {
@@ -17,9 +18,9 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(u => u.UserName).EmailAddress().WithMessage("Girilen kullanıcı adı mail değil.");
         }
 
-        private bool CheckAgeIfValid(DateTime? date)
+        private bool CheckAgeIfValid(DateTime date)
         {
-            int age = DateTime.Now.Year - date.Value.Year;
+            int age = DateTime.Now.Year - date.Year;
             return age >= 18 && age <= 25;        
         }
     }

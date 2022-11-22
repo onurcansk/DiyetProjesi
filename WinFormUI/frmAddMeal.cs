@@ -75,7 +75,7 @@ namespace WinFormUI
         {
             try
             {
-                List<MealVm> meals = _mealService.GetAllByExpression(m => m.CreatedDate == DateTime.Now && m.User.UserName == userName);
+                List<MealVm> meals = _mealService.GetAllByExpression(m => m.CreatedDate.Value.Day == DateTime.Now.Day && m.User.UserName == userName);
 
                 lstMeal.DataSource = meals;
             }

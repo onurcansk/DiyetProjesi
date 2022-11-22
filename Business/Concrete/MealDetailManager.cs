@@ -77,7 +77,7 @@ namespace Business.Concrete
                 };
                 mealDetailVms.Add(mealDetailVm);
             }
-
+            
             return mealDetailVms;
         }
 
