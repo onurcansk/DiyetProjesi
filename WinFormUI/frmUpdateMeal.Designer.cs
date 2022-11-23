@@ -32,8 +32,6 @@
             this.cmbProduct = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-            this.lblMealName = new System.Windows.Forms.Label();
-            this.lblMealDate = new System.Windows.Forms.Label();
             this.nmdGram = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.nmdGram)).BeginInit();
             this.SuspendLayout();
@@ -41,7 +39,7 @@
             // cmbCategory
             // 
             this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Location = new System.Drawing.Point(47, 103);
+            this.cmbCategory.Location = new System.Drawing.Point(49, 28);
             this.cmbCategory.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(163, 29);
@@ -52,7 +50,7 @@
             // cmbProduct
             // 
             this.cmbProduct.FormattingEnabled = true;
-            this.cmbProduct.Location = new System.Drawing.Point(47, 161);
+            this.cmbProduct.Location = new System.Drawing.Point(49, 86);
             this.cmbProduct.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbProduct.Name = "cmbProduct";
             this.cmbProduct.Size = new System.Drawing.Size(163, 29);
@@ -69,7 +67,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(251, 188);
+            this.btnSave.Location = new System.Drawing.Point(253, 113);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(95, 29);
@@ -88,7 +86,7 @@
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(251, 130);
+            this.btnClear.Location = new System.Drawing.Point(253, 55);
             this.btnClear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(95, 29);
@@ -97,28 +95,6 @@
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // lblMealName
-            // 
-            this.lblMealName.AutoSize = true;
-            this.lblMealName.BackColor = System.Drawing.Color.Transparent;
-            this.lblMealName.Font = new System.Drawing.Font("ISOCPEUR", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblMealName.Location = new System.Drawing.Point(140, 51);
-            this.lblMealName.Name = "lblMealName";
-            this.lblMealName.Size = new System.Drawing.Size(116, 31);
-            this.lblMealName.TabIndex = 2;
-            this.lblMealName.Text = "ÖĞÜN İSMİ";
-            // 
-            // lblMealDate
-            // 
-            this.lblMealDate.AutoSize = true;
-            this.lblMealDate.BackColor = System.Drawing.Color.Transparent;
-            this.lblMealDate.Font = new System.Drawing.Font("ISOCPEUR", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblMealDate.Location = new System.Drawing.Point(165, 9);
-            this.lblMealDate.Name = "lblMealDate";
-            this.lblMealDate.Size = new System.Drawing.Size(74, 31);
-            this.lblMealDate.TabIndex = 2;
-            this.lblMealDate.Text = "TARİH";
-            // 
             // nmdGram
             // 
             this.nmdGram.Increment = new decimal(new int[] {
@@ -126,7 +102,12 @@
             0,
             0,
             0});
-            this.nmdGram.Location = new System.Drawing.Point(47, 219);
+            this.nmdGram.Location = new System.Drawing.Point(49, 144);
+            this.nmdGram.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
             this.nmdGram.Name = "nmdGram";
             this.nmdGram.Size = new System.Drawing.Size(163, 27);
             this.nmdGram.TabIndex = 3;
@@ -136,10 +117,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = global::WinFormUI.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(400, 304);
+            this.ClientSize = new System.Drawing.Size(397, 208);
             this.Controls.Add(this.nmdGram);
-            this.Controls.Add(this.lblMealDate);
-            this.Controls.Add(this.lblMealName);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.cmbProduct);
@@ -154,7 +133,6 @@
             this.Text = "Öğün Düzenle";
             ((System.ComponentModel.ISupportInitialize)(this.nmdGram)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -163,8 +141,6 @@
         private ComboBox cmbProduct;
         private Button btnSave;
         private Button btnClear;
-        private Label lblMealName;
-        private Label lblMealDate;
         private NumericUpDown nmdGram;
     }
 }

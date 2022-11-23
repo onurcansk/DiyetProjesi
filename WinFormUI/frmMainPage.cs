@@ -1,18 +1,8 @@
 ﻿using Business.Abstract;
-using Business.Concrete;
 using Business.DependencyResolver.Autofac;
 using Entities.VMs.MealDetailVMs;
 using Entities.VMs.MealVMs;
-using Entities.VMs.UserVMs;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace WinFormUI
 {
@@ -37,11 +27,11 @@ namespace WinFormUI
             && x.CreatedDate.Value.Year == DateTime.Now.Year
             && x.UserName == userName);
 
-            lblDailyReportMealCount.Text = dailyMeals.Count.ToString();
+            lblDailyReportMealCount.Text = "Öğün Sayısı : " + dailyMeals.Count.ToString();
 
-            lblDailyReportFoodCount.Text = CountFoodFromMealList(dailyMeals).ToString();
+            lblDailyReportFoodCount.Text = "Yemek Sayısı : " + CountFoodFromMealList(dailyMeals).ToString();
 
-            lblDailyReportTotalCalorie.Text = CalculateTotalCalorieForMeals(dailyMeals).ToString();
+            lblDailyReportTotalCalorie.Text = "Toplam Kalori : " + CalculateTotalCalorieForMeals(dailyMeals).ToString();
 
         }
 
@@ -55,7 +45,7 @@ namespace WinFormUI
                     totalCal += food.UnitCalorie * food.Gram;
                 }
             }
-            return totalCal == null ? 0 : totalCal.Value;
+            return totalCal == null ? 0 : Math.Round(totalCal.Value, 2);
         }
 
         private int CountFoodFromMealList(List<MealVm> dailyMeals)
@@ -87,7 +77,11 @@ namespace WinFormUI
         {
             foreach (var food in mealDetails)
             {
-                string[] mealDetail = { food.ProductType, food.Product, food.Gram.ToString(), (food.Gram * food.UnitCalorie).ToString() };
+                string[] mealDetail = {
+                    food.ProductType,
+                    food.Product,
+                    food.Gram.ToString(),
+                    Math.Round((decimal)(food.Gram * food.UnitCalorie),2).ToString() };
                 var newRow = new ListViewItem(mealDetail);
                 lswLastFoods.Items.Add(newRow);
             }
@@ -100,13 +94,13 @@ namespace WinFormUI
             }
             catch (Exception)
             {
-                MessageBox.Show("Web sayfası açılamadı");
+                MessageBox.Show("Site bağlantı hatası.");
             }
         }
         private void OpenWebPage()
         {
             llbWebPage.LinkVisited = true;
-            System.Diagnostics.Process.Start("http://localhost:3000");
+            System.Diagnostics.Process.Start(new ProcessStartInfo { FileName = @"http://localhost:3000", UseShellExecute = true });
         }
     }
 }

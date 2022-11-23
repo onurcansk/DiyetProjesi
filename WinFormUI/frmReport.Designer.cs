@@ -31,20 +31,21 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtpDay = new System.Windows.Forms.DateTimePicker();
             this.dgvMealView = new System.Windows.Forms.DataGridView();
+            this.lblDailyCalorie = new System.Windows.Forms.Label();
+            this.lblCalorieValue = new System.Windows.Forms.Label();
+            this.btnGetReport = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDeleteProduct = new System.Windows.Forms.Button();
+            this.lstMealType = new System.Windows.Forms.ListBox();
+            this.lblMealCalorie = new System.Windows.Forms.Label();
+            this.lblMealCalorieValue = new System.Windows.Forms.Label();
+            this.btnDeleteMeal = new System.Windows.Forms.Button();
             this.clmCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmFood = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmImg = new System.Windows.Forms.DataGridViewImageColumn();
             this.clmPiece = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmCalorie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblDailyCalorie = new System.Windows.Forms.Label();
-            this.lblCalorieValue = new System.Windows.Forms.Label();
-            this.btnGetReport = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.lstMealType = new System.Windows.Forms.ListBox();
-            this.lblMealCalorie = new System.Windows.Forms.Label();
-            this.lblMealCalorieValue = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMealView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,6 +65,7 @@
             // 
             // dgvMealView
             // 
+            this.dgvMealView.AllowUserToAddRows = false;
             this.dgvMealView.AllowUserToDeleteRows = false;
             this.dgvMealView.AllowUserToOrderColumns = true;
             this.dgvMealView.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -77,7 +79,7 @@
             this.clmPiece,
             this.clmCalorie,
             this.clmID});
-            this.dgvMealView.Location = new System.Drawing.Point(193, 80);
+            this.dgvMealView.Location = new System.Drawing.Point(196, 80);
             this.dgvMealView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvMealView.MultiSelect = false;
             this.dgvMealView.Name = "dgvMealView";
@@ -93,55 +95,13 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvMealView.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvMealView.RowHeadersVisible = false;
             this.dgvMealView.RowHeadersWidth = 40;
             this.dgvMealView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvMealView.RowTemplate.Height = 25;
+            this.dgvMealView.RowTemplate.Height = 40;
             this.dgvMealView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMealView.Size = new System.Drawing.Size(422, 294);
+            this.dgvMealView.Size = new System.Drawing.Size(441, 294);
             this.dgvMealView.TabIndex = 3;
-            // 
-            // clmCategory
-            // 
-            this.clmCategory.HeaderText = "Kategori";
-            this.clmCategory.Name = "clmCategory";
-            this.clmCategory.ReadOnly = true;
-            this.clmCategory.Width = 90;
-            // 
-            // clmFood
-            // 
-            this.clmFood.HeaderText = "Yemek";
-            this.clmFood.Name = "clmFood";
-            this.clmFood.ReadOnly = true;
-            this.clmFood.Width = 130;
-            // 
-            // clmImg
-            // 
-            this.clmImg.HeaderText = "Resim";
-            this.clmImg.Name = "clmImg";
-            this.clmImg.ReadOnly = true;
-            this.clmImg.Width = 50;
-            // 
-            // clmPiece
-            // 
-            this.clmPiece.HeaderText = "Porsiyon";
-            this.clmPiece.Name = "clmPiece";
-            this.clmPiece.ReadOnly = true;
-            this.clmPiece.Width = 55;
-            // 
-            // clmCalorie
-            // 
-            this.clmCalorie.HeaderText = "Kalori";
-            this.clmCalorie.Name = "clmCalorie";
-            this.clmCalorie.ReadOnly = true;
-            this.clmCalorie.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clmCalorie.Width = 55;
-            // 
-            // clmID
-            // 
-            this.clmID.HeaderText = "ID";
-            this.clmID.Name = "clmID";
-            this.clmID.ReadOnly = true;
-            this.clmID.Visible = false;
             // 
             // lblDailyCalorie
             // 
@@ -193,40 +153,42 @@
             this.btnUpdate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.btnUpdate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnUpdate.Font = new System.Drawing.Font("ISOCPEUR", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(478, 397);
+            this.btnUpdate.Location = new System.Drawing.Point(313, 400);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 35);
+            this.btnUpdate.Size = new System.Drawing.Size(96, 35);
             this.btnUpdate.TabIndex = 4;
             this.btnUpdate.Text = "Düzenle";
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // btnDelete
+            // btnDeleteProduct
             // 
-            this.btnDelete.BackColor = System.Drawing.Color.Red;
-            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnDelete.FlatAppearance.BorderSize = 0;
-            this.btnDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.btnDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("ISOCPEUR", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(580, 397);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(35, 35);
-            this.btnDelete.TabIndex = 5;
-            this.btnDelete.Text = "X";
-            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDeleteProduct.BackColor = System.Drawing.Color.Red;
+            this.btnDeleteProduct.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDeleteProduct.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnDeleteProduct.FlatAppearance.BorderSize = 0;
+            this.btnDeleteProduct.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btnDeleteProduct.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btnDeleteProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteProduct.Font = new System.Drawing.Font("ISOCPEUR", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnDeleteProduct.ForeColor = System.Drawing.Color.White;
+            this.btnDeleteProduct.Location = new System.Drawing.Point(541, 400);
+            this.btnDeleteProduct.Margin = new System.Windows.Forms.Padding(5, 4, 3, 4);
+            this.btnDeleteProduct.Name = "btnDeleteProduct";
+            this.btnDeleteProduct.Size = new System.Drawing.Size(96, 35);
+            this.btnDeleteProduct.TabIndex = 5;
+            this.btnDeleteProduct.Text = "Yemek Sil";
+            this.btnDeleteProduct.UseVisualStyleBackColor = false;
+            this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
             // 
             // lstMealType
             // 
             this.lstMealType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.lstMealType.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lstMealType.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lstMealType.ForeColor = System.Drawing.Color.White;
             this.lstMealType.FormattingEnabled = true;
             this.lstMealType.ItemHeight = 21;
@@ -257,14 +219,77 @@
             this.lblMealCalorieValue.Size = new System.Drawing.Size(0, 24);
             this.lblMealCalorieValue.TabIndex = 2;
             // 
+            // btnDeleteMeal
+            // 
+            this.btnDeleteMeal.BackColor = System.Drawing.Color.Red;
+            this.btnDeleteMeal.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDeleteMeal.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnDeleteMeal.FlatAppearance.BorderSize = 0;
+            this.btnDeleteMeal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btnDeleteMeal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
+            this.btnDeleteMeal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteMeal.Font = new System.Drawing.Font("ISOCPEUR", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnDeleteMeal.ForeColor = System.Drawing.Color.White;
+            this.btnDeleteMeal.Location = new System.Drawing.Point(427, 400);
+            this.btnDeleteMeal.Margin = new System.Windows.Forms.Padding(5, 4, 3, 4);
+            this.btnDeleteMeal.Name = "btnDeleteMeal";
+            this.btnDeleteMeal.Size = new System.Drawing.Size(96, 35);
+            this.btnDeleteMeal.TabIndex = 5;
+            this.btnDeleteMeal.Text = "Öğün Sil";
+            this.btnDeleteMeal.UseVisualStyleBackColor = false;
+            this.btnDeleteMeal.Click += new System.EventHandler(this.btnDeleteMeal_Click);
+            // 
+            // clmCategory
+            // 
+            this.clmCategory.HeaderText = "Kategori";
+            this.clmCategory.Name = "clmCategory";
+            this.clmCategory.ReadOnly = true;
+            // 
+            // clmFood
+            // 
+            this.clmFood.HeaderText = "Yemek";
+            this.clmFood.Name = "clmFood";
+            this.clmFood.ReadOnly = true;
+            this.clmFood.Width = 130;
+            // 
+            // clmImg
+            // 
+            this.clmImg.HeaderText = "Resim";
+            this.clmImg.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.clmImg.Name = "clmImg";
+            this.clmImg.ReadOnly = true;
+            // 
+            // clmPiece
+            // 
+            this.clmPiece.HeaderText = "Gram";
+            this.clmPiece.Name = "clmPiece";
+            this.clmPiece.ReadOnly = true;
+            this.clmPiece.Width = 55;
+            // 
+            // clmCalorie
+            // 
+            this.clmCalorie.HeaderText = "Kalori";
+            this.clmCalorie.Name = "clmCalorie";
+            this.clmCalorie.ReadOnly = true;
+            this.clmCalorie.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clmCalorie.Width = 55;
+            // 
+            // clmID
+            // 
+            this.clmID.HeaderText = "ID";
+            this.clmID.Name = "clmID";
+            this.clmID.ReadOnly = true;
+            this.clmID.Visible = false;
+            // 
             // frmReport
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = global::WinFormUI.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(650, 450);
+            this.ClientSize = new System.Drawing.Size(675, 450);
             this.Controls.Add(this.lstMealType);
-            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnDeleteMeal);
+            this.Controls.Add(this.btnDeleteProduct);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnGetReport);
             this.Controls.Add(this.lblMealCalorieValue);
@@ -277,6 +302,8 @@
             this.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximumSize = new System.Drawing.Size(675, 450);
+            this.MinimumSize = new System.Drawing.Size(675, 450);
             this.Name = "frmReport";
             this.Text = "frmReport";
             ((System.ComponentModel.ISupportInitialize)(this.dgvMealView)).EndInit();
@@ -293,10 +320,11 @@
         private Label lblCalorieValue;
         private Button btnGetReport;
         private Button btnUpdate;
-        private Button btnDelete;
+        private Button btnDeleteProduct;
         private ListBox lstMealType;
         private Label lblMealCalorie;
         private Label lblMealCalorieValue;
+        private Button btnDeleteMeal;
         private DataGridViewTextBoxColumn clmCategory;
         private DataGridViewTextBoxColumn clmFood;
         private DataGridViewImageColumn clmImg;

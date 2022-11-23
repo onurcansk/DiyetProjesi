@@ -12,7 +12,7 @@ namespace WinFormUI
         public frmMain(UserVm userLogin)
         {
             InitializeComponent();
-            lblCurrentDate.Text ="Tarih : " + DateTime.Now.ToString("D");
+            lblCurrentDate.Text = "Tarih : " + DateTime.Now.ToString("D");
             lblActiveUser.Text = "Kullanýcý : " + userLogin.UserName;
             _userVm = userLogin;
         }
@@ -25,25 +25,28 @@ namespace WinFormUI
             };
             _frmMainPage.Show();
             pnlNavItems.Controls.Add(_frmMainPage);
-
+            _frmMainPage.Dock = DockStyle.Fill;
         }
 
         private void btnMainPage_Click(object sender, EventArgs e)
         {
+            _frmMainPage = new frmMainPage(_userVm.UserName)
+            {
+                MdiParent = this
+            };
+            _frmMainPage.Show();
             pnlNavItems.Controls.Clear();
             pnlNavItems.Controls.Add(_frmMainPage);
+            _frmMainPage.Dock = DockStyle.Fill;
         }
 
         private void btnAddMeal_Click(object sender, EventArgs e)
         {
-            if (_frmAddMeal == null)
+            _frmAddMeal = new(_userVm.UserName)
             {
-                _frmAddMeal = new(_userVm.UserName)
-                {
-                    MdiParent = this,
-                };
-                _frmAddMeal.Show();
-            }
+                MdiParent = this,
+            };
+            _frmAddMeal.Show();
             pnlNavItems.Controls.Clear();
             pnlNavItems.Controls.Add(_frmAddMeal);
             _frmAddMeal.Dock = DockStyle.Fill;
@@ -70,14 +73,11 @@ namespace WinFormUI
 
         private void btnUpdateMeal_Click(object sender, EventArgs e)
         {
-            if (_frmReport == null)
+            _frmReport = new(_userVm.UserName)
             {
-                _frmReport = new(_userVm.UserName)
-                {
-                    MdiParent = this
-                };
-                _frmReport.Show();
-            }
+                MdiParent = this
+            };
+            _frmReport.Show();
             pnlNavItems.Controls.Clear();
             pnlNavItems.Controls.Add(_frmReport);
             _frmReport.Dock = DockStyle.Fill;

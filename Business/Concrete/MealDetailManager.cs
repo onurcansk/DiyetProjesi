@@ -125,7 +125,8 @@ namespace Business.Concrete
                 MealType = mealDetail.Meal.MealType.TypeName,
                 Product = mealDetail.Product.ProductName,
                 UnitCalorie = mealDetail.Product.UnitCalorie,
-                Image = mealDetail.Product.Image
+                Image = mealDetail.Product.Image,
+                ProductType = mealDetail.Product.ProductType.ProductTypeName
             };
             getByIdTuple.Item2.Dispose();
             return mealDetailVm;
@@ -157,7 +158,7 @@ namespace Business.Concrete
         {
             MealDetail updatedMealDetail = _mealDetailDal.Get(md => md.Id == mealDetail.Id).Item1;
             if (mealDetail.Gram != null && mealDetail.Gram != updatedMealDetail.Gram) updatedMealDetail.Gram = mealDetail.Gram;
-            if (updatedMealDetail.Product.ProductName == mealDetail.ProductName)
+            if (updatedMealDetail.Product.ProductName != mealDetail.ProductName)
             {
                 ProductVm product = _productService.GetByName(mealDetail.ProductName);
                 updatedMealDetail.ProductId = product.Id;

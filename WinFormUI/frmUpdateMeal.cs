@@ -24,34 +24,43 @@ namespace WinFormUI
         IProductService _productService;
         IProductTypeService _productTypeService;
         MealDetailVm _mealDetail;
-        List<ProductVm> products;
-        List<ProductTypeVm> categories;
         public frmUpdateMeal(MealDetailVm mealDetail)
         {
             InitializeComponent();
+
             this._mealDetail = mealDetail;
+
             _mealDetailService = InstanceFactory.GetInstance<IMealDetailService>();
             _productService = InstanceFactory.GetInstance<IProductService>();
             _productTypeService = InstanceFactory.GetInstance<IProductTypeService>();
-            categories = _productTypeService.GetAll();
-            products = _productService.GetAllByExpression(x => x.ProductType.ProductTypeName == mealDetail.ProductType);
-            InitializeFoodData();
+
+            FillCategoryComboBox();
+            FillProductComboBox();
+
             FillFoodDatas(_mealDetail);
         }
 
-        private void InitializeFoodData()
+        private void FillProductComboBox(ProductTypeVm category = null)
         {
-            foreach (var product in products)
+            if (category == null)
             {
-                cmbProduct.Items.Add(product);
+                cmbProduct.DataSource = _productService.GetAll();
             }
-            FillProducts(products);
+            else
+            {
+                cmbProduct.DataSource = _productService.GetAllByExpression(x => x.ProductType.ProductTypeName == category.ProductTypeName);
+            }
+        }
+
+        private void FillCategoryComboBox()
+        {
+            cmbCategory.DataSource = _productTypeService.GetAll();
         }
 
         private void FillFoodDatas(MealDetailVm mealDetail)
         {
-            cmbCategory.SelectedValue = mealDetail.ProductType;
-            cmbProduct.SelectedValue = mealDetail.Product;
+            cmbCategory.SelectedIndex = cmbCategory.FindStringExact(mealDetail.ProductType);
+            cmbProduct.SelectedIndex = cmbProduct.FindStringExact(mealDetail.Product);
             nmdGram.Value = (decimal)mealDetail.Gram;
         }
 
@@ -83,24 +92,10 @@ namespace WinFormUI
 
         private void cmbCategory_SelectedValueChanged(object sender, EventArgs e)
         {
-            try
-            {
-                products = _productService.GetAllByExpression(x => x.ProductType.ProductTypeName == cmbCategory.SelectedText);
-                FillProducts(products);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            ProductTypeVm category = (ProductTypeVm)cmbCategory.SelectedItem;
+            FillProductComboBox(category);
         }
 
-        private void FillProducts(List<ProductVm> products)
-        {
-            cmbProduct.Items.Clear();
-            foreach(var product in products)
-            {
-                cmbProduct.Items.Add(product);
-            }
-        }
+
     }
 }
