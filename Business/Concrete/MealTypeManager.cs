@@ -23,7 +23,7 @@ namespace Business.Concrete
         }
 
         [SecuredOperation(UserClaims.Admin)]
-        [ValidationAspect(typeof(ProductTypeValidator))]
+        [ValidationAspect(typeof(ProductTypeCreateValidator))]
         public void Add(MealTypeCreateDto mealType)
         {
             MealType newMealType = new MealType()
@@ -37,18 +37,20 @@ namespace Business.Concrete
         [SecuredOperation(UserClaims.Admin)]
         public void Delete(int id)
         {
-            MealType mealType = _mealTypeDal.Get(pt => pt.Id == id);
+            var getMealTypeTuple = _mealTypeDal.Get(pt => pt.Id == id);
+            MealType mealType = getMealTypeTuple.Item1;
             if (mealType == null)
             {
                 throw new IdNotFoundException("Girilen Idye ait bir öğün tipi bulunamadı");
             }
-
+            getMealTypeTuple.Item2.Dispose();
             _mealTypeDal.Delete(mealType);
         }
 
         public List<MealTypeVm> GetAll()
         {
-            List<MealType> mealTypes = _mealTypeDal.GetAll();
+            var mealTypeGetAllTuple = _mealTypeDal.GetAll();
+            List<MealType> mealTypes = mealTypeGetAllTuple.Item1;
             List<MealTypeVm> MealTypeVmList = new List<MealTypeVm>();
 
             foreach (MealType item in mealTypes)
@@ -60,13 +62,14 @@ namespace Business.Concrete
                 };
                 MealTypeVmList.Add(productTypeVm);
             }
-
+            mealTypeGetAllTuple.Item2.Dispose();
             return MealTypeVmList;
         }
 
         public List<MealTypeVm> GetAllByExpression(Expression<Func<MealType, bool>> expression)
         {
-            List<MealType> mealTypes = _mealTypeDal.GetAll(expression);
+            var mealTypeGetAllTuple = _mealTypeDal.GetAll(expression);
+            List<MealType> mealTypes = mealTypeGetAllTuple.Item1;
             List<MealTypeVm> MealTypeVmList = new List<MealTypeVm>();
 
             foreach (MealType item in mealTypes)
@@ -77,13 +80,14 @@ namespace Business.Concrete
                 };
                 MealTypeVmList.Add(productTypeVm);
             }
-
+            mealTypeGetAllTuple.Item2.Dispose();
             return MealTypeVmList;
         }
 
         public MealTypeVm GetById(int id)
         {
-            MealType mealType = _mealTypeDal.Get(pt => pt.Id == id);
+            var getMealTypeTuple = _mealTypeDal.Get(pt => pt.Id == id);
+            MealType mealType = getMealTypeTuple.Item1;
             if (mealType == null)
             {
                 throw new IdNotFoundException("Girilen Idye ait bir öğün tipi bulunamadı");
@@ -93,13 +97,14 @@ namespace Business.Concrete
             {
                  MealTypeName= mealType.TypeName
             };
-
+            getMealTypeTuple.Item2.Dispose();
             return mealTypeVm;
         }
 
         public MealTypeVm GetByName(string TypeName)
         {
-            MealType mealType = _mealTypeDal.Get(pt => pt.TypeName == TypeName);
+            var getMealTypeTuple =_mealTypeDal.Get(pt => pt.TypeName == TypeName);
+            MealType mealType = getMealTypeTuple.Item1;
             if (mealType == null)
             {
                 throw new IdNotFoundException("Girilen Idye ait bir öğün tipi bulunamadı");
@@ -110,12 +115,12 @@ namespace Business.Concrete
                 Id = mealType.Id,
                 MealTypeName = mealType.TypeName
             };
-
+            getMealTypeTuple.Item2.Dispose();
             return mealTypeVm;
         }
 
         [SecuredOperation(UserClaims.Admin)]
-        [ValidationAspect(typeof(ProductTypeValidator))]
+        [ValidationAspect(typeof(ProductTypeUpdateValidator))]
         public void Update(MealTypeUpdateDto mealType)
         {
             MealType mealTypeUpdated = new MealType()

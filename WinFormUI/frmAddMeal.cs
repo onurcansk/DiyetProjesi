@@ -75,7 +75,6 @@ namespace WinFormUI
         {
             try
             {
-                _mealService = InstanceFactory.GetInstance<IMealService>();
                 List<MealVm> meals = _mealService.GetAllByExpression(m => m.CreatedDate.Value.Day == DateTime.Now.Day && m.User.UserName == userName);
 
                 lstMeal.DataSource = meals;
@@ -95,7 +94,7 @@ namespace WinFormUI
 
         private void FillDataGridView(int mealId)
         {
-            _mealService = InstanceFactory.GetInstance<IMealService>();
+            //Instance factory silindi.
             MealVm meal = _mealService.Get(mealId);
             dgvDailyReport.Rows.Clear();
             foreach (var food in meal.MealDetailVm)

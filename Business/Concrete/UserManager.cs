@@ -26,10 +26,11 @@ namespace Business.Concrete
             _userDal = userDal;
         }
 
-
+        [ValidationAspect(typeof(UserUpdateValidator))]
         public void ChangePassword(UserChangePasswordDTO userChangePassword)
         {
-            User registeredUser = _userDal.Get(u => u.UserName == userChangePassword.UserName);
+            var getUserTuple = _userDal.Get(u => u.UserName == userChangePassword.UserName);
+            User registeredUser = getUserTuple.Item1;
             if (registeredUser == null)
             {
                 throw new LoginFailedException("Kullanıcı adı veya şifre hatalı.");
@@ -43,6 +44,7 @@ namespace Business.Concrete
             byte[] newHashedPassword;
             HashingHelper.CreatePasswordHash(userChangePassword.NewPassword, out newHashedPassword);
             registeredUser.PasswordHash = newHashedPassword;
+            getUserTuple.Item2.Dispose();
             _userDal.Update(registeredUser);
 
         }
@@ -50,7 +52,8 @@ namespace Business.Concrete
         [SecuredOperation(UserClaims.Admin)]
         public UserVm Get(string id)
         {
-            User user = _userDal.Get(u => u.UserName == id);
+            var getUserTuple = _userDal.Get(u => u.UserName == id);
+            User user = getUserTuple.Item1;
             UserVm userVm = new UserVm()
             {
                 UserName = user.UserName,
@@ -58,13 +61,15 @@ namespace Business.Concrete
                 RegisterDate = user.RegisterTime,
                 BirthDate = user.BirthDate
             };
+            getUserTuple.Item2.Dispose();
             return userVm;
         }
 
         [SecuredOperation(UserClaims.Admin)]
         public List<UserVm> GetAll()
         {
-            List<User> userList = _userDal.GetAll();
+            var getAllUserTuple = _userDal.GetAll();
+            List<User> userList = getAllUserTuple.Item1;
             List<UserVm> userVmList = new List<UserVm>();
             foreach (User item in userList)
             {
@@ -77,13 +82,14 @@ namespace Business.Concrete
                 };
                 userVmList.Add(userVm);
             }
-
+            getAllUserTuple.Item2.Dispose();
             return userVmList;
         }
 
         public UserVm Login(UserLoginDTO user)
         {
-            User registeredUser = _userDal.Get(u => u.UserName == user.UserName);
+            var getUserTuple = _userDal.Get(u => u.UserName == user.UserName);
+            User registeredUser = getUserTuple.Item1;
             if (registeredUser == null)
             {
                 throw new LoginFailedException("Kullanıcı adı veya şifre hatalı.");
@@ -98,14 +104,15 @@ namespace Business.Concrete
                 UserClaim = registeredUser.UserClaim,
                 UserName = registeredUser.UserName,
             };
-
+            getUserTuple.Item2.Dispose();
             return userVm;
         }
 
-        [ValidationAspect(typeof(UserValidator))]
+        [ValidationAspect(typeof(UserCreateValidator))]
         public void Register(UserCreateDTO user)
         {
-            if (_userDal.Get(u => u.UserName == user.UserName) != null)
+            var getUserTuple = _userDal.Get(u => u.UserName == user.UserName);
+            if (getUserTuple.Item1!= null)
             {
                 throw new AlreadyExistsException("Bu kullanıcı adı daha önce alınmış");
             }
@@ -120,7 +127,7 @@ namespace Business.Concrete
                 RegisterTime = DateTime.Now,
                 UserClaim = UserClaims.User
             };
-
+            getUserTuple.Item2.Dispose();
             _userDal.Add(newUser);
         }
 

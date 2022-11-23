@@ -1,5 +1,7 @@
-﻿using Business.Abstract;
+﻿using Base.Aspects.Autofac.Validation;
+using Business.Abstract;
 using Business.Exceptions;
+using Business.ValidationRules.FluentValidation;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.Dtos.Product;
@@ -19,11 +21,12 @@ namespace Business.Concrete
             _productDal = productDal;
             _productTypeService = productTypeService;
         }
-
+        [ValidationAspect(typeof(ProductCreateValidator))]
         public void Add(ProductCreateDTO product)
         {
+            var getProductTuple = _productDal.Get(p => p.ProductName == product.ProductName);
             ProductTypeVm productType = _productTypeService.GetByName(product.ProductName);          
-            Product existsProduct = _productDal.Get(p => p.ProductName == product.ProductName);
+            Product existsProduct = getProductTuple.Item1;
             if(existsProduct != null)
             {
                 throw new AlreadyExistsException("Girilen ürün zaten mevcut");
@@ -39,23 +42,27 @@ namespace Business.Concrete
                 Image = product.Image,
             };
 
+            getProductTuple.Item2.Dispose();
             _productDal.Add(newProduct);
         }
 
         public void Delete(int id)
         {
-            Product product = _productDal.Get(p => p.Id == id);
+            var getProductTuple = _productDal.Get(p => p.Id == id);
+            Product product = getProductTuple.Item1;
             if (product ==null)
             {
                 throw new IdNotFoundException("Silinmeye çalışılan id ye ait ürün bulunamadı");
             }
 
+            getProductTuple.Item2.Dispose();
             _productDal.Delete(product);
         }
 
         public List<ProductVm> GetAll()
         {
-            List<Product> products = _productDal.GetAll();
+            var getAllTuple = _productDal.GetAll();
+            List<Product> products = getAllTuple.Item1;
             List<ProductVm> productVmList = new List<ProductVm>();
             foreach (Product item in products)
             {
@@ -70,12 +77,14 @@ namespace Business.Concrete
                 productVmList.Add(productVm);
             }
 
+            getAllTuple.Item2.Dispose();
             return productVmList;
         }
 
         public List<ProductVm> GetAllByExpression(Expression<Func<Product, bool>> expression)
         {
-            List<Product> products = _productDal.GetAll(expression);
+            var getAllTuple = _productDal.GetAll(expression);
+            List<Product> products = getAllTuple.Item1;
             List<ProductVm> productVmList = new List<ProductVm>();
             foreach (Product item in products)
             {
@@ -90,13 +99,15 @@ namespace Business.Concrete
                 productVmList.Add(productVm);
             }
 
+            getAllTuple.Item2.Dispose();
             return productVmList;
         }
 
         public ProductVm GetById(int id)
         {
-            Product product = _productDal.Get(p => p.Id == id);
-            if(product == null)
+            var getProductTuple = _productDal.Get(p => p.Id == id);
+            Product product = getProductTuple.Item1;
+            if (product == null)
             {
                 throw new IdNotFoundException("Girilen id ye ait ürün bulunamadı.");
             }
@@ -110,13 +121,15 @@ namespace Business.Concrete
                 Image = product.Image,
             };
 
+            getProductTuple.Item2.Dispose();
             return productVm;
 
         }
 
         public ProductVm GetByName(string name)
         {
-            Product product = _productDal.Get(p => p.ProductName == name);
+            var getProductTuple = _productDal.Get(p => p.ProductName == name);
+            Product product = getProductTuple.Item1;
             if (product == null)
             {
                 throw new IdNotFoundException("Girilen id ye ait ürün bulunamadı.");
@@ -131,14 +144,16 @@ namespace Business.Concrete
                 Image = product.Image
             };
 
+            getProductTuple.Item2.Dispose();
             return productVm;
         }
-
+        [ValidationAspect(typeof(ProductUpdateValidator))]
         public void Update(ProductUpdateDTO product)
         {
-            Product updatedProduct = _productDal.Get(p=>p.Id==product.Id);
+            var getProductTuple = _productDal.Get(p => p.Id == product.Id);
+            Product updatedProduct = getProductTuple.Item1;
 
-            if(updatedProduct == null)
+            if (updatedProduct == null)
             {
                 throw new IdNotFoundException("Güncellenmek istenilen ürünün idsi bulunamadı");
             }
@@ -157,6 +172,7 @@ namespace Business.Concrete
                 updatedProduct.UnitCalorie = product.UnitCalorie;
             }
 
+            getProductTuple.Item2.Dispose();
             _productDal.Update(updatedProduct);
         }
     }

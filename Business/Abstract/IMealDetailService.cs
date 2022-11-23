@@ -2,6 +2,7 @@
 using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
 using Entities.Concrete;
 using Entities.Dtos.MealDetails;
+using Entities.VMs;
 using Entities.VMs.MealDetailVMs;
 using System;
 using System.Collections.Generic;

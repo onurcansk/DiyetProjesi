@@ -1,4 +1,5 @@
 ﻿using Base.DataAccess;
+using DataAccess.Concrete.EntityFramework.Context;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IUserDal : IEntityRepository<User>
+    public interface IUserDal : IEntityRepository<User, DietContext>
     {
     }
 }

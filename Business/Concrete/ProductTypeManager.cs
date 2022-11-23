@@ -20,7 +20,7 @@ namespace Business.Concrete
             _productTypeDal = productTypeDal;
         }
         [SecuredOperation(UserClaims.Admin)]
-        [ValidationAspect(typeof(ProductTypeValidator))]
+        [ValidationAspect(typeof(ProductTypeCreateValidator))]
         public void Add(ProductTypeCreateDto productType)
         {
             ProductType newProductType = new ProductType()
@@ -34,18 +34,21 @@ namespace Business.Concrete
         [SecuredOperation(UserClaims.Admin)]
         public void Delete(int id)
         {
-            ProductType productType = _productTypeDal.Get(pt => pt.Id == id);
+            var getProductTypeTuple = _productTypeDal.Get(pt => pt.Id == id);
+            ProductType productType = getProductTypeTuple.Item1;
             if (productType == null)
             {
                 throw new IdNotFoundException("Girilen Idye ait bir ürün tipi bulunamadı");
             }
 
+            getProductTypeTuple.Item2.Dispose();
             _productTypeDal.Delete(productType);
         }
 
         public ProductTypeVm Get(int id)
         {
-            ProductType productType = _productTypeDal.Get(pt => pt.Id == id);
+            var getProductTypeTuple = _productTypeDal.Get(pt => pt.Id == id);
+            ProductType productType = getProductTypeTuple.Item1;
             if (productType == null)
             {
                 throw new IdNotFoundException("Girilen Idye ait bir ürün tipi bulunamadı");
@@ -55,13 +58,14 @@ namespace Business.Concrete
             {
                 ProductTypeName = productType.ProductTypeName
             };
-
+            getProductTypeTuple.Item2.Dispose();
             return productTypeVm;
         }
 
         public List<ProductTypeVm> GetAll()
         {
-            List<ProductType> productTypes = _productTypeDal.GetAll();
+            var getAllProductTypeTuple = _productTypeDal.GetAll();
+            List<ProductType> productTypes = getAllProductTypeTuple.Item1;
             List<ProductTypeVm> ProductTypeVmList = new List<ProductTypeVm>();
 
             foreach (ProductType item in productTypes)
@@ -73,12 +77,14 @@ namespace Business.Concrete
                 ProductTypeVmList.Add(productTypeVm);
             }
 
+            getAllProductTypeTuple.Item2.Dispose();
             return ProductTypeVmList;
         }
 
         public List<ProductTypeVm> GetAllByExpression(Expression<Func<ProductType, bool>> expression)
         {
-            List<ProductType> productTypes = _productTypeDal.GetAll(expression);
+            var getAllProductTypeTuple = _productTypeDal.GetAll(expression);
+            List<ProductType> productTypes = getAllProductTypeTuple.Item1;
             List<ProductTypeVm> ProductTypeVmList = new List<ProductTypeVm>();
 
             foreach (ProductType item in productTypes)
@@ -89,14 +95,15 @@ namespace Business.Concrete
                 };
                 ProductTypeVmList.Add(productTypeVm);
             }
-
+            getAllProductTypeTuple.Item2.Dispose();
             return ProductTypeVmList;
         }
 
         public ProductTypeVm GetByName(string name)
         {
-            ProductType productType = _productTypeDal.Get(p=>p.ProductTypeName==name);
-            if(productType == null)
+            var getProductTypeTuple = _productTypeDal.Get(p => p.ProductTypeName == name);
+            ProductType productType = getProductTypeTuple.Item1;
+            if (productType == null)
             {
                 throw new NotFoundException("Gönderilen isme ait ürün tipi bulunamadı.");
             }
@@ -105,11 +112,12 @@ namespace Business.Concrete
                 Id = productType.Id,
                 ProductTypeName = productType.ProductTypeName
             };
+            getProductTypeTuple.Item2.Dispose();
             return productTypeVm;
         }
 
         [SecuredOperation(UserClaims.Admin)]
-        [ValidationAspect(typeof(ProductTypeValidator))]
+        [ValidationAspect(typeof(ProductTypeUpdateValidator))]
         public void Update(ProductTypeUpdateDto productType)
         {
             ProductType productTypeUpdated = new ProductType()
