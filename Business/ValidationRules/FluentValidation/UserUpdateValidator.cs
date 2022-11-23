@@ -14,13 +14,14 @@ namespace Business.ValidationRules.FluentValidation
     {
         public UserUpdateValidator()
         {
-            RuleFor(u => u.UserName).EmailAddress().WithMessage("Girilen kullanıcı adı mail değil.");
+            RuleFor(u=>u.NewPassword).NotEmpty().WithMessage("Şifre girişi zorunludur");
+            RuleFor(u => u.NewPassword).MinimumLength(8).MaximumLength(16).WithMessage("Şifreniz minimum 8, maksimum 16 karakter olmalıdır.");
+            RuleFor(u => u.NewPassword).Matches(@"[A-Z]+").WithMessage("Şifreniz en az bir büyük harf içermelidir.");
+            RuleFor(u => u.NewPassword).Matches(@"[a-z]+").WithMessage("Şifreniz en az bir küçük harf içermelidir.");
+            RuleFor(u => u.NewPassword).Matches(@"[0-9]+").WithMessage("Şifreniz en az bir rakam içermelidir.");
         }
 
-        private bool CheckAgeIfValid(DateTime date)
-        {
-            int age = DateTime.Now.Year - date.Year;
-            return age >= 18 && age <= 25;
-        }
+
+        
     }
 }

@@ -8,7 +8,7 @@ namespace Business.ValidationRules.FluentValidation
     {
         public MealCreateValidator()
         {
-
+            
         }
     }
 }
