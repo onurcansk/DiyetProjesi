@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.DependencyResolver.Autofac;
 using Entities.Dtos.MealType;
 using Entities.Dtos.ProductTypes;
 using Entities.VMs.MealTypeVMs;
@@ -22,6 +23,8 @@ namespace WinFormUI
         public frmAdminMealType()
         {
             InitializeComponent();
+            _mealTypeService = InstanceFactory.GetInstance<IMealTypeService>();
+            _mealTypeVms= new List<MealTypeVm>();
         }
 
         private void frmAdminMealType_Load(object sender, EventArgs e)
@@ -32,20 +35,19 @@ namespace WinFormUI
         private void FillListView()
         {
             _mealTypeVms = _mealTypeService.GetAll();
-            lstMealType.Items.Clear();
-            foreach (MealTypeVm item in _mealTypeVms)
-            {
-                lstMealType.Items.Add(item.MealTypeName);
-            }
+            lstMealType.DataSource = _mealTypeVms;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             try
             {
-                MealTypeVm productTypeVm = _mealTypeService.GetByName(lstMealType.SelectedItem.ToString());
-                _mealTypeService.Delete(productTypeVm.Id);
-                FillListView();
+                if ((MessageBox.Show("Seçili öğün türünü silmek istediğinize emin misiniz?", "Güncelleme", MessageBoxButtons.YesNo,MessageBoxIcon.Warning)) == DialogResult.Yes)
+                {
+                    MealTypeVm productTypeVm = (MealTypeVm)lstMealType.SelectedItem;
+                    _mealTypeService.Delete(productTypeVm.Id);
+                    FillListView(); 
+                }
             }
             catch (Exception ex)
             {
@@ -58,14 +60,17 @@ namespace WinFormUI
         {
             try
             {
-                MealTypeVm productTypeVm = _mealTypeService.GetByName(lstMealType.SelectedItem.ToString());
-                MealTypeUpdateDto mealTypeUpdateDto = new MealTypeUpdateDto()
+                if ((MessageBox.Show("Seçili öğün türünü güncellemek istediğinize emin misiniz?","Güncelleme",MessageBoxButtons.YesNo, MessageBoxIcon.Warning))==DialogResult.Yes)
                 {
-                    Id = productTypeVm.Id,
-                    MealTypeName = txtMealName.Text
-                };
-                _mealTypeService.Update(mealTypeUpdateDto);
-                FillListView();
+                    MealTypeVm productTypeVm = (MealTypeVm)lstMealType.SelectedItem;
+                    MealTypeUpdateDto mealTypeUpdateDto = new MealTypeUpdateDto()
+                    {
+                        Id = productTypeVm.Id,
+                        MealTypeName = txtMealName.Text
+                    };
+                    _mealTypeService.Update(mealTypeUpdateDto);
+                    FillListView(); 
+                }
             }
             catch (Exception ex)
             {
@@ -76,6 +81,8 @@ namespace WinFormUI
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
+            if(txtMealName.Text=="")
+                MessageBox.Show("Öğün türü eklemek için öğün adı alanı doldurulmalıdır");
             MealTypeCreateDto mealTypeCreateDto = new MealTypeCreateDto()
             {
                 MealTypeName=txtMealName.Text,
@@ -91,6 +98,11 @@ namespace WinFormUI
 
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void lstMealType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtMealName.Text = ((MealTypeVm)lstMealType.SelectedItem).MealTypeName;
         }
     }
 }

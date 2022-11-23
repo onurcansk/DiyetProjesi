@@ -47,6 +47,7 @@
             this.lstMealType.Name = "lstMealType";
             this.lstMealType.Size = new System.Drawing.Size(185, 196);
             this.lstMealType.TabIndex = 0;
+            this.lstMealType.SelectedIndexChanged += new System.EventHandler(this.lstMealType_SelectedIndexChanged);
             // 
             // txtMealName
             // 

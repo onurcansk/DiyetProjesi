@@ -28,11 +28,9 @@ namespace WinFormUI
 
         private void FillCategories()
         {
-            List<ProductTypeVm> categories = _productTypeService.GetAll();
-            foreach (var category in categories)
-            {
-                cmbCategory.Items.Add(category);
-            }
+            List<ProductTypeVm> categories = _productTypeService.GetAll();   
+            cmbCategory.DataSource=categories;
+            
         }
 
         private void btnImg_Click(object sender, EventArgs e)
@@ -71,8 +69,9 @@ namespace WinFormUI
             ProductCreateDTO newProduct = new()
             {
                 ProductName = txtFoodName.Text,
-                ProductType = _productTypeService.GetByName(cmbCategory.SelectedValue.ToString()).ProductTypeName,
-                UnitCalorie = (double)nmdUnitCalorie.Value
+                ProductType = ((ProductTypeVm)cmbCategory.SelectedItem).ProductTypeName,
+                UnitCalorie = (double)nmdUnitCalorie.Value,
+                Image = ImageToByteArray(pbProductImage.Image)
             };
             _productService.Add(newProduct);
             this.Close();

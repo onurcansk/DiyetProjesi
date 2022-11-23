@@ -16,5 +16,10 @@ namespace Entities.VMs.MealTypeVMs
             return this.MealTypeName;
         }
 
+        public override string ToString()
+        {
+            return this.MealTypeName;
+        }
+
     }
 }

@@ -40,6 +40,10 @@ namespace Business.Concrete
             {
                 throw new LoginFailedException("Kullanıcı adı veya şifre hatalı.");
             }
+            if(userChangePassword.OldPassword == userChangePassword.NewPassword)
+            {
+                throw new SamePasswordException("Yeni şifre eski şifrenizden farklı olmalıdır.");
+            }
 
             byte[] newHashedPassword;
             HashingHelper.CreatePasswordHash(userChangePassword.NewPassword, out newHashedPassword);
@@ -116,6 +120,7 @@ namespace Business.Concrete
             {
                 throw new AlreadyExistsException("Bu kullanıcı adı daha önce alınmış");
             }
+            
 
             byte[] password;
             HashingHelper.CreatePasswordHash(user.Password, out password);

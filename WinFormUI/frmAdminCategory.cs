@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.DependencyResolver.Autofac;
 using Entities.Dtos.ProductTypes;
+using Entities.VMs.MealTypeVMs;
 using Entities.VMs.ProductTypeVMs;
 using Entities.VMs.ProductVMs;
 using System;
@@ -33,20 +34,20 @@ namespace WinFormUI
         private void FillListView()
         {
             _productTypeVm = _productTypeService.GetAll();
-            lstCategory.Items.Clear();
-            foreach (ProductTypeVm vm in _productTypeVm)
-            {
-                lstCategory.Items.Add(vm.ProductTypeName);
-            }
+            lstCategory.DataSource = _productTypeVm;
+            
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             try
             {
-                ProductTypeVm productTypeVm = _productTypeService.GetByName(lstCategory.SelectedItem.ToString());
-                _productTypeService.Delete(productTypeVm.Id);
-                FillListView();
+                if ((MessageBox.Show("Seçili yemek türünü silmek istediğinize emin misiniz?", "Güncelleme", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)) == DialogResult.Yes)
+                {
+                    ProductTypeVm productTypeVm = (ProductTypeVm)lstCategory.SelectedItem;
+                    _productTypeService.Delete(productTypeVm.Id);
+                    FillListView();
+                }
             }
             catch (Exception ex)
             {
@@ -60,14 +61,17 @@ namespace WinFormUI
         {
             try
             {
-                ProductTypeVm productTypeVm = _productTypeService.GetByName(lstCategory.SelectedItem.ToString());
-                ProductTypeUpdateDto productTypeUpdateDto = new ProductTypeUpdateDto()
+                if ((MessageBox.Show("Seçili yemek türünü güncellemek istediğinize emin misiniz?", "Güncelleme", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)) == DialogResult.Yes)
                 {
-                    Id = productTypeVm.Id,
-                    ProductTypeName= txtMealName.Text
-                };
-                _productTypeService.Update(productTypeUpdateDto);
-                FillListView();
+                    ProductTypeVm productTypeVm = (ProductTypeVm)lstCategory.SelectedItem;
+                    ProductTypeUpdateDto productTypeUpdateDto = new ProductTypeUpdateDto()
+                    {
+                        Id = productTypeVm.Id,
+                        ProductTypeName = txtMealName.Text
+                    };
+                    _productTypeService.Update(productTypeUpdateDto);
+                    FillListView();
+                }
             }
             catch (Exception ex)
             {
@@ -78,6 +82,8 @@ namespace WinFormUI
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
+            if (txtMealName.Text == "")
+                MessageBox.Show("Yemek türü eklemek için yemek türü alanı doldurulmalıdır");
             ProductTypeCreateDto productTypeCreateDto = new ProductTypeCreateDto()
             {
                 ProductTypeName = txtMealName.Text
@@ -94,6 +100,11 @@ namespace WinFormUI
                 MessageBox.Show(ex.Message);
             }
             
+        }
+
+        private void lstCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtMealName.Text = ((ProductTypeVm)lstCategory.SelectedItem).ProductTypeName;
         }
     }
 }

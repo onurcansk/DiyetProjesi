@@ -34,6 +34,7 @@ namespace WinFormUI
 
         private void FillProducts(ProductTypeVm category = null)
         {
+            dgvMealView.Rows.Clear();
             if (category == null)
                 _products = _productService.GetAll();
             else
@@ -41,16 +42,14 @@ namespace WinFormUI
 
             foreach (var product in _products)
             {
-                dgvMealView.Rows.Add(product.ProductTypeName, product.ProductName, product.UnitCalorie, null, product.Id);
+                
+                dgvMealView.Rows.Add(product.ProductTypeName, product.ProductName, product.UnitCalorie, product.Image, product.Id);
             }
         }
 
         private void FillCategoryList()
         {
-            foreach (var category in _categories)
-            {
-                cmbCategory.Items.Add(category);
-            }
+            cmbCategory.DataSource = _categories;
         }
 
         private void btnAddNew_Click(object sender, EventArgs e)
@@ -94,13 +93,14 @@ namespace WinFormUI
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
-            ProductTypeVm category = _productTypeService.GetByName(cmbCategory.SelectedText);
+            ProductTypeVm category = (ProductTypeVm)cmbCategory.SelectedItem;
             FillProducts(category);
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            cmbCategory.SelectedValue = null;
+            cmbCategory.SelectedItem = null;
+            FillProducts();
         }
 
         private void dgvMealView_SelectionChanged(object sender, EventArgs e)

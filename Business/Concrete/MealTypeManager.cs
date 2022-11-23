@@ -26,11 +26,17 @@ namespace Business.Concrete
         [ValidationAspect(typeof(ProductTypeCreateValidator))]
         public void Add(MealTypeCreateDto mealType)
         {
+            var getMealTypeTuple = _mealTypeDal.Get(pt => pt.TypeName == mealType.MealTypeName);
+            if (getMealTypeTuple.Item1 != null)
+            {
+                throw new AlreadyExistsException("Eklenmeye çalışılan öğün tipi zaten mevcut");
+            };
             MealType newMealType = new MealType()
             {
                 TypeName = mealType.MealTypeName
             };
 
+            getMealTypeTuple.Item2.Dispose();
             _mealTypeDal.Add(newMealType);
         }
 

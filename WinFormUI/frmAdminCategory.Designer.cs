@@ -106,6 +106,7 @@
             this.lstCategory.Name = "lstCategory";
             this.lstCategory.Size = new System.Drawing.Size(185, 196);
             this.lstCategory.TabIndex = 3;
+            this.lstCategory.SelectedIndexChanged += new System.EventHandler(this.lstCategory_SelectedIndexChanged);
             // 
             // frmAdminCategory
             // 
