@@ -34,14 +34,12 @@
             this.btnUpdateMeal = new System.Windows.Forms.Button();
             this.btnAddMeal = new System.Windows.Forms.Button();
             this.btnMainPage = new System.Windows.Forms.Button();
-            this.ssrMain = new System.Windows.Forms.StatusStrip();
-            this.tssCurrentDate = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tssActiveUser = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblCurrentDate = new System.Windows.Forms.Label();
+            this.lblActiveUser = new System.Windows.Forms.Label();
             this.lblAppName = new System.Windows.Forms.Label();
             this.lblLogo = new System.Windows.Forms.Label();
             this.pnlNavItems = new System.Windows.Forms.Panel();
             this.pnlNavigation.SuspendLayout();
-            this.ssrMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlNavigation
@@ -54,13 +52,14 @@
             this.pnlNavigation.Controls.Add(this.btnUpdateMeal);
             this.pnlNavigation.Controls.Add(this.btnAddMeal);
             this.pnlNavigation.Controls.Add(this.btnMainPage);
-            this.pnlNavigation.Controls.Add(this.ssrMain);
+            this.pnlNavigation.Controls.Add(this.lblCurrentDate);
+            this.pnlNavigation.Controls.Add(this.lblActiveUser);
             this.pnlNavigation.Controls.Add(this.lblAppName);
             this.pnlNavigation.Controls.Add(this.lblLogo);
             this.pnlNavigation.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlNavigation.Location = new System.Drawing.Point(0, 0);
             this.pnlNavigation.Name = "pnlNavigation";
-            this.pnlNavigation.Size = new System.Drawing.Size(275, 438);
+            this.pnlNavigation.Size = new System.Drawing.Size(275, 450);
             this.pnlNavigation.TabIndex = 0;
             // 
             // btnClose
@@ -68,10 +67,10 @@
             this.btnClose.BackColor = System.Drawing.Color.Crimson;
             this.btnClose.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(187, 391);
+            this.btnClose.Location = new System.Drawing.Point(196, 391);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(73, 30);
-            this.btnClose.TabIndex = 1;
+            this.btnClose.TabIndex = 5;
             this.btnClose.Text = "Çıkış";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -90,7 +89,8 @@
             this.btnAccount.Location = new System.Drawing.Point(48, 329);
             this.btnAccount.Name = "btnAccount";
             this.btnAccount.Size = new System.Drawing.Size(182, 45);
-            this.btnAccount.TabIndex = 1;
+            this.btnAccount.TabIndex = 4;
+            this.btnAccount.Tag = "4";
             this.btnAccount.Text = "Hesap";
             this.btnAccount.UseVisualStyleBackColor = false;
             this.btnAccount.Click += new System.EventHandler(this.btnAccount_Click);
@@ -109,7 +109,8 @@
             this.btnUpdateMeal.Location = new System.Drawing.Point(48, 263);
             this.btnUpdateMeal.Name = "btnUpdateMeal";
             this.btnUpdateMeal.Size = new System.Drawing.Size(182, 45);
-            this.btnUpdateMeal.TabIndex = 1;
+            this.btnUpdateMeal.TabIndex = 3;
+            this.btnUpdateMeal.Tag = "3";
             this.btnUpdateMeal.Text = "Öğün İşlemleri";
             this.btnUpdateMeal.UseVisualStyleBackColor = false;
             this.btnUpdateMeal.Click += new System.EventHandler(this.btnUpdateMeal_Click);
@@ -128,7 +129,8 @@
             this.btnAddMeal.Location = new System.Drawing.Point(48, 197);
             this.btnAddMeal.Name = "btnAddMeal";
             this.btnAddMeal.Size = new System.Drawing.Size(182, 45);
-            this.btnAddMeal.TabIndex = 1;
+            this.btnAddMeal.TabIndex = 2;
+            this.btnAddMeal.Tag = "2";
             this.btnAddMeal.Text = "Öğün Ekle";
             this.btnAddMeal.UseVisualStyleBackColor = false;
             this.btnAddMeal.Click += new System.EventHandler(this.btnAddMeal_Click);
@@ -149,37 +151,34 @@
             this.btnMainPage.Name = "btnMainPage";
             this.btnMainPage.Size = new System.Drawing.Size(182, 45);
             this.btnMainPage.TabIndex = 1;
+            this.btnMainPage.Tag = "1";
             this.btnMainPage.Text = "Ana Sayfa";
             this.btnMainPage.UseVisualStyleBackColor = false;
             this.btnMainPage.Click += new System.EventHandler(this.btnMainPage_Click);
             // 
-            // ssrMain
+            // lblCurrentDate
             // 
-            this.ssrMain.BackColor = System.Drawing.Color.Transparent;
-            this.ssrMain.Font = new System.Drawing.Font("ISOCPEUR", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ssrMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tssCurrentDate,
-            this.tssActiveUser});
-            this.ssrMain.Location = new System.Drawing.Point(0, 416);
-            this.ssrMain.Name = "ssrMain";
-            this.ssrMain.Size = new System.Drawing.Size(275, 22);
-            this.ssrMain.TabIndex = 1;
-            this.ssrMain.Text = "statusStrip2";
+            this.lblCurrentDate.AutoSize = true;
+            this.lblCurrentDate.BackColor = System.Drawing.Color.Transparent;
+            this.lblCurrentDate.Font = new System.Drawing.Font("ISOCPEUR", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblCurrentDate.ForeColor = System.Drawing.Color.Black;
+            this.lblCurrentDate.Location = new System.Drawing.Point(12, 405);
+            this.lblCurrentDate.Name = "lblCurrentDate";
+            this.lblCurrentDate.Size = new System.Drawing.Size(38, 16);
+            this.lblCurrentDate.TabIndex = 0;
+            this.lblCurrentDate.Text = "Tarih :";
             // 
-            // tssCurrentDate
+            // lblActiveUser
             // 
-            this.tssCurrentDate.Margin = new System.Windows.Forms.Padding(15, 3, 0, 2);
-            this.tssCurrentDate.Name = "tssCurrentDate";
-            this.tssCurrentDate.Padding = new System.Windows.Forms.Padding(0, 0, 15, 0);
-            this.tssCurrentDate.Size = new System.Drawing.Size(99, 17);
-            this.tssCurrentDate.Text = "GÜNCEL TARİH";
-            // 
-            // tssActiveUser
-            // 
-            this.tssActiveUser.Name = "tssActiveUser";
-            this.tssActiveUser.Padding = new System.Windows.Forms.Padding(0, 0, 35, 0);
-            this.tssActiveUser.Size = new System.Drawing.Size(132, 17);
-            this.tssActiveUser.Text = "AKTİF KULLANICI";
+            this.lblActiveUser.AutoSize = true;
+            this.lblActiveUser.BackColor = System.Drawing.Color.Transparent;
+            this.lblActiveUser.Font = new System.Drawing.Font("ISOCPEUR", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblActiveUser.ForeColor = System.Drawing.Color.Black;
+            this.lblActiveUser.Location = new System.Drawing.Point(12, 425);
+            this.lblActiveUser.Name = "lblActiveUser";
+            this.lblActiveUser.Size = new System.Drawing.Size(51, 16);
+            this.lblActiveUser.TabIndex = 0;
+            this.lblActiveUser.Text = "Kullanıcı :";
             // 
             // lblAppName
             // 
@@ -210,23 +209,24 @@
             this.pnlNavItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlNavItems.Location = new System.Drawing.Point(275, 0);
             this.pnlNavItems.Name = "pnlNavItems";
-            this.pnlNavItems.Size = new System.Drawing.Size(638, 438);
+            this.pnlNavItems.Size = new System.Drawing.Size(675, 450);
             this.pnlNavItems.TabIndex = 2;
             // 
             // frmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(913, 438);
-            this.ControlBox = false;
+            this.CancelButton = this.btnClose;
+            this.ClientSize = new System.Drawing.Size(950, 450);
             this.Controls.Add(this.pnlNavItems);
             this.Controls.Add(this.pnlNavigation);
             this.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.HelpButton = true;
             this.IsMdiContainer = true;
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(966, 489);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(966, 489);
             this.Name = "frmMain";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -234,8 +234,6 @@
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.pnlNavigation.ResumeLayout(false);
             this.pnlNavigation.PerformLayout();
-            this.ssrMain.ResumeLayout(false);
-            this.ssrMain.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -248,8 +246,6 @@
         private Button btnUpdateMeal;
         private Button btnAddMeal;
         private Button btnMainPage;
-        private StatusStrip ssrMain;
-        private ToolStripStatusLabel tssActiveUser;
         private Label lblAppName;
         private Label lblLogo;
         private ListView listView1;
@@ -260,7 +256,8 @@
         private ComboBox comboBox3;
         private ComboBox comboBox2;
         private ComboBox comboBox1;
-        private ToolStripStatusLabel tssCurrentDate;
         private Panel pnlNavItems;
+        private Label lblCurrentDate;
+        private Label lblActiveUser;
     }
 }

@@ -26,8 +26,9 @@ namespace WinFormUI
         IUserService _userService;
         public frmLogin()
         {
-            InitializeComponent();
             _userService = InstanceFactory.GetInstance<IUserService>();
+            InitializeComponent();
+            txtMail.Text = "furkan@gmail.com";
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
