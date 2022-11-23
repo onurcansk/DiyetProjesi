@@ -1,9 +1,12 @@
-﻿using Business.Abstract;
+﻿using Base.Aspects.Autofac.Validation;
+using Business.Abstract;
 using Business.Exceptions;
+using Business.ValidationRules.FluentValidation;
 using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.Dtos.MealDetails;
+using Entities.VMs;
 using Entities.VMs.MealDetailVMs;
 using Entities.VMs.ProductVMs;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
@@ -27,6 +30,8 @@ namespace Business.Concrete
             _mealTypeService = mealTypeService;
             _productService = productService;
         }
+
+        [ValidationAspect(typeof(MealDetailCreateValidator))]
         public void Add(MealDetailCreateDto mealDetail)
         {
 
@@ -42,7 +47,7 @@ namespace Business.Concrete
 
         public void Delete(int id)
         {
-            MealDetail deleteMealDetail = _mealDetailDal.Get(m => m.Id == id);
+            MealDetail deleteMealDetail = (_mealDetailDal.Get(m => m.Id == id)).Item1;
 
             if (deleteMealDetail == null)
             {
@@ -55,14 +60,15 @@ namespace Business.Concrete
         {
             foreach (var item in ids)
             {
-                MealDetail deleteMealDetail = _mealDetailDal.Get(m => m.Id == item);
+                MealDetail deleteMealDetail = _mealDetailDal.Get(m => m.Id == item).Item1;
                 _mealDetailDal.Delete(deleteMealDetail);
             }
         }
 
         public List<MealDetailVm> GetAll()
-        {
-            List<MealDetail> mealDetails = _mealDetailDal.GetAll();
+        { 
+            var getAllTuple= _mealDetailDal.GetAll();
+            List<MealDetail> mealDetails = getAllTuple.Item1;
             List<MealDetailVm> mealDetailVms = new List<MealDetailVm>();
             foreach (var item in mealDetails)
             {
@@ -77,13 +83,14 @@ namespace Business.Concrete
                 };
                 mealDetailVms.Add(mealDetailVm);
             }
-            
+            getAllTuple.Item2.Dispose();
             return mealDetailVms;
         }
 
         public List<MealDetailVm> GetAllByExpression(Expression<Func<MealDetail, bool>> expression)
         {
-            List<MealDetail> mealDetails = _mealDetailDal.GetAll(expression);
+            var getAllByExpressionTuple = _mealDetailDal.GetAll(expression);
+            List<MealDetail> mealDetails = getAllByExpressionTuple.Item1;
             List<MealDetailVm> mealDetailVms = new List<MealDetailVm>();
             foreach (var item in mealDetails)
             {
@@ -98,13 +105,14 @@ namespace Business.Concrete
                 };
                 mealDetailVms.Add(mealDetailVm);
             }
-
+            getAllByExpressionTuple.Item2.Dispose();
             return mealDetailVms;
         }
 
         public MealDetailVm GetById(int id)
         {
-            MealDetail mealDetail = _mealDetailDal.Get(md => md.Id == id);
+            var getByIdTuple = _mealDetailDal.Get(md => md.Id == id);
+            MealDetail mealDetail = getByIdTuple.Item1;
             if (mealDetail == null)
             {
                 throw new IdNotFoundException("Gönderilen idye ait öğün detayı bulunamadı.");
@@ -119,13 +127,14 @@ namespace Business.Concrete
                 UnitCalorie = mealDetail.Product.UnitCalorie,
                 Image = mealDetail.Product.Image
             };
-
+            getByIdTuple.Item2.Dispose();
             return mealDetailVm;
         }
 
         public List<MealDetailVm> GetByProductName(string productName)
         {
-            List<MealDetail> mealDetails = _mealDetailDal.GetAll(md => md.Product.ProductName == productName);
+            var getByProductNameTuple = _mealDetailDal.GetAll(md => md.Product.ProductName == productName);
+            List<MealDetail> mealDetails = getByProductNameTuple.Item1;
             List<MealDetailVm> mealDetailVms = new List<MealDetailVm>();
             foreach (var item in mealDetails)
             {
@@ -140,13 +149,13 @@ namespace Business.Concrete
                 };
                 mealDetailVms.Add(mealDetailVm);
             }
-
+            getByProductNameTuple.Item2.Dispose();
             return mealDetailVms;
         }
-
+        [ValidationAspect(typeof(MealDetailUpdateValidator))]
         public void Update(MealDetailUpdateDto mealDetail)
         {
-            MealDetail updatedMealDetail = _mealDetailDal.Get(md => md.Id == mealDetail.Id);
+            MealDetail updatedMealDetail = _mealDetailDal.Get(md => md.Id == mealDetail.Id).Item1;
             if (mealDetail.Gram != null && mealDetail.Gram != updatedMealDetail.Gram) updatedMealDetail.Gram = mealDetail.Gram;
             if (updatedMealDetail.Product.ProductName == mealDetail.ProductName)
             {
@@ -159,14 +168,14 @@ namespace Business.Concrete
 
         public List<ReportVm> GetTopTenProduct(Expression<Func<MealDetail, bool>> expression = null)
         {
-            return (List<ReportVm>)_mealDetailDal.GetAll(expression).GroupBy(x => x.Product.ProductName).Select(md => new ReportVm { Key = md.Key, Toplam = md.Count() });
+            var getTopTenTuple = _mealDetailDal.GetAll(expression);
 
+            return (List<ReportVm>)(_mealDetailDal.GetAll(expression).Item1).GroupBy(x => x.Product.ProductName).Select(md => new ReportVm { Key = md.Key, Toplam = md.Count() }); ;
+            //Buraya tekrar bak
         }
+
+        
     }
 
-    public class ReportVm
-    {
-        public string Key { get; set; }
-        public int Toplam { get; set; }
-    }
+    
 }

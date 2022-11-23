@@ -1,5 +1,7 @@
-﻿using Business.Abstract;
+﻿using Base.Aspects.Autofac.Validation;
+using Business.Abstract;
 using Business.Exceptions;
+using Business.ValidationRules.FluentValidation;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.Dtos.Meal;
@@ -23,6 +25,7 @@ namespace Business.Concrete
             _mealTypeService = mealTypeService;
             _mealDal = mealDal;
         }
+        [ValidationAspect(typeof(MealCreateValidator))]
         public void Add(MealCreateDTO meal)
         {
             Meal newMeal = new Meal()
@@ -39,20 +42,21 @@ namespace Business.Concrete
 
         public void Delete(int id)
         {
-            Meal meal = _mealDal.Get(m => m.Id == id);
+            var getMealTuple = _mealDal.Get(m => m.Id == id);
+            Meal meal = getMealTuple.Item1;
             if (meal == null) throw new IdNotFoundException("Girilen idye ait öğün bulunamadı.");
-
+            getMealTuple.Item2.Dispose();
             _mealDal.Delete(meal);
         }
 
         public MealVm Get(int id)
         {
-            Meal meal = _mealDal.Get(m => m.Id == id);
+            var getMealTuple = _mealDal.Get(m => m.Id == id);
+            Meal meal = getMealTuple.Item1;
             if (meal == null) throw new IdNotFoundException("Girilen idye ait öğün bulunamadı.");
 
             MealVm mealVm = new MealVm()
             {
-
                 Id = id,
                 Date=meal.CreatedDate,
                 MealType= meal.MealType.TypeName,
@@ -70,12 +74,15 @@ namespace Business.Concrete
                 };
                 mealVm.MealDetailVm.Add(mealDetailVm);
             }
+
+            getMealTuple.Item2.Dispose();
             return mealVm;
         }
 
         public List<MealVm> GetAll()
         {
-            List<Meal> meals = _mealDal.GetAll();
+            var getAllMealTuple = _mealDal.GetAll();
+            List<Meal> meals = getAllMealTuple.Item1;
             List<MealVm> mealVms = new List<MealVm>();
             foreach (var meal in meals)
             {
@@ -101,13 +108,14 @@ namespace Business.Concrete
 
                 mealVms.Add(mealVm);
             }
-           
+            getAllMealTuple.Item2.Dispose();
             return mealVms;
         }
 
         public List<MealVm> GetAllByExpression(Expression<Func<Meal, bool>> expression)
         {
-            List<Meal> meals = _mealDal.GetAll(expression);
+            var getAllMealByExpressionTuple = _mealDal.GetAll(expression);
+            List<Meal> meals = getAllMealByExpressionTuple.Item1;
             List<MealVm> mealVms = new List<MealVm>();
             if (meals == null) throw new Exception();
 
@@ -135,13 +143,14 @@ namespace Business.Concrete
 
                 mealVms.Add(mealVm);
             }
-
+            getAllMealByExpressionTuple.Item2.Dispose();
             return mealVms;
         }
 
         public MealVm GetLastMealByUserName(string userName)
         {
-           Meal meal = _mealDal.GetLastMealByUser(userName);
+            var getLasTMealTuple = _mealDal.GetLastMealByUser(userName);
+            Meal meal = getLasTMealTuple.Item1;
             if (meal == null) throw new Exception("Kullanıcının daha önce kayıtlı öğünü yok.");
 
             MealVm mealVm = new MealVm()
@@ -162,7 +171,7 @@ namespace Business.Concrete
                 };
                 mealVm.MealDetailVm.Add(mealDetailVm);
             }
-
+            getLasTMealTuple.Item2.Dispose();
             return mealVm;
         }
 
