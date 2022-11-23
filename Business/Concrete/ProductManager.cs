@@ -24,8 +24,7 @@ namespace Business.Concrete
         [ValidationAspect(typeof(ProductCreateValidator))]
         public void Add(ProductCreateDTO product)
         {
-            var getProductTuple = _productDal.Get(p => p.ProductName == product.ProductName);
-            ProductTypeVm productType = _productTypeService.GetByName(product.ProductName);          
+            var getProductTuple = _productDal.Get(p => p.ProductName == product.ProductName);               
             Product existsProduct = getProductTuple.Item1;
             if(existsProduct != null)
             {
@@ -38,7 +37,7 @@ namespace Business.Concrete
                 UnitCalorie = product.UnitCalorie,
                 CreatedDate = DateTime.Now,
                 UpdatedDate = null,
-                ProductTypeID = productType.Id,               
+                ProductTypeID = (_productTypeService.GetByName(product.ProductType)).Id,               
                 Image = product.Image,
             };
 
@@ -147,6 +146,7 @@ namespace Business.Concrete
             getProductTuple.Item2.Dispose();
             return productVm;
         }
+
         [ValidationAspect(typeof(ProductUpdateValidator))]
         public void Update(ProductUpdateDTO product)
         {

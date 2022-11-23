@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Base.Utilities.Encryption;
+using Entities.Concrete;
 using Entities.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -16,7 +17,9 @@ namespace Entities.Config
             builder.Property(x => x.BirthDate).HasConversion(typeof(DateTime)).IsRequired(false);
             builder.Property(x => x.UserClaim);
 
-            
+            byte[] passwordHash;
+            HashingHelper.CreatePasswordHash("admin", out passwordHash);
+            builder.HasData(new User { BirthDate = DateTime.Now, UserName = "admin", PasswordHash = passwordHash });
 
         }
     }

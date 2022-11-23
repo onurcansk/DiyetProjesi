@@ -56,7 +56,9 @@ namespace Business.Concrete
 
             ProductTypeVm productTypeVm = new ProductTypeVm()
             {
-                ProductTypeName = productType.ProductTypeName
+                ProductTypeName = productType.ProductTypeName,
+                Id=productType.Id
+                
             };
             getProductTypeTuple.Item2.Dispose();
             return productTypeVm;
@@ -72,7 +74,8 @@ namespace Business.Concrete
             {
                 ProductTypeVm productTypeVm = new ProductTypeVm()
                 {
-                    ProductTypeName = item.ProductTypeName
+                    ProductTypeName = item.ProductTypeName,
+                    Id = item.Id
                 };
                 ProductTypeVmList.Add(productTypeVm);
             }
@@ -91,7 +94,8 @@ namespace Business.Concrete
             {
                 ProductTypeVm productTypeVm = new ProductTypeVm()
                 {
-                    ProductTypeName = item.ProductTypeName
+                    ProductTypeName = item.ProductTypeName,
+                    Id = item.Id
                 };
                 ProductTypeVmList.Add(productTypeVm);
             }

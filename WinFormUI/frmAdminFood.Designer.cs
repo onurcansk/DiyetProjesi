@@ -89,6 +89,7 @@
             // 
             // dgvMealView
             // 
+            this.dgvMealView.AllowUserToAddRows = false;
             this.dgvMealView.AllowUserToDeleteRows = false;
             this.dgvMealView.AllowUserToOrderColumns = true;
             this.dgvMealView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
@@ -119,7 +120,7 @@
             this.dgvMealView.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvMealView.RowHeadersWidth = 40;
             this.dgvMealView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvMealView.RowTemplate.Height = 25;
+            this.dgvMealView.RowTemplate.Height = 100;
             this.dgvMealView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMealView.Size = new System.Drawing.Size(813, 366);
             this.dgvMealView.TabIndex = 5;
@@ -150,6 +151,7 @@
             // clmImg
             // 
             this.clmImg.HeaderText = "Resim";
+            this.clmImg.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
             this.clmImg.Name = "clmImg";
             this.clmImg.ReadOnly = true;
             this.clmImg.Width = 200;
