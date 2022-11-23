@@ -37,7 +37,7 @@ namespace Entities.Config
         {
             builder.HasKey(x => x.Id);
             builder.HasOne(x => x.ProductType).WithMany(x => x.Products).HasForeignKey(x => x.ProductTypeID).OnDelete(DeleteBehavior.Restrict);
-            builder.Property(x => x.ProductName).IsRequired(true).HasMaxLength(25);
+            builder.Property(x => x.ProductName).IsUnicode().IsRequired(true).HasMaxLength(25);
             builder.Property(x => x.UnitCalorie).IsRequired(true);
             builder.Property(x => x.CreatedDate).HasConversion(typeof(DateTime)).IsRequired(false).HasDefaultValue(DateTime.Now);
             builder.Property(x => x.UpdatedDate).HasConversion(typeof(DateTime)).IsRequired(false).HasDefaultValue(DateTime.Now);
