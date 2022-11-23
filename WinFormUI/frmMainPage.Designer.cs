@@ -63,6 +63,8 @@
             this.pnlMainPage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMainPage.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.pnlMainPage.Location = new System.Drawing.Point(0, 0);
+            this.pnlMainPage.MaximumSize = new System.Drawing.Size(675, 450);
+            this.pnlMainPage.MinimumSize = new System.Drawing.Size(675, 450);
             this.pnlMainPage.Name = "pnlMainPage";
             this.pnlMainPage.Size = new System.Drawing.Size(675, 450);
             this.pnlMainPage.TabIndex = 0;
@@ -117,9 +119,9 @@
             this.clmCalorie});
             this.lswLastFoods.ForeColor = System.Drawing.Color.White;
             this.lswLastFoods.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.lswLastFoods.Location = new System.Drawing.Point(0, 157);
+            this.lswLastFoods.Location = new System.Drawing.Point(0, 119);
             this.lswLastFoods.Name = "lswLastFoods";
-            this.lswLastFoods.Size = new System.Drawing.Size(324, 154);
+            this.lswLastFoods.Size = new System.Drawing.Size(324, 183);
             this.lswLastFoods.TabIndex = 3;
             this.lswLastFoods.UseCompatibleStateImageBehavior = false;
             this.lswLastFoods.View = System.Windows.Forms.View.Details;
@@ -161,7 +163,7 @@
             this.lblLastMealDate.AutoSize = true;
             this.lblLastMealDate.BackColor = System.Drawing.Color.Transparent;
             this.lblLastMealDate.ForeColor = System.Drawing.Color.Black;
-            this.lblLastMealDate.Location = new System.Drawing.Point(14, 77);
+            this.lblLastMealDate.Location = new System.Drawing.Point(13, 49);
             this.lblLastMealDate.Name = "lblLastMealDate";
             this.lblLastMealDate.Size = new System.Drawing.Size(55, 21);
             this.lblLastMealDate.TabIndex = 0;
@@ -172,7 +174,7 @@
             this.lblLastMealName.AutoSize = true;
             this.lblLastMealName.BackColor = System.Drawing.Color.Transparent;
             this.lblLastMealName.ForeColor = System.Drawing.Color.Black;
-            this.lblLastMealName.Location = new System.Drawing.Point(14, 111);
+            this.lblLastMealName.Location = new System.Drawing.Point(13, 83);
             this.lblLastMealName.Name = "lblLastMealName";
             this.lblLastMealName.Size = new System.Drawing.Size(51, 21);
             this.lblLastMealName.TabIndex = 0;
@@ -207,7 +209,7 @@
             this.lblDailyReportTotalCalorie.AutoSize = true;
             this.lblDailyReportTotalCalorie.BackColor = System.Drawing.Color.Transparent;
             this.lblDailyReportTotalCalorie.ForeColor = System.Drawing.Color.Black;
-            this.lblDailyReportTotalCalorie.Location = new System.Drawing.Point(12, 167);
+            this.lblDailyReportTotalCalorie.Location = new System.Drawing.Point(15, 139);
             this.lblDailyReportTotalCalorie.Name = "lblDailyReportTotalCalorie";
             this.lblDailyReportTotalCalorie.Size = new System.Drawing.Size(117, 21);
             this.lblDailyReportTotalCalorie.TabIndex = 0;
@@ -218,7 +220,7 @@
             this.lblDailyReportFoodCount.AutoSize = true;
             this.lblDailyReportFoodCount.BackColor = System.Drawing.Color.Transparent;
             this.lblDailyReportFoodCount.ForeColor = System.Drawing.Color.Black;
-            this.lblDailyReportFoodCount.Location = new System.Drawing.Point(12, 137);
+            this.lblDailyReportFoodCount.Location = new System.Drawing.Point(15, 109);
             this.lblDailyReportFoodCount.Name = "lblDailyReportFoodCount";
             this.lblDailyReportFoodCount.Size = new System.Drawing.Size(105, 21);
             this.lblDailyReportFoodCount.TabIndex = 0;
@@ -229,7 +231,7 @@
             this.lblDailyReportDay.AutoSize = true;
             this.lblDailyReportDay.BackColor = System.Drawing.Color.Transparent;
             this.lblDailyReportDay.ForeColor = System.Drawing.Color.Black;
-            this.lblDailyReportDay.Location = new System.Drawing.Point(12, 77);
+            this.lblDailyReportDay.Location = new System.Drawing.Point(15, 49);
             this.lblDailyReportDay.Name = "lblDailyReportDay";
             this.lblDailyReportDay.Size = new System.Drawing.Size(43, 21);
             this.lblDailyReportDay.TabIndex = 0;
@@ -240,7 +242,7 @@
             this.lblDailyReportMealCount.AutoSize = true;
             this.lblDailyReportMealCount.BackColor = System.Drawing.Color.Transparent;
             this.lblDailyReportMealCount.ForeColor = System.Drawing.Color.Black;
-            this.lblDailyReportMealCount.Location = new System.Drawing.Point(12, 107);
+            this.lblDailyReportMealCount.Location = new System.Drawing.Point(15, 79);
             this.lblDailyReportMealCount.Name = "lblDailyReportMealCount";
             this.lblDailyReportMealCount.Size = new System.Drawing.Size(97, 21);
             this.lblDailyReportMealCount.TabIndex = 0;

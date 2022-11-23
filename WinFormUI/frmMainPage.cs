@@ -30,11 +30,19 @@ namespace WinFormUI
 
         private void FillDailyReport(string userName)
         {
-            lblDailyReportDay.Text = DateTime.Now.ToString("dddd");
-            List<MealVm> dailyMeals = _mealManager.GetAllByExpression(x => x.CreatedDate == DateTime.Now && x.UserName == userName);
+            lblDailyReportDay.Text = "Tarih : " + DateTime.Now.ToString("D");
+
+            List<MealVm> dailyMeals = _mealManager.GetAllByExpression(x => x.CreatedDate.Value.Day == DateTime.Now.Day
+            && x.CreatedDate.Value.Month == DateTime.Now.Month
+            && x.CreatedDate.Value.Year == DateTime.Now.Year
+            && x.UserName == userName);
+
             lblDailyReportMealCount.Text = dailyMeals.Count.ToString();
+
             lblDailyReportFoodCount.Text = CountFoodFromMealList(dailyMeals).ToString();
+
             lblDailyReportTotalCalorie.Text = CalculateTotalCalorieForMeals(dailyMeals).ToString();
+
         }
 
         private double CalculateTotalCalorieForMeals(List<MealVm> meals)
@@ -65,13 +73,13 @@ namespace WinFormUI
             try
             {
                 MealVm lastMeal = _mealManager.GetLastMealByUserName(userName);
-                lblLastMealName.Text = lastMeal.MealType;
-                lblLastMealDate.Text = lastMeal.Date.ToString();
+                lblLastMealName.Text = "Öğün : " + lastMeal.MealType;
+                lblLastMealDate.Text = "Tarih : " + lastMeal.Date.Value.ToString("D");
                 FillListView(lastMeal.MealDetailVm);
             }
             catch (Exception ex)
             {
-                
+
             }
         }
 

@@ -12,8 +12,8 @@ namespace WinFormUI
         public frmMain(UserVm userLogin)
         {
             InitializeComponent();
-            tssCurrentDate.Text = DateTime.Now.ToString("D");
-            tssActiveUser.Text = userLogin.UserName;
+            lblCurrentDate.Text ="Tarih : " + DateTime.Now.ToString("D");
+            lblActiveUser.Text = "Kullanýcý : " + userLogin.UserName;
             _userVm = userLogin;
         }
 
@@ -48,6 +48,25 @@ namespace WinFormUI
             pnlNavItems.Controls.Add(_frmAddMeal);
             _frmAddMeal.Dock = DockStyle.Fill;
         }
+
+        //private void btnNavigation_Click(object sender, EventArgs e)
+        //{
+        //    Button btn = (Button)sender;
+        //    switch (btn.Tag)
+        //    {
+        //        case 1: break;
+        //        case 2: break;
+        //        case 3: break;
+        //        case 4: break;
+        //        default:
+        //            break;
+        //    }
+        //}
+
+        //private void CheckOpen<T> (T frm) where T : Form,new(string ad)
+        //{
+        //    frm = new();
+        //}
 
         private void btnUpdateMeal_Click(object sender, EventArgs e)
         {

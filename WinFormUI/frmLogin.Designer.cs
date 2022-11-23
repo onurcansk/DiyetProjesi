@@ -96,7 +96,7 @@
             this.lblAppName.AutoSize = true;
             this.lblAppName.Font = new System.Drawing.Font("ISOCPEUR", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblAppName.ForeColor = System.Drawing.Color.Black;
-            this.lblAppName.Location = new System.Drawing.Point(56, 72);
+            this.lblAppName.Location = new System.Drawing.Point(59, 72);
             this.lblAppName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAppName.Name = "lblAppName";
             this.lblAppName.Size = new System.Drawing.Size(144, 31);
@@ -108,7 +108,7 @@
             this.lblLogo.AutoSize = true;
             this.lblLogo.Font = new System.Drawing.Font("ISOCPEUR", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblLogo.ForeColor = System.Drawing.Color.Black;
-            this.lblLogo.Location = new System.Drawing.Point(98, 20);
+            this.lblLogo.Location = new System.Drawing.Point(101, 20);
             this.lblLogo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLogo.Name = "lblLogo";
             this.lblLogo.Size = new System.Drawing.Size(61, 31);
@@ -154,6 +154,7 @@
             // 
             // frmLogin
             // 
+            this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Orange;

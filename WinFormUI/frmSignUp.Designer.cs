@@ -49,7 +49,7 @@
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("ISOCPEUR", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(86, 281);
+            this.btnUpdate.Location = new System.Drawing.Point(86, 289);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(143, 50);
             this.btnUpdate.TabIndex = 11;
@@ -61,7 +61,7 @@
             // 
             this.lblPassword2.AutoSize = true;
             this.lblPassword2.BackColor = System.Drawing.Color.Transparent;
-            this.lblPassword2.Location = new System.Drawing.Point(40, 200);
+            this.lblPassword2.Location = new System.Drawing.Point(40, 217);
             this.lblPassword2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPassword2.Name = "lblPassword2";
             this.lblPassword2.Size = new System.Drawing.Size(87, 21);
@@ -83,7 +83,7 @@
             // 
             this.lblBirthDate.AutoSize = true;
             this.lblBirthDate.BackColor = System.Drawing.Color.Transparent;
-            this.lblBirthDate.Location = new System.Drawing.Point(40, 87);
+            this.lblBirthDate.Location = new System.Drawing.Point(40, 93);
             this.lblBirthDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBirthDate.Name = "lblBirthDate";
             this.lblBirthDate.Size = new System.Drawing.Size(88, 21);
@@ -94,7 +94,7 @@
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.BackColor = System.Drawing.Color.Transparent;
-            this.lblPassword.Location = new System.Drawing.Point(40, 144);
+            this.lblPassword.Location = new System.Drawing.Point(40, 155);
             this.lblPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(40, 21);
@@ -103,7 +103,7 @@
             // 
             // txtMail
             // 
-            this.txtMail.Location = new System.Drawing.Point(40, 56);
+            this.txtMail.Location = new System.Drawing.Point(40, 59);
             this.txtMail.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(234, 27);
@@ -111,23 +111,25 @@
             // 
             // txtPassword2
             // 
-            this.txtPassword2.Location = new System.Drawing.Point(40, 225);
+            this.txtPassword2.Location = new System.Drawing.Point(40, 245);
             this.txtPassword2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtPassword2.Name = "txtPassword2";
+            this.txtPassword2.PasswordChar = '*';
             this.txtPassword2.Size = new System.Drawing.Size(234, 27);
             this.txtPassword2.TabIndex = 4;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(40, 169);
+            this.txtPassword.Location = new System.Drawing.Point(40, 183);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(234, 27);
             this.txtPassword.TabIndex = 6;
             // 
             // dtpBirthDate
             // 
-            this.dtpBirthDate.Location = new System.Drawing.Point(43, 112);
+            this.dtpBirthDate.Location = new System.Drawing.Point(40, 121);
             this.dtpBirthDate.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dtpBirthDate.Name = "dtpBirthDate";
             this.dtpBirthDate.Size = new System.Drawing.Size(232, 27);

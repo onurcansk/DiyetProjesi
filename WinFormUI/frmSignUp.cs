@@ -24,13 +24,9 @@ namespace WinFormUI
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (txtPassword.Text != txtPassword2.Text)
-            {
-                MessageBox.Show("Şifreler aynı değil");
-                return;
-            }
             try
             {
+                if (txtPassword.Text != txtPassword2.Text) throw new Exception("Şifreler aynı değil");
                 UserCreateDTO newUser = new()
                 {
                     UserName = txtMail.Text,
