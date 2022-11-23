@@ -9,7 +9,7 @@ namespace Entities.Config
         public void Configure(EntityTypeBuilder<ProductType> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.ProductTypeName).IsRequired(true).HasMaxLength(20);
+            builder.Property(x => x.ProductTypeName).IsUnicode().IsRequired(true).HasMaxLength(20);
             builder.HasData(
                new ProductType{Id=1, ProductTypeName="Et" },
                new ProductType{Id=2, ProductTypeName="Balık" },
