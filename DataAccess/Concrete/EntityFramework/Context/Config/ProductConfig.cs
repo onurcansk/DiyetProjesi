@@ -41,6 +41,7 @@ namespace Entities.Config
             builder.Property(x => x.UnitCalorie).IsRequired(true);
             builder.Property(x => x.CreatedDate).HasConversion(typeof(DateTime)).IsRequired(false).HasDefaultValue(DateTime.Now);
             builder.Property(x => x.UpdatedDate).HasConversion(typeof(DateTime)).IsRequired(false).HasDefaultValue(DateTime.Now);
+            builder.Property(x => x.Image).IsRequired(false);
 
             builder.HasData(
                 new Product { Id = 1, ProductTypeID = 1, ProductName = "Antrikot", UnitCalorie = 1.21, Image = ReadFile("Resources/antrikot.png") },
