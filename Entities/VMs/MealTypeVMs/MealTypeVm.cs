@@ -1,9 +1,4 @@
 ﻿using Base.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Entities.VMs.MealTypeVMs
 {
@@ -15,11 +10,5 @@ namespace Entities.VMs.MealTypeVMs
         {
             return this.MealTypeName;
         }
-
-        public override string ToString()
-        {
-            return this.MealTypeName;
-        }
-
     }
 }
