@@ -66,8 +66,8 @@ namespace Business.Concrete
         }
 
         public List<MealDetailVm> GetAll()
-        { 
-            var getAllTuple= _mealDetailDal.GetAll();
+        {
+            var getAllTuple = _mealDetailDal.GetAll();
             List<MealDetail> mealDetails = getAllTuple.Item1;
             List<MealDetailVm> mealDetailVms = new List<MealDetailVm>();
             foreach (var item in mealDetails)
@@ -170,13 +170,15 @@ namespace Business.Concrete
         public List<ReportVm> GetTopTenProduct(Expression<Func<MealDetail, bool>> expression = null)
         {
             var getTopTenTuple = _mealDetailDal.GetAll(expression);
+            var result = (List<ReportVm>)(_mealDetailDal.GetAll(expression).Item1.GroupBy(x => x.Product.ProductName).Select(md => new ReportVm { Key = md.Key, Toplam = md.Count() }));
+            return result;
 
-            return (List<ReportVm>)(_mealDetailDal.GetAll(expression).Item1).GroupBy(x => x.Product.ProductName).Select(md => new ReportVm { Key = md.Key, Toplam = md.Count() }); ;
+
             //Buraya tekrar bak
         }
 
-        
+
     }
 
-    
+
 }

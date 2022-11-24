@@ -35,7 +35,6 @@ namespace WinFormUI
             {
                 cmbMealType.Items.Add(meal.MealType);
             }
-            cmbMealType.SelectedIndex = 0;
         }
 
         private void cmbMealType_SelectedIndexChanged(object sender, EventArgs e)
