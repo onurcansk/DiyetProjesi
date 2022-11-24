@@ -66,15 +66,29 @@ namespace WinFormUI
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            ProductCreateDTO newProduct = new()
+            if (txtFoodName.Text.Trim() == "")  
             {
-                ProductName = txtFoodName.Text,
-                ProductType = ((ProductTypeVm)cmbCategory.SelectedItem).ProductTypeName,
-                UnitCalorie = (double)nmdUnitCalorie.Value,
-                Image = ImageToByteArray(pbProductImage.Image)
-            };
-            _productService.Add(newProduct);
-            this.Close();
+                MessageBox.Show("Yemek eklemek için yemek adı girişi zorunludur");
+                return;
+            }
+            try
+            {
+                ProductCreateDTO newProduct = new()
+                {
+                    ProductName = txtFoodName.Text,
+                    ProductType = ((ProductTypeVm)cmbCategory.SelectedItem).ProductTypeName,
+                    UnitCalorie = (double)nmdUnitCalorie.Value,
+                    Image = ImageToByteArray(pbProductImage.Image)
+                };
+                _productService.Add(newProduct);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+            
         }
     }
 }

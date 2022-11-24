@@ -21,7 +21,6 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(x => x.ProductType).NotNull().WithMessage("Yemek türü boş olamaz.");
             RuleFor(x => x.ProductType).NotEmpty().WithMessage("Yemek türü boş olamaz.");
             RuleFor(x => x.ProductType).MaximumLength(30).WithMessage("Yemek türü 30 karakterden büyük olamaz");
-            RuleFor(x => x.ProductType).MinimumLength(4).WithMessage("Yemek türü 4 karakterden küçük olamaz");
             RuleFor(x => x.ProductType).Must(isContainsOnlyLetters).WithMessage("Yemek türü özel karakter veya rakam içermemelidir.");
 
    

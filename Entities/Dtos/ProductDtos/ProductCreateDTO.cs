@@ -8,5 +8,6 @@ namespace Entities.Dtos.Product
         public double UnitCalorie { get; set; }
         public string ProductType { get; set; }
         public byte[] Image { get; set; }
+        public bool isActive { get; set; }
     }
 }

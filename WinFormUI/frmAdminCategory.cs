@@ -33,8 +33,12 @@ namespace WinFormUI
 
         private void FillListView()
         {
-            _productTypeVm = _productTypeService.GetAll();
-            lstCategory.DataSource = _productTypeVm;
+            
+                _productTypeVm = _productTypeService.GetAll();
+                lstCategory.DataSource = _productTypeVm;
+            
+           
+            
             
         }
 

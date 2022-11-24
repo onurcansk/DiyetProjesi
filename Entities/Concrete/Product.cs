@@ -13,7 +13,8 @@ namespace Entities.Concrete
         public DateTime? CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
         public byte[] Image { get; set; }
-        
+        public bool isActive { get; set; } = true;
+
         public Product()
         {
             MealDetails = new HashSet<MealDetail>();
