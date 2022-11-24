@@ -45,7 +45,7 @@ namespace WinFormUI
 
                 if (userLogin.UserClaim == UserClaims.User)
                 {
-                    _frm = new frmMain(userLogin);
+                    _frm = new frmMain();
                 }
                 else if (userLogin.UserClaim == UserClaims.Admin)
                 {

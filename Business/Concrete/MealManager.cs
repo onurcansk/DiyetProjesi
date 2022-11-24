@@ -20,10 +20,12 @@ namespace Business.Concrete
     {
         private readonly IMealDal _mealDal;
         private readonly IMealTypeService _mealTypeService;
-        public MealManager(IMealTypeService mealTypeService, IMealDal mealDal)
+        private readonly IMealDetailService _mealDetailService;
+        public MealManager(IMealTypeService mealTypeService, IMealDal mealDal, IMealDetailService mealDetailService)
         {
             _mealTypeService = mealTypeService;
             _mealDal = mealDal;
+            _mealDetailService = mealDetailService;
         }
         [ValidationAspect(typeof(MealCreateValidator))]
         public void Add(MealCreateDTO meal)
@@ -45,8 +47,12 @@ namespace Business.Concrete
             var getMealTuple = _mealDal.Get(m => m.Id == id);
             Meal meal = getMealTuple.Item1;
             if (meal == null) throw new IdNotFoundException("Girilen idye ait öğün bulunamadı.");
-            getMealTuple.Item2.Dispose();
+            foreach (var mealDetail in meal.MealDetails)
+            {
+                _mealDetailService.Delete(mealDetail.Id);
+            }
             _mealDal.Delete(meal);
+            getMealTuple.Item2.Dispose();
         }
 
         public MealVm Get(int id)
@@ -70,7 +76,8 @@ namespace Business.Concrete
                     Gram = item.Gram,
                     UnitCalorie = item.Product.UnitCalorie,
                     ProductType = item.Product.ProductType.ProductTypeName,
-                    Product = item.Product.ProductName
+                    Product = item.Product.ProductName,
+                    Image = item.Product.Image
                 };
                 mealVm.MealDetailVm.Add(mealDetailVm);
             }
@@ -101,7 +108,9 @@ namespace Business.Concrete
                         Gram = item.Gram,
                         UnitCalorie = item.Product.UnitCalorie,
                         ProductType = item.Product.ProductType.ProductTypeName,
-                        Product = item.Product.ProductName
+                        Product = item.Product.ProductName,
+                        Image = item.Product.Image
+                        
                     };
                     mealVm.MealDetailVm.Add(mealDetailVm);
                 }
@@ -125,7 +134,7 @@ namespace Business.Concrete
                 {
                     Date = meal.CreatedDate,
                     MealType = meal.MealType.TypeName,
-                    Id=meal.Id,
+                    Id=meal.Id
                 };
 
                 foreach (var item in meal.MealDetails)
@@ -136,7 +145,9 @@ namespace Business.Concrete
                         Gram = item.Gram,
                         UnitCalorie = item.Product.UnitCalorie,
                         ProductType = item.Product.ProductType.ProductTypeName,
-                        Product = item.Product.ProductName
+                        Product = item.Product.ProductName,
+                        Image = item.Product.Image
+
                     };
                     mealVm.MealDetailVm.Add(mealDetailVm);
                 }
