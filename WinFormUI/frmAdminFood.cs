@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.DependencyResolver.Autofac;
+using Entities.Concrete;
 using Entities.VMs.ProductTypeVMs;
 using Entities.VMs.ProductVMs;
 using System;
@@ -11,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WinFormUI
 {
@@ -30,22 +32,28 @@ namespace WinFormUI
             _categories = _productTypeService.GetAll();
             FillCategoryList();
             FillProducts();
+
+            
         }
 
         private void FillProducts(ProductTypeVm category = null)
         {
+           
             dgvMealView.Rows.Clear();
+            
             if (category == null)
                 _products = _productService.GetAll();
             else
                 _products = _productService.GetAllByExpression(x => x.ProductType.ProductTypeName == category.ProductTypeName);
+                
+            dgvMealView.DataSource = _products.Select(product => new { Aktif=product.isActive, product.ProductTypeName, product.ProductName, product.UnitCalorie, product.Image, product.Id }).ToList();
+            //clmImg.ImageLayout = DataGridViewImageCellLayout.Stretch;
+            //foreach (var product in _products)
+            //{
 
-            foreach (var product in _products)
-            {
-               
-                    dgvMealView.Rows.Add(product.isActive,product.ProductTypeName, product.ProductName, product.UnitCalorie, product.Image, product.Id);
-                             
-            }
+            //    dgvMealView.Rows.Add(product.isActive, product.ProductTypeName, product.ProductName, product.UnitCalorie, product.Image, product.Id);
+
+            //}
         }
 
         private void FillCategoryList()
@@ -106,12 +114,12 @@ namespace WinFormUI
 
         private void dgvMealView_SelectionChanged(object sender, EventArgs e)
         {
-           if(dgvMealView.SelectedRows == null)
-            {
-                return;
-            }
-            int index = Convert.ToInt32(dgvMealView.CurrentRow.Cells[5].Value);
-            _activeProduct = _productService.GetById(index);
+           //if(dgvMealView.SelectedRows == null)
+           // {
+           //     return;
+           // }
+           // int index = Convert.ToInt32(dgvMealView.CurrentRow.Cells[5].Value);
+           // _activeProduct = _productService.GetById(index);
         }   
 
         private void btnDelete_Click_1(object sender, EventArgs e)
@@ -119,5 +127,7 @@ namespace WinFormUI
             _productService.Delete(Convert.ToInt32(dgvMealView.CurrentRow.Cells[5].Value));
             FillProducts();
         }
+
+        
     }
 }
