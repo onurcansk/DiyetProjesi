@@ -25,6 +25,9 @@ namespace WinFormUI
         public frmAdminFood()
         {
             InitializeComponent();
+
+            dgvMealView.AutoSize = true;
+
             _productService = InstanceFactory.GetInstance<IProductService>();
             _productTypeService = InstanceFactory.GetInstance<IProductTypeService>();
             _categories = _productTypeService.GetAll();
@@ -116,6 +119,11 @@ namespace WinFormUI
         {
             _productService.Delete(Convert.ToInt32(dgvMealView.CurrentRow.Cells[5].Value));
             FillProducts();
+        }
+
+        private void pnlData_Scroll(object sender, ScrollEventArgs e)
+        {
+            this.BackColor = Color.White;
         }
     }
 }

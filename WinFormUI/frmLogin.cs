@@ -15,12 +15,40 @@ namespace WinFormUI
         {
             _userService = InstanceFactory.GetInstance<IUserService>();
             InitializeComponent();
+            GetUserData();
+        }
+
+        private void GetUserData()
+        {
+            txtMail.Text = Properties.Settings.Default.userName;
+            if (Properties.Settings.Default.password != null)
+            {
+                txtPassword.Text = Properties.Settings.Default.password;
+                chkRememberMe.Checked = true;
+            }
+        }
+
+        private void RememberUserData()
+        {
+            if (chkRememberMe.Checked)
+            {
+                Properties.Settings.Default.userName = txtMail.Text;
+                Properties.Settings.Default.password = txtPassword.Text;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.userName = txtMail.Text;
+                Properties.Settings.Default.password = null;
+                Properties.Settings.Default.Save();
+            }
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
             try
             {
+                
                 UserLoginDTO user = new UserLoginDTO()
                 {
                     UserName = txtMail.Text,
@@ -39,6 +67,7 @@ namespace WinFormUI
                 }
                 CurrentUser.UserClaim = userLogin.UserClaim;
                 CurrentUser.UserName = userLogin.UserName;
+                RememberUserData();
                 this.Hide();
                 _frm.ShowDialog();
                 txtPassword.Clear();
@@ -46,7 +75,7 @@ namespace WinFormUI
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message);
+                MessageBox.Show(err.Message,"Hata",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 

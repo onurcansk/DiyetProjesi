@@ -52,7 +52,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(86, 289);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(143, 50);
-            this.btnUpdate.TabIndex = 11;
+            this.btnUpdate.TabIndex = 5;
             this.btnUpdate.Text = "Kayıt Ol";
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -107,7 +107,7 @@
             this.txtMail.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(234, 27);
-            this.txtMail.TabIndex = 3;
+            this.txtMail.TabIndex = 1;
             // 
             // txtPassword2
             // 
@@ -125,7 +125,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(234, 27);
-            this.txtPassword.TabIndex = 6;
+            this.txtPassword.TabIndex = 3;
             // 
             // dtpBirthDate
             // 
@@ -133,10 +133,11 @@
             this.dtpBirthDate.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dtpBirthDate.Name = "dtpBirthDate";
             this.dtpBirthDate.Size = new System.Drawing.Size(232, 27);
-            this.dtpBirthDate.TabIndex = 12;
+            this.dtpBirthDate.TabIndex = 2;
             // 
             // frmSignUp
             // 
+            this.AcceptButton = this.btnUpdate;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::WinFormUI.Properties.Resources.background;

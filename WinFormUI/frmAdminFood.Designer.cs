@@ -37,19 +37,21 @@
             this.tsmMealType = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmCategory = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvMealView = new System.Windows.Forms.DataGridView();
-            this.btnFilter = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnAddNew = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.Aktif = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.clmCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmFood = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmCalorie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmImg = new System.Windows.Forms.DataGridViewImageColumn();
             this.clmId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnFilter = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnAddNew = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.pnlData = new System.Windows.Forms.Panel();
             this.mnsFood.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMealView)).BeginInit();
+            this.pnlData.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmbCategory
@@ -105,8 +107,8 @@
             this.clmCalorie,
             this.clmImg,
             this.clmId});
-            this.dgvMealView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvMealView.Location = new System.Drawing.Point(0, 64);
+            this.dgvMealView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvMealView.Location = new System.Drawing.Point(0, 0);
             this.dgvMealView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvMealView.MultiSelect = false;
             this.dgvMealView.Name = "dgvMealView";
@@ -126,10 +128,68 @@
             this.dgvMealView.RowHeadersWidth = 40;
             this.dgvMealView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvMealView.RowTemplate.Height = 100;
+            this.dgvMealView.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dgvMealView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMealView.Size = new System.Drawing.Size(813, 366);
+            this.dgvMealView.Size = new System.Drawing.Size(813, 355);
             this.dgvMealView.TabIndex = 5;
             this.dgvMealView.SelectionChanged += new System.EventHandler(this.dgvMealView_SelectionChanged);
+            // 
+            // Aktif
+            // 
+            this.Aktif.Frozen = true;
+            this.Aktif.HeaderText = "Aktif";
+            this.Aktif.Name = "Aktif";
+            this.Aktif.ReadOnly = true;
+            this.Aktif.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Aktif.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Aktif.Width = 50;
+            // 
+            // clmCategory
+            // 
+            this.clmCategory.Frozen = true;
+            this.clmCategory.HeaderText = "Kategori";
+            this.clmCategory.Name = "clmCategory";
+            this.clmCategory.ReadOnly = true;
+            this.clmCategory.Width = 200;
+            // 
+            // clmFood
+            // 
+            this.clmFood.Frozen = true;
+            this.clmFood.HeaderText = "Yemek";
+            this.clmFood.Name = "clmFood";
+            this.clmFood.ReadOnly = true;
+            this.clmFood.Width = 240;
+            // 
+            // clmCalorie
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            this.clmCalorie.DefaultCellStyle = dataGridViewCellStyle1;
+            this.clmCalorie.Frozen = true;
+            this.clmCalorie.HeaderText = "Birim Kalori";
+            this.clmCalorie.Name = "clmCalorie";
+            this.clmCalorie.ReadOnly = true;
+            this.clmCalorie.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clmCalorie.Width = 120;
+            // 
+            // clmImg
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle2.NullValue")));
+            this.clmImg.DefaultCellStyle = dataGridViewCellStyle2;
+            this.clmImg.Frozen = true;
+            this.clmImg.HeaderText = "Resim";
+            this.clmImg.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.clmImg.Name = "clmImg";
+            this.clmImg.ReadOnly = true;
+            this.clmImg.Width = 200;
+            // 
+            // clmId
+            // 
+            this.clmId.HeaderText = "ID";
+            this.clmId.Name = "clmId";
+            this.clmId.ReadOnly = true;
+            this.clmId.Visible = false;
             // 
             // btnFilter
             // 
@@ -216,62 +276,15 @@
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click_1);
             // 
-            // Aktif
+            // pnlData
             // 
-            this.Aktif.Frozen = true;
-            this.Aktif.HeaderText = "Aktif";
-            this.Aktif.Name = "Aktif";
-            this.Aktif.ReadOnly = true;
-            this.Aktif.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Aktif.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Aktif.Width = 50;
-            // 
-            // clmCategory
-            // 
-            this.clmCategory.Frozen = true;
-            this.clmCategory.HeaderText = "Kategori";
-            this.clmCategory.Name = "clmCategory";
-            this.clmCategory.ReadOnly = true;
-            this.clmCategory.Width = 200;
-            // 
-            // clmFood
-            // 
-            this.clmFood.Frozen = true;
-            this.clmFood.HeaderText = "Yemek";
-            this.clmFood.Name = "clmFood";
-            this.clmFood.ReadOnly = true;
-            this.clmFood.Width = 240;
-            // 
-            // clmCalorie
-            // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            this.clmCalorie.DefaultCellStyle = dataGridViewCellStyle1;
-            this.clmCalorie.Frozen = true;
-            this.clmCalorie.HeaderText = "Birim Kalori";
-            this.clmCalorie.Name = "clmCalorie";
-            this.clmCalorie.ReadOnly = true;
-            this.clmCalorie.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clmCalorie.Width = 120;
-            // 
-            // clmImg
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle2.NullValue")));
-            this.clmImg.DefaultCellStyle = dataGridViewCellStyle2;
-            this.clmImg.Frozen = true;
-            this.clmImg.HeaderText = "Resim";
-            this.clmImg.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
-            this.clmImg.Name = "clmImg";
-            this.clmImg.ReadOnly = true;
-            this.clmImg.Width = 200;
-            // 
-            // clmId
-            // 
-            this.clmId.HeaderText = "ID";
-            this.clmId.Name = "clmId";
-            this.clmId.ReadOnly = true;
-            this.clmId.Visible = false;
+            this.pnlData.AutoScroll = true;
+            this.pnlData.Controls.Add(this.dgvMealView);
+            this.pnlData.Location = new System.Drawing.Point(0, 75);
+            this.pnlData.Name = "pnlData";
+            this.pnlData.Size = new System.Drawing.Size(813, 355);
+            this.pnlData.TabIndex = 7;
+            this.pnlData.Scroll += new System.Windows.Forms.ScrollEventHandler(this.pnlData_Scroll);
             // 
             // frmAdminFood
             // 
@@ -285,9 +298,9 @@
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnFilter);
-            this.Controls.Add(this.dgvMealView);
             this.Controls.Add(this.cmbCategory);
             this.Controls.Add(this.mnsFood);
+            this.Controls.Add(this.pnlData);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -299,6 +312,7 @@
             this.mnsFood.ResumeLayout(false);
             this.mnsFood.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMealView)).EndInit();
+            this.pnlData.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -321,5 +335,6 @@
         private DataGridViewTextBoxColumn clmCalorie;
         private DataGridViewImageColumn clmImg;
         private DataGridViewTextBoxColumn clmId;
+        private Panel pnlData;
     }
 }

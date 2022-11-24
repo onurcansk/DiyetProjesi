@@ -35,7 +35,7 @@ namespace WinFormUI
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (dgvMealView.SelectedRows == null)
+            if (dgvMealView.SelectedRows.Count == 0)
             {
                 throw new Exception("Düzenlemek istediğiniz yemeği seçiniz");
             }
