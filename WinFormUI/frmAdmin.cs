@@ -17,32 +17,29 @@ namespace WinFormUI
         public frmAdmin()
         {
             InitializeComponent();
+            _frmAdminFood = new()
+            {
+                MdiParent = this
+            }; 
+            _frmAdminReport = new()
+            {
+                MdiParent = this
+            };
+
         }
         private void btnCRUD_Click(object sender, EventArgs e)
-        {
-            if (_frmAdminFood == null)
-            {
-                _frmAdminFood = new()
-                {
-                    MdiParent = this
-                };
-                _frmAdminFood.Show();
-            }
+        {      
+            pnlMain.Controls.Clear();
+            _frmAdminFood.Show();
             pnlMain.Controls.Add(_frmAdminFood);
             _frmAdminFood.Dock = DockStyle.Fill;
         }
 
         private void btnReport_Click(object sender, EventArgs e)
         {
-            if (_frmAdminReport == null)
-            {
-                _frmAdminReport = new()
-                {
-                    MdiParent = this
-                };
-                _frmAdminReport.Show();
-            }
-            pnlMain.Controls.Add(_frmAdminFood);
+            pnlMain.Controls.Clear();
+            _frmAdminReport.Show();
+            pnlMain.Controls.Add(_frmAdminReport);
             _frmAdminReport.Dock = DockStyle.Fill;
         }
     }

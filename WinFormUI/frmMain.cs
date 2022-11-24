@@ -12,13 +12,14 @@ namespace WinFormUI
         public frmMain()
         {
             InitializeComponent();
-            lblCurrentDate.Text = "Tarih : " + DateTime.Now.ToString("D");
-            lblActiveUser.Text = "Kullanýcý : " + CurrentUser.UserName;
+            
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
             CheckOpen(_frmMainPage);
+            lblCurrentDate.Text = "Tarih : " + DateTime.Now.ToString("D");
+            lblActiveUser.Text = "Kullanýcý : " + CurrentUser.UserName;
         }
 
         private void btnNavigation_Click(object sender, EventArgs e)

@@ -18,7 +18,6 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(x => x.ProductName).NotNull().WithMessage("Yemek Adı boş olamaz.");
             RuleFor(x => x.ProductName).MaximumLength(30).WithMessage("Yemek Adı 30 karakterden büyük olamaz.");
             RuleFor(x => x.ProductName).MinimumLength(2).WithMessage("Yemek Adı 2 karakterden büyük olamaz.");
-            RuleFor(x => x.ProductName).Must(isContainsOnlyLetters).WithMessage("Yemek Adı özel karakter veya rakam içermemelidir.");
 
             RuleFor(u => u.Gram).NotEmpty().WithMessage("Gram miktarı belirtiniz.");
             RuleFor(u => u.Gram).NotNull().WithMessage("Gram miktarı belirtiniz.");
