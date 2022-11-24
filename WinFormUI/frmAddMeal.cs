@@ -30,7 +30,7 @@ namespace WinFormUI
 
             FillMealComboBox();
             FillCategoryComboBox();
-            FillFoodComboBox();
+            FillFoodComboBox((ProductTypeVm)cmbMealCategory.SelectedItem);
 
             FillListMeal();
 
