@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.DependencyResolver.Autofac;
+using Business.HelperClasses;
 using Entities.Dtos;
 
 namespace WinFormUI
@@ -12,6 +13,7 @@ namespace WinFormUI
             InitializeComponent();
             _userService = InstanceFactory.GetInstance<IUserService>();
             txtMail.Enabled = false;
+            txtMail.Text = CurrentUser.UserName;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)

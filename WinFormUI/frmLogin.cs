@@ -1,21 +1,8 @@
 ﻿using Business.Abstract;
-
 using Business.DependencyResolver.Autofac;
 using Entities.Dtos.Users;
 using Entities.Enums;
 using Entities.VMs.UserVMs;
-
-using Business.Concrete;
-
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Business.HelperClasses;
 
 namespace WinFormUI
@@ -28,7 +15,6 @@ namespace WinFormUI
         {
             _userService = InstanceFactory.GetInstance<IUserService>();
             InitializeComponent();
-            txtMail.Text = "furkan@gmail.com";
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -55,6 +41,7 @@ namespace WinFormUI
                 CurrentUser.UserName = userLogin.UserName;
                 this.Hide();
                 _frm.ShowDialog();
+                txtPassword.Clear();
                 this.Show();
             }
             catch (Exception err)
