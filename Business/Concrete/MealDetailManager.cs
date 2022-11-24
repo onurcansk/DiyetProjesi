@@ -170,11 +170,8 @@ namespace Business.Concrete
         public List<ReportVm> GetTopTenProduct(Expression<Func<MealDetail, bool>> expression = null)
         {
             var getTopTenTuple = _mealDetailDal.GetAll(expression);
-            var result = (List<ReportVm>)(_mealDetailDal.GetAll(expression).Item1.GroupBy(x => x.Product.ProductName).Select(md => new ReportVm { Key = md.Key, Toplam = md.Count() }));
-            return result;
-
-
-            //Buraya tekrar bak
+            return (_mealDetailDal.GetAll(expression).Item1).GroupBy(x => x.Product.ProductName).Select(md => new ReportVm { Key = md.Key, Toplam = md.Count() }).OrderByDescending(x=>x.Toplam).ToList(); ;
+            
         }
 
 

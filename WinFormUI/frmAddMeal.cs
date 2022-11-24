@@ -137,6 +137,11 @@ namespace WinFormUI
                 MessageBox.Show("Lütfen ekleme yapmak istediğiniz öğünü seçiniz","Bilgi",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 return;
             }
+            if(cmbFood.Items.Count == 0)
+            {
+                MessageBox.Show("Lütfen ekleme yapmak istediğiniz yemeği seçiniz", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             try
             {
                 ProductVm product = _productService.GetAllByExpression(x => x.ProductName == cmbFood.SelectedItem.ToString()).First();
@@ -168,6 +173,7 @@ namespace WinFormUI
             if (dgvDailyReport.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Lütfen silmek istediğiniz yemeği seçiniz","Uyarı",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                return;
             }
             try
             {

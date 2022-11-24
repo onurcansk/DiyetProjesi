@@ -12,7 +12,6 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(x => x.ProductName).NotNull().WithMessage("Yemek adı boş olamaz.");
             RuleFor(x => x.ProductName).MaximumLength(30).WithMessage("Yemek adı 30 karakterden büyük olamaz");
             RuleFor(x => x.ProductName).MinimumLength(2).WithMessage("Yemek adı 2 karakterden küçük olamaz");
-            RuleFor(x => x.ProductName).Must(isContainsOnlyLetters).WithMessage("Yemek adı özel karakter veya rakam içermemelidir.");
 
             RuleFor(u => u.UnitCalorie).GreaterThanOrEqualTo(0).WithMessage("Ölçülebilir bir kalori miktarı belirtiniz.");
             RuleFor(u => u.UnitCalorie).LessThan(20).WithMessage("Lütfen girilen miktarı kontrol ediniz.");
@@ -21,7 +20,6 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(x => x.ProductType).NotNull().WithMessage("Yemek türü boş olamaz.");
             RuleFor(x => x.ProductType).NotEmpty().WithMessage("Yemek türü boş olamaz.");
             RuleFor(x => x.ProductType).MaximumLength(30).WithMessage("Yemek türü 30 karakterden büyük olamaz");
-            RuleFor(x => x.ProductType).Must(isContainsOnlyLetters).WithMessage("Yemek türü özel karakter veya rakam içermemelidir.");
 
    
         }

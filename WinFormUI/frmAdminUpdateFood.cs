@@ -32,6 +32,7 @@ namespace WinFormUI
             txtCategory.Text = _product.ProductTypeName;
             txtProductName.Text = _product.ProductName;
             nmdUnitCalorie.Value = (decimal)_product.UnitCalorie;
+            checkBox1.Checked = _product.isActive;
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -42,7 +43,7 @@ namespace WinFormUI
                 ProductType = _product.ProductTypeName,
                 Image = ImageToByteArray(pbProductImage.Image),
                 UnitCalorie = (double)nmdUnitCalorie.Value,
-                isActive = true,
+                isActive = checkBox1.Checked,
             };
             _productService.Update(productUpdateDTO);
             this.Close();
@@ -78,5 +79,7 @@ namespace WinFormUI
             }
             return null;
         }
+
+       
     }
 }

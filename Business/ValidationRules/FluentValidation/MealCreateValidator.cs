@@ -11,7 +11,6 @@ namespace Business.ValidationRules.FluentValidation
         public MealCreateValidator()
         {
             RuleFor(u => u.MealTypeName).NotNull().WithMessage("Yemek türü boş olamaz.");
-            RuleFor(u => u.MealTypeName).Must(isContainsOnlyLetters).WithMessage("Yemek türü özel karakter veya rakam içermemelidir.");
             RuleFor(u => u.MealTypeName).NotEmpty().WithMessage("Yemek türü boş olamaz.");
             RuleFor(x => x.MealTypeName).MaximumLength(30).WithMessage("Yemek türü 30 karakterden büyük olamaz");
             RuleFor(x => x.MealTypeName).MinimumLength(2).WithMessage("Yemek türü 2 karakterden küçük olamaz");

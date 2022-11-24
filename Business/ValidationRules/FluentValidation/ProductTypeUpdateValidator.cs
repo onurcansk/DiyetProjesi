@@ -11,8 +11,7 @@ namespace Business.ValidationRules.FluentValidation
         {
             RuleFor(p => p.ProductTypeName).NotNull().WithMessage("Yemek adı boş olmamalıdır").NotEmpty().WithMessage("Yemek adı boş olmamalıdır")
                                        .MinimumLength(2).WithMessage("Yemek adı en az 2 harften oluşmalıdır.")
-                                       .MaximumLength(30).WithMessage("Yemek adı en fazla 30 harften oluşmalıdır.")
-                                       .Must(isContainsOnlyLetters).WithMessage("Yemek adı özel karakter veya rakam içermemelidir.");
+                                       .MaximumLength(30).WithMessage("Yemek adı en fazla 30 harften oluşmalıdır.");
         }
 
         private bool isContainsOnlyLetters(string productName)

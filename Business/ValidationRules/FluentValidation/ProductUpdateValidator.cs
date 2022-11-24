@@ -11,8 +11,7 @@ namespace Business.ValidationRules.FluentValidation
         {
             RuleFor(p => p.ProductName).NotNull().WithMessage("Yemek adı boş olmamalıdır").NotEmpty().WithMessage("Yemek adı boş olmamalıdır")
                                        .MinimumLength(2).WithMessage("Yemek adı en az 2 harften oluşmalıdır.")
-                                       .MaximumLength(30).WithMessage("Yemek adı en fazla 30 harften oluşmalıdır.")
-                                       .Must(isContainsOnlyLetters).WithMessage("Yemek adı özel karakter veya rakam içermemelidir.");
+                                       .MaximumLength(30).WithMessage("Yemek adı en fazla 30 harften oluşmalıdır.");
 
             RuleFor(p => p.UnitCalorie).GreaterThanOrEqualTo(0).WithMessage("Yemeğin birim kalorisi sıfırdan küçük olamaz")
                                        .LessThan(20).WithMessage("Yemeğin birim kalorisi 20den büyük olamaz")
