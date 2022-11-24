@@ -1,20 +1,8 @@
 ﻿using Business.Abstract;
 using Business.DependencyResolver.Autofac;
-using Entities.Concrete;
 using Entities.Dtos.MealDetails;
 using Entities.VMs.MealDetailVMs;
 using Entities.VMs.ProductTypeVMs;
-using Entities.VMs.ProductVMs;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace WinFormUI
 {
@@ -81,7 +69,7 @@ namespace WinFormUI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

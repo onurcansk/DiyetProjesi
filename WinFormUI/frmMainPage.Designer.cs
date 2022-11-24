@@ -120,6 +120,7 @@
             this.lswLastFoods.ForeColor = System.Drawing.Color.White;
             this.lswLastFoods.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lswLastFoods.Location = new System.Drawing.Point(0, 119);
+            this.lswLastFoods.MultiSelect = false;
             this.lswLastFoods.Name = "lswLastFoods";
             this.lswLastFoods.Size = new System.Drawing.Size(324, 183);
             this.lswLastFoods.TabIndex = 3;

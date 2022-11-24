@@ -74,6 +74,7 @@
             // 
             // cmbMealType
             // 
+            this.cmbMealType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMealType.FormattingEnabled = true;
             this.cmbMealType.Location = new System.Drawing.Point(12, 59);
             this.cmbMealType.Name = "cmbMealType";
@@ -82,6 +83,7 @@
             // 
             // cmbMealCategory
             // 
+            this.cmbMealCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMealCategory.FormattingEnabled = true;
             this.cmbMealCategory.Location = new System.Drawing.Point(12, 129);
             this.cmbMealCategory.Name = "cmbMealCategory";
@@ -91,6 +93,7 @@
             // 
             // cmbFood
             // 
+            this.cmbFood.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFood.FormattingEnabled = true;
             this.cmbFood.Location = new System.Drawing.Point(185, 129);
             this.cmbFood.Name = "cmbFood";
@@ -229,7 +232,7 @@
             // 
             // pbProduct
             // 
-            this.pbProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.pbProduct.BackColor = System.Drawing.Color.Transparent;
             this.pbProduct.Location = new System.Drawing.Point(573, 24);
             this.pbProduct.Name = "pbProduct";
             this.pbProduct.Size = new System.Drawing.Size(82, 82);

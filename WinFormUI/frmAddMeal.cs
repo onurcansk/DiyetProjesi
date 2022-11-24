@@ -1,23 +1,12 @@
 ﻿using Business.Abstract;
 using Business.DependencyResolver.Autofac;
+using Business.HelperClasses;
 using Entities.Dtos.Meal;
 using Entities.Dtos.MealDetails;
 using Entities.VMs.MealTypeVMs;
 using Entities.VMs.MealVMs;
 using Entities.VMs.ProductTypeVMs;
 using Entities.VMs.ProductVMs;
-using Entities.VMs.UserVMs;
-using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Channels;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace WinFormUI
 {
@@ -28,8 +17,7 @@ namespace WinFormUI
         IProductService _productService;
         IProductTypeService _productTypeService;
         IMealTypeService _mealTypeService;
-        string _activeUser;
-        public frmAddMeal(string userName)
+        public frmAddMeal()
         {
             InitializeComponent();
             _mealTypeService = InstanceFactory.GetInstance<IMealTypeService>();
@@ -37,7 +25,6 @@ namespace WinFormUI
             _mealDetailService = InstanceFactory.GetInstance<IMealDetailService>();
             _productService = InstanceFactory.GetInstance<IProductService>();
             _productTypeService = InstanceFactory.GetInstance<IProductTypeService>();
-            _activeUser = userName;
 
             lstMeal.SelectedValue = null;
 
@@ -45,7 +32,7 @@ namespace WinFormUI
             FillCategoryComboBox();
             FillFoodComboBox();
 
-            FillListMeal(userName);
+            FillListMeal();
 
         }
 
@@ -71,7 +58,7 @@ namespace WinFormUI
             cmbMealType.DataSource = _mealTypeService.GetAll();
         }
 
-        private void FillListMeal(string userName)
+        private void FillListMeal()
         {
             try
             {
@@ -79,7 +66,7 @@ namespace WinFormUI
                 m.CreatedDate.Value.Day == DateTime.Now.Day
                 && m.CreatedDate.Value.Month == DateTime.Now.Month
                 && m.CreatedDate.Value.Year == DateTime.Now.Year
-                && m.User.UserName == userName);
+                && m.User.UserName == CurrentUser.UserName);
 
                 lstMeal.DataSource = meals;
             }
@@ -116,16 +103,16 @@ namespace WinFormUI
                 }
                 MealCreateDTO newMeal = new()
                 {
-                    UserName = _activeUser,
+                    UserName = CurrentUser.UserName,
                     MealTypeName = cmbMealType.SelectedItem.ToString()
                 };
                 _mealService.Add(newMeal);
-                FillListMeal(_activeUser);
+                FillListMeal();
                 lstMeal.SelectedIndex = lstMeal.Items.Count - 1;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message,"Hata",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
@@ -147,10 +134,9 @@ namespace WinFormUI
         {
             if (lstMeal.SelectedItems == null)
             {
-                MessageBox.Show("Lütfen ekleme yapmak istediğiniz öğünü seçiniz");
+                MessageBox.Show("Lütfen ekleme yapmak istediğiniz öğünü seçiniz","Bilgi",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 return;
             }
-
             try
             {
                 ProductVm product = _productService.GetAllByExpression(x => x.ProductName == cmbFood.SelectedItem.ToString()).First();
@@ -166,16 +152,14 @@ namespace WinFormUI
                     Gram = (double)nmdPortion.Value
                 };
 
-
                 _mealDetailService.Add(newMealDetail);
                 meal = (MealVm)lstMeal.SelectedItem;
-
 
                 FillDataGridView(meal.Id);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message,"Hata",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
@@ -183,7 +167,7 @@ namespace WinFormUI
         {
             if (dgvDailyReport.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Lütfen silmek istediğiniz yemeği seçiniz");
+                MessageBox.Show("Lütfen silmek istediğiniz yemeği seçiniz","Uyarı",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
             try
             {
@@ -192,7 +176,7 @@ namespace WinFormUI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

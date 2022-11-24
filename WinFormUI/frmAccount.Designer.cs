@@ -77,7 +77,7 @@
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(184, 48);
-            this.btnUpdate.TabIndex = 2;
+            this.btnUpdate.TabIndex = 5;
             this.btnUpdate.Text = "Şifreyi Güncelle";
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -95,6 +95,7 @@
             // lblMail
             // 
             this.lblMail.AutoSize = true;
+            this.lblMail.ForeColor = System.Drawing.Color.Black;
             this.lblMail.Location = new System.Drawing.Point(172, 69);
             this.lblMail.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblMail.Name = "lblMail";
@@ -129,7 +130,7 @@
             this.txtMail.Name = "txtMail";
             this.txtMail.ReadOnly = true;
             this.txtMail.Size = new System.Drawing.Size(300, 27);
-            this.txtMail.TabIndex = 0;
+            this.txtMail.TabIndex = 1;
             // 
             // txtPassword2
             // 
@@ -138,7 +139,7 @@
             this.txtPassword2.Name = "txtPassword2";
             this.txtPassword2.PasswordChar = '*';
             this.txtPassword2.Size = new System.Drawing.Size(300, 27);
-            this.txtPassword2.TabIndex = 0;
+            this.txtPassword2.TabIndex = 4;
             // 
             // txtCurrentPassword
             // 
@@ -147,7 +148,7 @@
             this.txtCurrentPassword.Name = "txtCurrentPassword";
             this.txtCurrentPassword.PasswordChar = '*';
             this.txtCurrentPassword.Size = new System.Drawing.Size(300, 27);
-            this.txtCurrentPassword.TabIndex = 0;
+            this.txtCurrentPassword.TabIndex = 2;
             // 
             // txtPassword
             // 
@@ -156,7 +157,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(300, 27);
-            this.txtPassword.TabIndex = 0;
+            this.txtPassword.TabIndex = 3;
             // 
             // frmAccount
             // 

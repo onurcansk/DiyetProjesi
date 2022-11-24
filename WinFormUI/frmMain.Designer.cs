@@ -67,7 +67,7 @@
             this.btnClose.BackColor = System.Drawing.Color.Crimson;
             this.btnClose.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(196, 391);
+            this.btnClose.Location = new System.Drawing.Point(196, 405);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(73, 30);
             this.btnClose.TabIndex = 5;
@@ -93,7 +93,7 @@
             this.btnAccount.Tag = "4";
             this.btnAccount.Text = "Hesap";
             this.btnAccount.UseVisualStyleBackColor = false;
-            this.btnAccount.Click += new System.EventHandler(this.btnAccount_Click);
+            this.btnAccount.Click += new System.EventHandler(this.btnNavigation_Click);
             // 
             // btnUpdateMeal
             // 
@@ -113,7 +113,7 @@
             this.btnUpdateMeal.Tag = "3";
             this.btnUpdateMeal.Text = "Öğün İşlemleri";
             this.btnUpdateMeal.UseVisualStyleBackColor = false;
-            this.btnUpdateMeal.Click += new System.EventHandler(this.btnUpdateMeal_Click);
+            this.btnUpdateMeal.Click += new System.EventHandler(this.btnNavigation_Click);
             // 
             // btnAddMeal
             // 
@@ -133,7 +133,7 @@
             this.btnAddMeal.Tag = "2";
             this.btnAddMeal.Text = "Öğün Ekle";
             this.btnAddMeal.UseVisualStyleBackColor = false;
-            this.btnAddMeal.Click += new System.EventHandler(this.btnAddMeal_Click);
+            this.btnAddMeal.Click += new System.EventHandler(this.btnNavigation_Click);
             // 
             // btnMainPage
             // 
@@ -154,7 +154,7 @@
             this.btnMainPage.Tag = "1";
             this.btnMainPage.Text = "Ana Sayfa";
             this.btnMainPage.UseVisualStyleBackColor = false;
-            this.btnMainPage.Click += new System.EventHandler(this.btnMainPage_Click);
+            this.btnMainPage.Click += new System.EventHandler(this.btnNavigation_Click);
             // 
             // lblCurrentDate
             // 

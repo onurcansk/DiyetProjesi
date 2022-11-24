@@ -36,7 +36,7 @@ namespace Business.Concrete
                 throw new LoginFailedException("Kullanıcı adı veya şifre hatalı.");
             }
 
-            if (HashingHelper.VerifyPasswordHash(userChangePassword.OldPassword, registeredUser.PasswordHash))
+            if (!HashingHelper.VerifyPasswordHash(userChangePassword.OldPassword, registeredUser.PasswordHash))
             {
                 throw new LoginFailedException("Kullanıcı adı veya şifre hatalı.");
             }
@@ -50,7 +50,6 @@ namespace Business.Concrete
             registeredUser.PasswordHash = newHashedPassword;
             getUserTuple.Item2.Dispose();
             _userDal.Update(registeredUser);
-
         }
 
         [SecuredOperation(UserClaims.Admin)]

@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.DependencyResolver.Autofac;
+using Business.HelperClasses;
 using Entities.VMs.MealDetailVMs;
 using Entities.VMs.MealVMs;
 using System.Diagnostics;
@@ -10,22 +11,22 @@ namespace WinFormUI
     {
         IMealService _mealManager;
 
-        public frmMainPage(string userName)
+        public frmMainPage()
         {
             InitializeComponent();
             _mealManager = InstanceFactory.GetInstance<IMealService>();
-            FillLastMeal(userName);
-            FillDailyReport(userName);
+            FillLastMeal();
+            FillDailyReport();
         }
 
-        private void FillDailyReport(string userName)
+        private void FillDailyReport()
         {
             lblDailyReportDay.Text = "Tarih : " + DateTime.Now.ToString("D");
 
             List<MealVm> dailyMeals = _mealManager.GetAllByExpression(x => x.CreatedDate.Value.Day == DateTime.Now.Day
             && x.CreatedDate.Value.Month == DateTime.Now.Month
             && x.CreatedDate.Value.Year == DateTime.Now.Year
-            && x.UserName == userName);
+            && x.UserName == CurrentUser.UserName);
 
             lblDailyReportMealCount.Text = "Öğün Sayısı : " + dailyMeals.Count.ToString();
 
@@ -58,11 +59,11 @@ namespace WinFormUI
             return count;
         }
 
-        private void FillLastMeal(string userName)
+        private void FillLastMeal()
         {
             try
             {
-                MealVm lastMeal = _mealManager.GetLastMealByUserName(userName);
+                MealVm lastMeal = _mealManager.GetLastMealByUserName(CurrentUser.UserName);
                 lblLastMealName.Text = "Öğün : " + lastMeal.MealType;
                 lblLastMealDate.Text = "Tarih : " + lastMeal.Date.Value.ToString("D");
                 FillListView(lastMeal.MealDetailVm);

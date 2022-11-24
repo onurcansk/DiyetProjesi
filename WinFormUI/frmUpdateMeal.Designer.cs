@@ -38,24 +38,24 @@
             // 
             // cmbCategory
             // 
+            this.cmbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategory.FormattingEnabled = true;
             this.cmbCategory.Location = new System.Drawing.Point(49, 28);
             this.cmbCategory.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(163, 29);
             this.cmbCategory.TabIndex = 0;
-            this.cmbCategory.Text = "KATEGORİ";
             this.cmbCategory.SelectedValueChanged += new System.EventHandler(this.cmbCategory_SelectedValueChanged);
             // 
             // cmbProduct
             // 
+            this.cmbProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProduct.FormattingEnabled = true;
             this.cmbProduct.Location = new System.Drawing.Point(49, 86);
             this.cmbProduct.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbProduct.Name = "cmbProduct";
             this.cmbProduct.Size = new System.Drawing.Size(163, 29);
             this.cmbProduct.TabIndex = 0;
-            this.cmbProduct.Text = "YEMEK";
             // 
             // btnSave
             // 

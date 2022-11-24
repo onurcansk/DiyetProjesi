@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.DependencyResolver.Autofac;
+using Business.HelperClasses;
 using Entities.VMs.MealDetailVMs;
 using Entities.VMs.MealVMs;
 
@@ -7,15 +8,13 @@ namespace WinFormUI
 {
     public partial class frmReport : Form
     {
-        string _activeUser;
         IMealService _mealService;
         IMealDetailService _mealDetailService;
         List<MealVm> dailyMeals;
         DateTime date;
-        public frmReport(string userName)
+        public frmReport()
         {
             InitializeComponent();
-            _activeUser = userName;
             _mealService = InstanceFactory.GetInstance<IMealService>();
             _mealDetailService = InstanceFactory.GetInstance<IMealDetailService>();
             date = dtpDay.Value;
@@ -28,7 +27,7 @@ namespace WinFormUI
                 x.CreatedDate.Value.Day == date.Day
                 && x.CreatedDate.Value.Month == date.Month
                 && x.CreatedDate.Value.Year == date.Year
-                && x.UserName == _activeUser);
+                && x.UserName == CurrentUser.UserName);
             lstMealType.DataSource = dailyMeals;
             lblCalorieValue.Text = CalculateTotalCalorieForMeals(dailyMeals).ToString();
             if (lblCalorieValue.Text == "0") lblMealCalorieValue.Text = "0"; 
@@ -50,7 +49,7 @@ namespace WinFormUI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message,"Hata",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
@@ -63,9 +62,8 @@ namespace WinFormUI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void lstMealType_SelectedIndexChanged(object sender, EventArgs e)
@@ -98,7 +96,7 @@ namespace WinFormUI
                     totalCal += food.UnitCalorie * food.Gram;
                 }
             }
-            return totalCal == null ? 0 : totalCal.Value;
+            return totalCal == null ? 0 : Math.Round(totalCal.Value);
         }
 
         private double CalculateTotalCalorieForMeal(MealVm meal)
@@ -108,7 +106,7 @@ namespace WinFormUI
             {
                 totalCal += product.Gram * product.UnitCalorie;
             }
-            return totalCal == null ? 0 : totalCal.Value;
+            return totalCal == null ? 0 : Math.Round(totalCal.Value);
         }
 
         private void btnDeleteMeal_Click(object sender, EventArgs e)
@@ -117,6 +115,11 @@ namespace WinFormUI
             {
                 if (lstMealType.SelectedItem == null) throw new Exception("Silmek istediğiniz öğünü seçiniz");
                 MealVm deletedMeal = lstMealType.SelectedItem as MealVm;
+                if (deletedMeal.MealDetailVm.Count > 0)
+                {
+                    DialogResult dr = MessageBox.Show("Öğün içerisindeki tüm yemekler silinecektir. Onaylıyor musunuz","Silme Onay",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                    if (dr== DialogResult.No) return;
+                }
                 _mealService.Delete(deletedMeal.Id);
                 GetMeals();
                 MealVm meal = (MealVm)lstMealType.SelectedItem;
@@ -124,7 +127,7 @@ namespace WinFormUI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message,"Hata",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
