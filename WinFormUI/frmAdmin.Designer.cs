@@ -79,6 +79,8 @@
             this.pnlMain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(0, 40);
+            this.pnlMain.MaximumSize = new System.Drawing.Size(813, 430);
+            this.pnlMain.MinimumSize = new System.Drawing.Size(813, 430);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(813, 430);
             this.pnlMain.TabIndex = 3;
@@ -87,7 +89,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::WinFormUI.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(813, 470);
             this.Controls.Add(this.pnlMain);
@@ -97,7 +98,9 @@
             this.IsMdiContainer = true;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(829, 509);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(829, 509);
             this.Name = "frmAdmin";
             this.ShowIcon = false;
             this.Text = "Admin Paneli";

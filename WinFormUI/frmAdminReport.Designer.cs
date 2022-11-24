@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             this.lvTotal = new System.Windows.Forms.ListView();
             this.clmProduct = new System.Windows.Forms.ColumnHeader();
             this.clmPiece = new System.Windows.Forms.ColumnHeader();
+            this.label3 = new System.Windows.Forms.Label();
+            this.sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbMealType = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -57,6 +57,30 @@
             this.panel1.Size = new System.Drawing.Size(405, 430);
             this.panel1.TabIndex = 4;
             // 
+            // lvTotal
+            // 
+            this.lvTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(126)))), ((int)(((byte)(255)))));
+            this.lvTotal.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clmProduct,
+            this.clmPiece});
+            this.lvTotal.ForeColor = System.Drawing.Color.White;
+            this.lvTotal.Location = new System.Drawing.Point(33, 67);
+            this.lvTotal.Name = "lvTotal";
+            this.lvTotal.Size = new System.Drawing.Size(345, 307);
+            this.lvTotal.TabIndex = 4;
+            this.lvTotal.UseCompatibleStateImageBehavior = false;
+            this.lvTotal.View = System.Windows.Forms.View.Details;
+            // 
+            // clmProduct
+            // 
+            this.clmProduct.Text = "Yemek";
+            this.clmProduct.Width = 200;
+            // 
+            // clmPiece
+            // 
+            this.clmPiece.Text = "Adet";
+            this.clmPiece.Width = 140;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -74,30 +98,6 @@
             this.sqlCommand1.Connection = null;
             this.sqlCommand1.Notification = null;
             this.sqlCommand1.Transaction = null;
-            // 
-            // lvTotal
-            // 
-            this.lvTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(126)))), ((int)(((byte)(255)))));
-            this.lvTotal.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.clmProduct,
-            this.clmPiece});
-            this.lvTotal.ForeColor = System.Drawing.Color.White;
-            this.lvTotal.Location = new System.Drawing.Point(33, 67);
-            this.lvTotal.Name = "lvTotal";
-            this.lvTotal.Size = new System.Drawing.Size(340, 307);
-            this.lvTotal.TabIndex = 4;
-            this.lvTotal.UseCompatibleStateImageBehavior = false;
-            this.lvTotal.View = System.Windows.Forms.View.Details;
-            // 
-            // clmProduct
-            // 
-            this.clmProduct.Text = "Yemek";
-            this.clmProduct.Width = 200;
-            // 
-            // clmPiece
-            // 
-            this.clmPiece.Text = "Adet";
-            this.clmPiece.Width = 140;
             // 
             // label1
             // 

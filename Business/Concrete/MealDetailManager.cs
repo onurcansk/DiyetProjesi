@@ -66,8 +66,8 @@ namespace Business.Concrete
         }
 
         public List<MealDetailVm> GetAll()
-        { 
-            var getAllTuple= _mealDetailDal.GetAll();
+        {
+            var getAllTuple = _mealDetailDal.GetAll();
             List<MealDetail> mealDetails = getAllTuple.Item1;
             List<MealDetailVm> mealDetailVms = new List<MealDetailVm>();
             foreach (var item in mealDetails)
@@ -174,8 +174,8 @@ namespace Business.Concrete
             
         }
 
-        
+
     }
 
-    
+
 }

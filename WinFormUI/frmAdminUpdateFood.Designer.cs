@@ -45,12 +45,12 @@
             this.btnUpdate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnUpdate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnUpdate.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(90, 288);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnUpdate.Location = new System.Drawing.Point(85, 295);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(109, 40);
+            this.btnUpdate.Size = new System.Drawing.Size(85, 42);
             this.btnUpdate.TabIndex = 6;
             this.btnUpdate.Text = "Güncelle";
             this.btnUpdate.UseVisualStyleBackColor = false;
@@ -59,9 +59,10 @@
             // pbProductImage
             // 
             this.pbProductImage.BackColor = System.Drawing.Color.Transparent;
-            this.pbProductImage.Location = new System.Drawing.Point(28, 215);
+            this.pbProductImage.Location = new System.Drawing.Point(21, 206);
+            this.pbProductImage.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pbProductImage.Name = "pbProductImage";
-            this.pbProductImage.Size = new System.Drawing.Size(60, 60);
+            this.pbProductImage.Size = new System.Drawing.Size(57, 63);
             this.pbProductImage.TabIndex = 8;
             this.pbProductImage.TabStop = false;
             // 
@@ -71,11 +72,12 @@
             this.btnImg.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnImg.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnImg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImg.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnImg.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnImg.ForeColor = System.Drawing.Color.White;
-            this.btnImg.Location = new System.Drawing.Point(136, 226);
+            this.btnImg.Location = new System.Drawing.Point(105, 227);
+            this.btnImg.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnImg.Name = "btnImg";
-            this.btnImg.Size = new System.Drawing.Size(132, 40);
+            this.btnImg.Size = new System.Drawing.Size(128, 42);
             this.btnImg.TabIndex = 7;
             this.btnImg.Text = "Resmi Değiştir";
             this.btnImg.UseVisualStyleBackColor = false;
@@ -84,46 +86,51 @@
             // nmdUnitCalorie
             // 
             this.nmdUnitCalorie.DecimalPlaces = 2;
-            this.nmdUnitCalorie.Location = new System.Drawing.Point(28, 128);
+            this.nmdUnitCalorie.Location = new System.Drawing.Point(21, 123);
+            this.nmdUnitCalorie.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.nmdUnitCalorie.Name = "nmdUnitCalorie";
-            this.nmdUnitCalorie.Size = new System.Drawing.Size(240, 26);
+            this.nmdUnitCalorie.Size = new System.Drawing.Size(212, 27);
             this.nmdUnitCalorie.TabIndex = 9;
             // 
             // txtProductName
             // 
             this.txtProductName.Enabled = false;
-            this.txtProductName.Location = new System.Drawing.Point(28, 80);
+            this.txtProductName.Location = new System.Drawing.Point(21, 73);
+            this.txtProductName.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.PlaceholderText = "Yemek";
-            this.txtProductName.Size = new System.Drawing.Size(240, 26);
+            this.txtProductName.Size = new System.Drawing.Size(212, 27);
             this.txtProductName.TabIndex = 10;
             // 
             // txtCategory
             // 
             this.txtCategory.Enabled = false;
-            this.txtCategory.Location = new System.Drawing.Point(28, 33);
+            this.txtCategory.Location = new System.Drawing.Point(21, 24);
+            this.txtCategory.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtCategory.Name = "txtCategory";
             this.txtCategory.PlaceholderText = "Kategori";
-            this.txtCategory.Size = new System.Drawing.Size(240, 26);
+            this.txtCategory.Size = new System.Drawing.Size(212, 27);
             this.txtCategory.TabIndex = 10;
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(28, 173);
+            this.checkBox1.BackColor = System.Drawing.Color.Transparent;
+            this.checkBox1.Location = new System.Drawing.Point(21, 166);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 24);
+            this.checkBox1.Size = new System.Drawing.Size(78, 25);
             this.checkBox1.TabIndex = 11;
             this.checkBox1.Text = "Aktif Mi";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.UseVisualStyleBackColor = false;
             // 
             // frmAdminUpdateFood
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::WinFormUI.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(293, 341);
+            this.ClientSize = new System.Drawing.Size(259, 361);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.txtCategory);
             this.Controls.Add(this.txtProductName);
@@ -132,8 +139,8 @@
             this.Controls.Add(this.btnImg);
             this.Controls.Add(this.btnUpdate);
             this.DoubleBuffered = true;
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAdminUpdateFood";

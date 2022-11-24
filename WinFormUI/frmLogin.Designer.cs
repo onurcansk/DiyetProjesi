@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chkRememberMe = new System.Windows.Forms.CheckBox();
             this.llbSignUp = new System.Windows.Forms.LinkLabel();
             this.btnLogin = new System.Windows.Forms.Button();
             this.lblAppName = new System.Windows.Forms.Label();
@@ -45,6 +46,7 @@
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BackgroundImage = global::WinFormUI.Properties.Resources.background;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.chkRememberMe);
             this.panel1.Controls.Add(this.llbSignUp);
             this.panel1.Controls.Add(this.btnLogin);
             this.panel1.Controls.Add(this.lblAppName);
@@ -60,6 +62,16 @@
             this.panel1.Size = new System.Drawing.Size(263, 378);
             this.panel1.TabIndex = 0;
             // 
+            // chkRememberMe
+            // 
+            this.chkRememberMe.AutoSize = true;
+            this.chkRememberMe.Location = new System.Drawing.Point(40, 263);
+            this.chkRememberMe.Name = "chkRememberMe";
+            this.chkRememberMe.Size = new System.Drawing.Size(102, 25);
+            this.chkRememberMe.TabIndex = 3;
+            this.chkRememberMe.Text = "Beni Hatırla";
+            this.chkRememberMe.UseVisualStyleBackColor = true;
+            // 
             // llbSignUp
             // 
             this.llbSignUp.AutoSize = true;
@@ -67,7 +79,7 @@
             this.llbSignUp.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.llbSignUp.Name = "llbSignUp";
             this.llbSignUp.Size = new System.Drawing.Size(59, 21);
-            this.llbSignUp.TabIndex = 2;
+            this.llbSignUp.TabIndex = 4;
             this.llbSignUp.TabStop = true;
             this.llbSignUp.Text = "Kayıt Ol";
             this.llbSignUp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbSignUp_LinkClicked);
@@ -86,7 +98,7 @@
             this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(77, 37);
-            this.btnLogin.TabIndex = 3;
+            this.btnLogin.TabIndex = 5;
             this.btnLogin.Text = "Giriş Yap";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -184,5 +196,6 @@
         private Label lblMain;
         private TextBox txtPassword;
         private TextBox txtMail;
+        private CheckBox chkRememberMe;
     }
 }
