@@ -42,7 +42,7 @@
             this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnDelete.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnDelete.ForeColor = System.Drawing.Color.White;
             this.btnDelete.Location = new System.Drawing.Point(259, 150);
             this.btnDelete.Name = "btnDelete";
@@ -59,7 +59,7 @@
             this.btnUpdate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnUpdate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnUpdate.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
             this.btnUpdate.Location = new System.Drawing.Point(259, 110);
             this.btnUpdate.Name = "btnUpdate";
@@ -76,7 +76,7 @@
             this.btnAddNew.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnAddNew.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnAddNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAddNew.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAddNew.ForeColor = System.Drawing.Color.White;
             this.btnAddNew.Location = new System.Drawing.Point(259, 70);
             this.btnAddNew.Name = "btnAddNew";
@@ -91,7 +91,7 @@
             this.txtMealName.Location = new System.Drawing.Point(207, 27);
             this.txtMealName.Name = "txtMealName";
             this.txtMealName.PlaceholderText = "Kategori Adı";
-            this.txtMealName.Size = new System.Drawing.Size(193, 23);
+            this.txtMealName.Size = new System.Drawing.Size(193, 27);
             this.txtMealName.TabIndex = 4;
             // 
             // lstCategory
@@ -99,9 +99,10 @@
             this.lstCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.lstCategory.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lstCategory.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lstCategory.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lstCategory.ForeColor = System.Drawing.Color.White;
             this.lstCategory.FormattingEnabled = true;
-            this.lstCategory.ItemHeight = 15;
+            this.lstCategory.ItemHeight = 21;
             this.lstCategory.Location = new System.Drawing.Point(0, 0);
             this.lstCategory.Name = "lstCategory";
             this.lstCategory.Size = new System.Drawing.Size(185, 196);
@@ -120,6 +121,7 @@
             this.Controls.Add(this.txtMealName);
             this.Controls.Add(this.lstCategory);
             this.DoubleBuffered = true;
+            this.Font = new System.Drawing.Font("ISOCPEUR", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAdminCategory";

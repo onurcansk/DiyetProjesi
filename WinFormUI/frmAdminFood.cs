@@ -42,9 +42,7 @@ namespace WinFormUI
 
             foreach (var product in _products)
             {
-               
-                    dgvMealView.Rows.Add(product.isActive,product.ProductTypeName, product.ProductName, product.UnitCalorie, product.Image, product.Id);
-                             
+                dgvMealView.Rows.Add(product.isActive, product.ProductTypeName, product.ProductName, product.UnitCalorie, product.Image, product.Id);
             }
         }
 
@@ -64,7 +62,7 @@ namespace WinFormUI
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if(_activeProduct == null)
+            if (_activeProduct == null)
             {
                 MessageBox.Show("Ürün seçiniz");
                 return;
@@ -106,13 +104,13 @@ namespace WinFormUI
 
         private void dgvMealView_SelectionChanged(object sender, EventArgs e)
         {
-           if(dgvMealView.SelectedRows == null)
+            if (dgvMealView.SelectedRows == null)
             {
                 return;
             }
             int index = Convert.ToInt32(dgvMealView.CurrentRow.Cells[5].Value);
             _activeProduct = _productService.GetById(index);
-        }   
+        }
 
         private void btnDelete_Click_1(object sender, EventArgs e)
         {
