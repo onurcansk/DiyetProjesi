@@ -38,7 +38,11 @@ namespace WinFormUI
             ProductUpdateDTO productUpdateDTO = new()
             {
                 Id = _product.Id,
+                ProductName = _product.ProductName,
+                ProductType = _product.ProductTypeName,
+                Image = ImageToByteArray(pbProductImage.Image),
                 UnitCalorie = (double)nmdUnitCalorie.Value,
+                isActive = true,
             };
             _productService.Update(productUpdateDTO);
             this.Close();

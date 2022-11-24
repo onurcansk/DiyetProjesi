@@ -23,6 +23,8 @@ namespace Business.Concrete
         [ValidationAspect(typeof(ProductTypeCreateValidator))]
         public void Add(ProductTypeCreateDto productType)
         {
+            var getProductTypeTuple = _productTypeDal.Get(pt => pt.ProductTypeName==pt.ProductTypeName);
+            if (getProductTypeTuple.Item1 != null) throw new AlreadyExistsException("Eklenmeye çalışılan öğün tipi zaten mevcut");
             ProductType newProductType = new ProductType()
             {
                 ProductTypeName = productType.ProductTypeName

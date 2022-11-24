@@ -42,8 +42,9 @@ namespace WinFormUI
 
             foreach (var product in _products)
             {
-                
-                dgvMealView.Rows.Add(product.ProductTypeName, product.ProductName, product.UnitCalorie, product.Image, product.Id);
+               
+                    dgvMealView.Rows.Add(product.isActive,product.ProductTypeName, product.ProductName, product.UnitCalorie, product.Image, product.Id);
+                             
             }
         }
 
@@ -109,13 +110,13 @@ namespace WinFormUI
             {
                 return;
             }
-            int index = Convert.ToInt32(dgvMealView.CurrentRow.Cells[4].Value);
+            int index = Convert.ToInt32(dgvMealView.CurrentRow.Cells[5].Value);
             _activeProduct = _productService.GetById(index);
-        }
+        }   
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnDelete_Click_1(object sender, EventArgs e)
         {
-            _productService.Delete(_activeProduct.Id);
+            _productService.Delete(Convert.ToInt32(dgvMealView.CurrentRow.Cells[5].Value));
             FillProducts();
         }
     }

@@ -34,16 +34,17 @@
             this.tsmMealType = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmCategory = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvMealView = new System.Windows.Forms.DataGridView();
-            this.clmCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmFood = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmCalorie = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmImg = new System.Windows.Forms.DataGridViewImageColumn();
-            this.clmId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnFilter = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnAddNew = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.Aktif = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.clmCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmFood = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmCalorie = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmImg = new System.Windows.Forms.DataGridViewImageColumn();
+            this.clmId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mnsFood.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMealView)).BeginInit();
             this.SuspendLayout();
@@ -96,6 +97,7 @@
             this.dgvMealView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvMealView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMealView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Aktif,
             this.clmCategory,
             this.clmFood,
             this.clmCalorie,
@@ -118,6 +120,7 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvMealView.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvMealView.RowHeadersVisible = false;
             this.dgvMealView.RowHeadersWidth = 40;
             this.dgvMealView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvMealView.RowTemplate.Height = 100;
@@ -125,43 +128,6 @@
             this.dgvMealView.Size = new System.Drawing.Size(813, 366);
             this.dgvMealView.TabIndex = 5;
             this.dgvMealView.SelectionChanged += new System.EventHandler(this.dgvMealView_SelectionChanged);
-            // 
-            // clmCategory
-            // 
-            this.clmCategory.HeaderText = "Kategori";
-            this.clmCategory.Name = "clmCategory";
-            this.clmCategory.ReadOnly = true;
-            this.clmCategory.Width = 200;
-            // 
-            // clmFood
-            // 
-            this.clmFood.HeaderText = "Yemek";
-            this.clmFood.Name = "clmFood";
-            this.clmFood.ReadOnly = true;
-            this.clmFood.Width = 250;
-            // 
-            // clmCalorie
-            // 
-            this.clmCalorie.HeaderText = "Birim Kalori";
-            this.clmCalorie.Name = "clmCalorie";
-            this.clmCalorie.ReadOnly = true;
-            this.clmCalorie.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clmCalorie.Width = 120;
-            // 
-            // clmImg
-            // 
-            this.clmImg.HeaderText = "Resim";
-            this.clmImg.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
-            this.clmImg.Name = "clmImg";
-            this.clmImg.ReadOnly = true;
-            this.clmImg.Width = 200;
-            // 
-            // clmId
-            // 
-            this.clmId.HeaderText = "ID";
-            this.clmId.Name = "clmId";
-            this.clmId.ReadOnly = true;
-            this.clmId.Visible = false;
             // 
             // btnFilter
             // 
@@ -246,6 +212,53 @@
             this.btnDelete.TabIndex = 6;
             this.btnDelete.Text = "X";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click_1);
+            // 
+            // Aktif
+            // 
+            this.Aktif.HeaderText = "Aktif";
+            this.Aktif.Name = "Aktif";
+            this.Aktif.ReadOnly = true;
+            this.Aktif.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Aktif.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Aktif.Width = 50;
+            // 
+            // clmCategory
+            // 
+            this.clmCategory.HeaderText = "Kategori";
+            this.clmCategory.Name = "clmCategory";
+            this.clmCategory.ReadOnly = true;
+            this.clmCategory.Width = 200;
+            // 
+            // clmFood
+            // 
+            this.clmFood.HeaderText = "Yemek";
+            this.clmFood.Name = "clmFood";
+            this.clmFood.ReadOnly = true;
+            this.clmFood.Width = 250;
+            // 
+            // clmCalorie
+            // 
+            this.clmCalorie.HeaderText = "Birim Kalori";
+            this.clmCalorie.Name = "clmCalorie";
+            this.clmCalorie.ReadOnly = true;
+            this.clmCalorie.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clmCalorie.Width = 120;
+            // 
+            // clmImg
+            // 
+            this.clmImg.HeaderText = "Resim";
+            this.clmImg.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
+            this.clmImg.Name = "clmImg";
+            this.clmImg.ReadOnly = true;
+            this.clmImg.Width = 200;
+            // 
+            // clmId
+            // 
+            this.clmId.HeaderText = "ID";
+            this.clmId.Name = "clmId";
+            this.clmId.ReadOnly = true;
+            this.clmId.Visible = false;
             // 
             // frmAdminFood
             // 
@@ -286,6 +299,7 @@
         private Button btnUpdate;
         private Button btnAddNew;
         private Button btnDelete;
+        private DataGridViewCheckBoxColumn Aktif;
         private DataGridViewTextBoxColumn clmCategory;
         private DataGridViewTextBoxColumn clmFood;
         private DataGridViewTextBoxColumn clmCalorie;

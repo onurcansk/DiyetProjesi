@@ -1,6 +1,7 @@
 ﻿using Base.Aspects.Autofac.Validation;
 using Business.Abstract;
 using Business.Exceptions;
+using Business.HelperClasses;
 using Business.ValidationRules.FluentValidation;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -21,6 +22,9 @@ namespace Business.Concrete
             _productDal = productDal;
             _productTypeService = productTypeService;
         }
+
+        
+
         [ValidationAspect(typeof(ProductCreateValidator))]
         public void Add(ProductCreateDTO product)
         {
@@ -54,8 +58,9 @@ namespace Business.Concrete
                 throw new IdNotFoundException("Silinmeye çalışılan id ye ait ürün bulunamadı");
             }
 
+            product.isActive = false;
             getProductTuple.Item2.Dispose();
-            _productDal.Delete(product);
+            _productDal.Update(product);       
         }
 
         public List<ProductVm> GetAll()
@@ -65,13 +70,15 @@ namespace Business.Concrete
             List<ProductVm> productVmList = new List<ProductVm>();
             foreach (Product item in products)
             {
+                if (!item.isActive && CurrentUser.UserClaim==Entities.Enums.UserClaims.User) continue;
                 ProductVm productVm = new ProductVm()
                 {
                     Id = item.Id,
-                    ProductName=item.ProductName,
-                    ProductTypeName=item.ProductType.ProductTypeName,
-                    UnitCalorie= item.UnitCalorie,
+                    ProductName = item.ProductName,
+                    ProductTypeName = item.ProductType.ProductTypeName,
+                    UnitCalorie = item.UnitCalorie,
                     Image = item.Image,
+                    isActive = item.isActive
                 };
                 productVmList.Add(productVm);
             }
@@ -87,6 +94,7 @@ namespace Business.Concrete
             List<ProductVm> productVmList = new List<ProductVm>();
             foreach (Product item in products)
             {
+                if (!item.isActive && CurrentUser.UserClaim == Entities.Enums.UserClaims.User) continue;
                 ProductVm productVm = new ProductVm()
                 {
                     Id=item.Id,
@@ -94,6 +102,7 @@ namespace Business.Concrete
                     ProductTypeName = item.ProductType.ProductTypeName,
                     UnitCalorie = item.UnitCalorie,
                     Image = item.Image,
+                    isActive = item.isActive
                 };
                 productVmList.Add(productVm);
             }
@@ -106,6 +115,7 @@ namespace Business.Concrete
         {
             var getProductTuple = _productDal.Get(p => p.Id == id);
             Product product = getProductTuple.Item1;
+
             if (product == null)
             {
                 throw new IdNotFoundException("Girilen id ye ait ürün bulunamadı.");
@@ -118,6 +128,7 @@ namespace Business.Concrete
                 ProductTypeName = product.ProductType.ProductTypeName,
                 UnitCalorie = product.UnitCalorie,
                 Image = product.Image,
+                isActive = product.isActive
             };
 
             getProductTuple.Item2.Dispose();
@@ -140,7 +151,8 @@ namespace Business.Concrete
                 ProductName = product.ProductName,
                 ProductTypeName = product.ProductType.ProductTypeName,
                 UnitCalorie = product.UnitCalorie,
-                Image = product.Image
+                Image = product.Image,
+                isActive = product.isActive
             };
 
             getProductTuple.Item2.Dispose();
@@ -161,16 +173,23 @@ namespace Business.Concrete
             if (product.ProductName != null)
                 updatedProduct.ProductName = product.ProductName;
 
-            if(product.ProductType!=null)
-            {
+            if(product.ProductType!=null && getProductTuple.Item1.ProductType.ProductTypeName != product.ProductType)
+            { 
                 ProductTypeVm productType = _productTypeService.GetByName(product.ProductName);
                 updatedProduct.ProductTypeID = productType.Id;
             }
             
-            if(product.UnitCalorie != null)
+            if(product.UnitCalorie != null && product.UnitCalorie != getProductTuple.Item1.UnitCalorie)
             {
                 updatedProduct.UnitCalorie = product.UnitCalorie;
             }
+
+            if(product.Image != null) 
+            {
+                updatedProduct.Image = product.Image;
+            }
+
+            updatedProduct.isActive = product.isActive;
 
             getProductTuple.Item2.Dispose();
             _productDal.Update(updatedProduct);

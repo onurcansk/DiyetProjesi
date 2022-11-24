@@ -14,7 +14,7 @@ namespace Entities.VMs.ProductVMs
         public double? UnitCalorie { get; set; }
         public string ProductTypeName { get; set; }
         public byte[] Image { get; set; }
-
+        public bool isActive { get; set; }
         public override string ToString()
         {
             return this.ProductName;
